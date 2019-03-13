@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="c++模板,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="###模板简介     模板可能是c++中最强大最强大却最少被使用（或被理解）的特性之一了；我们可以用模板来定义一种适用于不同类型的对象的行为这就像是用#define定义的一个返回两个数中最大值的宏函数那样#define MAX_NUM(a, b) ((a) &amp;gt; (b) ? (a) : (b))这里的a，b可以是int类型、也可以是其他类型；与“”宏函数不同的是宏不是类型安全的，而模板是类型">
+<meta name="description" content="模板可能是c++中最强大最强大却最少被使用（或被理解）的特性之一了；我们可以用模板来定义一种适用于不同类型的对象的行为这就像是用#define定义的一个返回两个数中最大值的宏函数那样#define MAX_NUM(a, b) ((a) &amp;gt; (b) ? (a) : (b))这里的a，b可以是int类型、也可以是其他类型；与“”宏函数不同的是宏不是类型安全的，而模板是类型安全的      模板">
+<meta name="keywords" content="c++模板">
 <meta property="og:type" content="article">
-<meta property="og:title" content="f_x&#39;s blog">
+<meta property="og:title" content="c++模板">
 <meta property="og:url" content="http://yoursite.com/2019/03/12/c++模板/index.html">
 <meta property="og:site_name" content="f_x&#39;s blog">
-<meta property="og:description" content="###模板简介     模板可能是c++中最强大最强大却最少被使用（或被理解）的特性之一了；我们可以用模板来定义一种适用于不同类型的对象的行为这就像是用#define定义的一个返回两个数中最大值的宏函数那样#define MAX_NUM(a, b) ((a) &amp;gt; (b) ? (a) : (b))这里的a，b可以是int类型、也可以是其他类型；与“”宏函数不同的是宏不是类型安全的，而模板是类型">
+<meta property="og:description" content="模板可能是c++中最强大最强大却最少被使用（或被理解）的特性之一了；我们可以用模板来定义一种适用于不同类型的对象的行为这就像是用#define定义的一个返回两个数中最大值的宏函数那样#define MAX_NUM(a, b) ((a) &amp;gt; (b) ? (a) : (b))这里的a，b可以是int类型、也可以是其他类型；与“”宏函数不同的是宏不是类型安全的，而模板是类型安全的      模板">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-12T10:48:09.790Z">
+<meta property="og:updated_time" content="2019-03-13T06:39:05.571Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="f_x&#39;s blog">
-<meta name="twitter:description" content="###模板简介     模板可能是c++中最强大最强大却最少被使用（或被理解）的特性之一了；我们可以用模板来定义一种适用于不同类型的对象的行为这就像是用#define定义的一个返回两个数中最大值的宏函数那样#define MAX_NUM(a, b) ((a) &amp;gt; (b) ? (a) : (b))这里的a，b可以是int类型、也可以是其他类型；与“”宏函数不同的是宏不是类型安全的，而模板是类型">
+<meta name="twitter:title" content="c++模板">
+<meta name="twitter:description" content="模板可能是c++中最强大最强大却最少被使用（或被理解）的特性之一了；我们可以用模板来定义一种适用于不同类型的对象的行为这就像是用#define定义的一个返回两个数中最大值的宏函数那样#define MAX_NUM(a, b) ((a) &amp;gt; (b) ? (a) : (b))这里的a，b可以是int类型、也可以是其他类型；与“”宏函数不同的是宏不是类型安全的，而模板是类型安全的      模板">
 
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <title> | f_x's blog</title>
+  <title>c++模板 | f_x's blog</title>
   
 
 
@@ -249,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">c++模板</h1>
         
 
         <div class="post-meta">
@@ -261,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-12T12:35:02+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-12T08:43:04+08:00">
                 2019-03-12
               </time>
             
@@ -299,8 +300,7 @@
       
 
       
-        <p>###模板简介   </p>
-<blockquote>
+        <blockquote>
 <p>模板可能是c++中最强大最强大却最少被使用（或被理解）的<strong>特性</strong>之一了；我们可以用模板来定义一种适用于<strong>不同类型</strong>的对象的<strong>行为</strong><br>这就像是用#define定义的一个返回两个数中最大值的宏函数那样<br><code>#define MAX_NUM(a, b) ((a) &gt; (b) ? (a) : (b))</code><br>这里的a，b可以是int类型、也可以是其他类型；与“”宏函数不同的是<strong>宏不是类型安全的，而模板是类型安全的</strong>   </p>
 </blockquote>
 <ul>
@@ -347,15 +347,15 @@ int main()
 <blockquote>
 <p>上述代码中实例化Template类时，将T1指定为int类型，将T2指定为float类型（显式指定）。<br>第一次调用模板函数时，将T指定为float类型；第二次调用时却没有指定类型，但这样也是正确的，这时候，模板函数会自动判断数据的类型（隐式指定）。<br>不过，<strong>对于模板类，必须要显式指定其类型</strong>。   </p>
 </blockquote>
-<p>####声明包含多个参数的模板</p>
+<p><strong>声明包含多个参数的模板</strong>   </p>
 <blockquote>
 <p>声明包含多个参数的模板时, 参数之间用逗号隔开：<br>template &lt; typename T1, typename T2,…., typename Tn &gt;</p>
 </blockquote>
-<p>####声明包含默认参数的模板</p>
+<p><strong>声明包含默认参数的模板</strong></p>
 <blockquote>
 <p>声明包含默认参数的模板时, 可将它初始化成默认类型：<br>template &lt; typename T1 = int, … , typename tn = int &gt;</p>
 </blockquote>
-<p>####模板类和静态成员</p>
+<p><strong>*模板类和静态成员</strong>   </p>
 <blockquote>
 <p>在普通的类中，类成员被定义成静态的话，该静态成员被所有实例共享；<br>在模板类中，也类似这样，只不过是被同类型的具体化的实例所共享的：</p>
 </blockquote>
@@ -390,11 +390,7 @@ int main()
     return 0;    
 }
 </code></pre><blockquote>
-<p>上述代码中两次输出结果分别是1997、917。你该懂了吧   </p>
-</blockquote>
-<p>####c++中的静态成员变量</p>
-<blockquote>
-<p>在c++的类中，如果存在静态成员变量的话，必须对它进行初始化,格式如下：</p>
+<p>上述代码中两次输出结果分别是1997、917。你该懂了吧<br><strong>c++中的静态成员变量</strong><br>在c++的类中，如果存在静态成员变量的话，必须对它进行初始化,格式如下：</p>
 <blockquote>
 <p>&lt;数据类型&gt;&lt;类名&gt;::&lt;静态数据成员名&gt; = &lt;值&gt;   </p>
 </blockquote>
@@ -422,6 +418,12 @@ int main()
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/c-模板/" rel="tag"># c++模板</a>
+          
+        </div>
+      
 
       
       
@@ -431,8 +433,8 @@ int main()
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/12/设计模式-工厂模式/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2018/11/27/算法时间复杂的的计算/" rel="next" title="算法时间复杂的的计算">
+                <i class="fa fa-chevron-left"></i> 算法时间复杂的的计算
               </a>
             
           </div>
@@ -440,6 +442,10 @@ int main()
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/12/c++中的宏/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -520,7 +526,7 @@ int main()
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
