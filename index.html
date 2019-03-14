@@ -319,11 +319,27 @@
 <p>(4). std::multimap——与map类似，不要求键是唯一的。<br>    std::unordered_multimap——c++11新增的，与unordered_map类似。不要求键是唯一的。    </p>
 </blockquote>
 <blockquote>
-<p>容器适配器</p>
+<p>容器适配器<br>(1). std::stack：以LIFO(后进先出)的方式储存元素。<br>(2). std::queue：以FIFO(先进先出)的方式储存元素。<br>(3). std::priority_queue：以特定顺序储存元素。   </p>
 </blockquote>
 <p>2.用于访问容器储存的信息的<strong>迭代器</strong><br>3.用于操作容器内容的<strong>算法</strong>   </p>
 </blockquote>
 <p><strong>下文再介绍时，省略了std::</strong></p>
+<p><strong>STL迭代器</strong>   </p>
+<blockquote>
+<p>指针是最简单的迭代器，让该指针指向数组中的第一个元素，然后递增指针以获得下一个元素。<br>STL中的迭代器是模板类，在某种程度上，可以将它理解成泛型指针。<br>迭代起的分类： </p>
+<blockquote>
+<p>1<br>2<br>3<br>4   </p>
+</blockquote>
+</blockquote>
+<p><strong>STL算法</strong></p>
+<blockquote>
+<p>为程序员提供的查找、排序、反转等功能的模板函数。<br>使用STL算法时，要包含<strong>标准头文件<algorihm></algorihm></strong><br>常用STL算法如下：</p>
+<blockquote>
+</blockquote>
+<p>std::find: 在集合中查找值。<br>std::find_if: 根据用户指定的谓词在集合中查找值。<br>std::reverse: 反转集合中的元素的排序。<br>std::remove_if: 根据用户定义的谓词将元素从集合中删除。<br>std::transform: 使用用户定义的变换函数对容器中的元素进行变换。   </p>
+<blockquote>
+</blockquote>
+</blockquote>
 
           
         
