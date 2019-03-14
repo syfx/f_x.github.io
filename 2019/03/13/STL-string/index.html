@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="f_x&#39;s blog">
 <meta property="og:description" content="STL简介  标准模板库是一组模板类和函数，向程序员提供了：1.用于储存信息的容器，包含：     顺序容器(1). std::vector——与动态数组类似，在最后插入数据。(2). std::deque——与std::vector类似，允许在开头添加或删除数据。(3). std::list——与双向链表类似。(4). std::forward_list——类似于std::list，不过是单向链">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-13T12:39:27.164Z">
+<meta property="og:updated_time" content="2019-03-14T01:22:06.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL-string">
 <meta name="twitter:description" content="STL简介  标准模板库是一组模板类和函数，向程序员提供了：1.用于储存信息的容器，包含：     顺序容器(1). std::vector——与动态数组类似，在最后插入数据。(2). std::deque——与std::vector类似，允许在开头添加或删除数据。(3). std::list——与双向链表类似。(4). std::forward_list——类似于std::list，不过是单向链">
@@ -340,7 +340,49 @@
 <blockquote>
 </blockquote>
 </blockquote>
+<p><strong>使用迭代器在容器和算法之间交互</strong>   </p>
+<pre><code>#include &lt;iostream&gt;   
+#include &lt;vector&gt;   
+#include &lt;algorithm&gt;   
+using namespace std;   
 
+int main()   
+{
+    vector&lt;int&gt; IntArray;   
+    IntArray.push_back(123);
+    IntArray.push_back(1997);
+    IntArray.push_back(917);
+    IntArray.push_back(2019);
+    IntArray.push_back(6666);
+
+    //使用迭代器遍历容器元素
+    //for (vector&lt;int&gt;::iterator IA = IntArray.begin(); 
+    //        IA &lt; IntArray.end(); ++IA) {
+    //    cout &lt;&lt; *IA &lt;&lt; endl;
+    //}
+    //使用迭代器遍历容器元素，此处所使用了auto让编译器自动判断类型
+    for (auto iArrayWalker = IntArray.begin(); 
+            iArrayWalker &lt; IntArray.end(); ++iArrayWalker){
+        cout &lt;&lt; *iArrayWalker &lt;&lt; endl;
+    }
+    //使用find算法在容器中查找元素1997，查到末尾时（end()）还没找到，便返回end()的地址
+    //vector&lt;int&gt;::iterator value = find(IntArray.begin(), IntArray.end(), 1997);
+    auto value = find(IntArray.begin(), IntArray.end(), 1997);
+
+    //判断是否找到元素1997
+    if (value != IntArray.end()) {
+        cout &lt;&lt; &quot;value: &quot; &lt;&lt; *value &lt;&lt; endl;
+        //获取1997在容器中的位置，及到begin()的距离
+        int index = distance(IntArray.begin(), value);
+        cout &lt;&lt; &quot;index: &quot; &lt;&lt; index &lt;&lt; endl;
+    }
+    getchar();
+    return 0;
+}
+</code></pre><blockquote>
+<p>由上述代码可以看出，迭代器就是获得的是容器中元素的地址；因此，在某种程度上可以将它理解为泛型指针。</p>
+</blockquote>
+<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2>
       
     </div>
     
@@ -430,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -482,6 +533,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#string"><span class="nav-number">1.</span> <span class="nav-text">string</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
