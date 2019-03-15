@@ -229,6 +229,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/c-动态数组类-vector/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="f_x">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f_x's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/c-动态数组类-vector/" itemprop="url">c++动态数组类-vector</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-15T09:47:32+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="STL-vector"><a href="#STL-vector" class="headerlink" title="STL vector"></a>STL vector</h2><blockquote>
+<p>使用vector时需要包含头文件<strong>&lt;vector></strong> </p>
+</blockquote>
+<ul>
+<li><p><strong>vector的特点</strong><br>vector动态数组类：<br>1、无论数组中存在多少元素，在数组末尾添加新元素时所需时间都是固定的。<br>2、在数组中间添加或者删除元素时，与<strong>该元素后面的元素个数</strong>成正比。<br>3、储存的元素是动态的，vector类负责管理内存。   </p>
+</li>
+<li><p><strong>vector的初始化</strong>   </p>
+<blockquote>
+<p>下面的代码介绍了vector的几种初始化方法。   </p>
+</blockquote>
+<p>  //默认初始化<br>  vector<int> intVec;</int></p>
+<p>  //初始化时设置至少包含的元素数（并没有限制大小），每个元素初始值默认为0<br>  vector<int> intVec1(10);</int></p>
+<p>  //同上，并设置每个元素的初始化值<br>  vector<int> intVec2(10, 66);</int></p>
+<p>  //使用另外一个vector来初始化<br>  vector<int> intVec3(intVec2);</int></p>
+<p>  //使用另一个vector的两个迭代器来初始化<br>  vector<int> intVec4(intVec2.cbegin(), intVec2.cbegin() + 5);</int></p>
+</li>
+</ul>
+<blockquote>
+<p>cbegin()和cend()是C++11新增的，它们返回一个const的迭代器，不能用于修改元素。</p>
+</blockquote>
+<ul>
+<li><p><strong>vector插入元素</strong></p>
+<blockquote>
+<p>使用成员函数push_back()在容器末尾插入元素；使用insert()在指定位置插入元素。   </p>
+</blockquote>
+<p>  vector<int> intVec(5);<br>  intVec.push_back(66);<br>  cout &lt;&lt; intVec.size() &lt;&lt; endl;        //6</int></p>
+<p>  //在指定位置插入元素<br>  intVec.insert(intVec.begin(), 67);</p>
+<p>  //在指定位置插入指定个数的某个元素<br>  intVec.insert(intVec.begin(), 2, 66);</p>
+<p>  //在指定位置插入另一个vector的内容(使用迭代器指定范围)<br>  vector<int> anoVec(3, 65);<br>  intVec.insert(intVec.begin(), </int></p>
+<pre><code>anoVec.begin(), anoVec.end());
+</code></pre></li>
+</ul>
+<blockquote>
+<p>使用insert插入元素时，效率较低，与其特点有关。   </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/STL-string/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1320,7 +1474,7 @@ for(i = 0 ; i &lt; n ; i++){                /*执行次数为n(n+1)/2*/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1333,7 +1487,7 @@ for(i = 0 ; i &lt; n ; i++){                /*执行次数为n(n+1)/2*/
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
