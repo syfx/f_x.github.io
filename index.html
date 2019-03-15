@@ -325,10 +325,7 @@
 <p><strong>下文再介绍时，省略了std::</strong></p>
 <p><strong>STL迭代器</strong>   </p>
 <blockquote>
-<p>指针是最简单的迭代器，让该指针指向数组中的第一个元素，然后递增指针以获得下一个元素。<br>STL中的迭代器是模板类，在某种程度上，可以将它理解成泛型指针。<br>迭代起的分类： </p>
-<blockquote>
-<p>1<br>2<br>3<br>4   </p>
-</blockquote>
+<p>指针是最简单的迭代器，让该指针指向数组中的第一个元素，然后递增指针以获得下一个元素。<br>STL中的迭代器是模板类，在某种程度上，可以将它理解成泛型指针。    </p>
 </blockquote>
 <p><strong>STL算法</strong></p>
 <blockquote>
@@ -381,7 +378,124 @@ int main()
 </code></pre><blockquote>
 <p>由上述代码可以看出，迭代器就是获得的是容器中元素的地址；因此，在某种程度上可以将它理解为泛型指针。</p>
 </blockquote>
-<h2 id="STL-string类"><a href="#STL-string类" class="headerlink" title="STL string类"></a>STL string类</h2>
+<h2 id="STL-string类"><a href="#STL-string类" class="headerlink" title="STL string类"></a>STL string类</h2><blockquote>
+<p>std::stirng与std::wstring是STL库中一个帮助程序员用于字符串操作的容器类。使用时要包含<string>头文件。<br>以std::string为例来介绍这个类的用法。</string></p>
+</blockquote>
+<ul>
+<li><p><strong>实例化string</strong>   </p>
+<pre><code>const char* C_StyleString = &quot;Hello String&quot;;
+const char* cString = &quot;Hello String&quot;;
+//使用构造函数初始化
+string str(cString);
+//使用等号初始化
+string str1 = cString;
+//使用string类型数据初始化
+string strCopy(cString);
+//使用某个字符串的前n位初始化
+string str2(&quot;Hello String&quot;, 5);
+//使用指定数量的字符初始化
+string str3(6, &apos;a&apos;);                    //str3 = aaaaaa
+//string str3(6, &apos;adf&apos;);                //str3 = ffffff
+</code></pre></li>
+<li><p><strong>访问string的内容</strong></p>
+<pre><code>//通过[]访问元素
+for (int i = 0; i &lt; str.length(); ++i) {
+    cout &lt;&lt; str[i] &lt;&lt; endl;
+}
+//通过迭代器访问
+for (string::const_iterator pos = str.begin()
+    ; pos != str.end()
+    ; ++pos)
+{
+    //*pos = &apos;h&apos;;                //报错，pos指向的值是const类型的，不可更改
+    cout &lt;&lt; *pos &lt;&lt; endl;
+}
+//通过迭代器访问
+for (string::iterator pos = str.begin()
+    ; pos != str.end()
+    ; ++pos)
+{
+    *pos = &apos;6&apos;;                    //不报错
+    cout &lt;&lt; *pos &lt;&lt; endl;
+}
+</code></pre></li>
+</ul>
+<blockquote>
+<p>上面代码中使用迭代器时，使用了一个新的迭代器const_iterator,使用它时，迭代器的值可变，但迭代器指向的值的值不可被改变。</p>
+</blockquote>
+<ul>
+<li><strong>字符串拼接</strong>   </li>
+</ul>
+<blockquote>
+<p>使用+=或者成员函数append()来拼接字符串。</p>
+</blockquote>
+<pre><code>string str4 = &quot;Hello &quot;;
+string str5 = &quot;World &quot;;
+string str6(&quot;Beautiful!&quot;);
+
+str4 += str5;                //str4 = Hello World 
+str4.append(str6);            //str4 = Hello World Beautiful!
+</code></pre><ul>
+<li><strong>字符/子字符串查找</strong>   </li>
+</ul>
+<blockquote>
+<p>可以使用string中的成员函数find来查找字符或者子字符串。<br>查找成功返回字符的索引或子字符串首个字符的索引。<br>查找失败返回string::npos（实际值为-1）。</p>
+</blockquote>
+<pre><code>string str6 = &quot;Hello World&quot;;
+//从索引为0初的字符往后进行查找
+int index = str6.find(&quot;World&quot;, 0);    
+cout &lt;&lt; index &lt;&lt; endl;                        //6
+//查找str6中所有 l 的索引
+size_t charPos = str6.find(&apos;l&apos;, 0);
+while (charPos != string::npos) {            
+    cout &lt;&lt; charPos &lt;&lt; endl;                //2 3 9
+    charPos = str6.find(&apos;l&apos;, ++charPos);
+}
+</code></pre><blockquote>
+<p>size_t在32位架构上是4字节，在64位架构上是8字节，在不同架构上进行编译时需要注意这个问题。而int在不同架构下都是4字节；且int为带符号数，size_t为无符号数。</p>
+</blockquote>
+<ul>
+<li><p><strong>字符串截短</strong>   </p>
+<blockquote>
+<p>可以使用成员函数erase()来删除字符串中的字符。<br>使用方法如下： </p>
+</blockquote>
+<p>  string myStr = “Life is always like this.”;</p>
+</li>
+</ul>
+<p>1.在给定偏移位置（索引值）和指定数目时删除字符。  </p>
+<pre><code>//删除索引在 区间[14,19) 内的字符串
+myStr.erase(14,5);            //Life is always this.
+</code></pre><p>2.删除迭代器iChar指向的字符。</p>
+<pre><code>auto iChar = find(myStr.begin(), myStr.end(), &apos;.&apos;);
+myStr.erase(iChar);            //Life is always like this
+</code></pre><p>3.删除两个迭代器指定范围内的字符串。</p>
+<pre><code>myStr.erase(++myStr.begin(), myStr.end());    //L
+</code></pre><blockquote>
+<p>使用成员方法clear()时，经清楚全部内容并重置string对象。</p>
+</blockquote>
+<ul>
+<li><strong>字符串反转</strong></li>
+</ul>
+<blockquote>
+<p>使用泛型算法std::reverse()对字符串进行反转。(注意不是成员方法)<br>reverse接收两个参数，起始迭代器、终止迭代器，然后将对两个迭代器之间的内容进行反转。</p>
+</blockquote>
+<pre><code>string myStr = &quot;Life is always like this.&quot;;
+reverse(++myStr.begin(), myStr.end());        //L.siht ekil syawla si efi
+</code></pre><ul>
+<li><strong>字符串大小写转换</strong>   </li>
+</ul>
+<blockquote>
+<p>使用算法std::transform()进行大小写转换。(注意不是成员方法)<br>transform(first, last, r_first, trans)接收四个参数：开始迭代器、终止迭代器、开始迭代器、要执行的变换。<br>要执行转大写操作时 trans = toupper, 要执行转小写操作时 trans = tolower。   </p>
+</blockquote>
+<pre><code>string myStr = &quot;life is always like this.&quot;;
+transform(++myStr.begin(), myStr.end(), ++myStr.begin(), toupper);
+//——&gt;lIFE IS ALWAYS LIKE THIS.
+transform(++myStr.begin(), myStr.end(), ++myStr.begin(), tolower);
+//——&gt;life is always like this.
+</code></pre><blockquote>
+<p>如果要编写的应用程序需要更好的支持非拉丁字符，如中文与日文时，应使用std::wstring。   </p>
+</blockquote>
+
           
         
       
