@@ -229,6 +229,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/STL-list和forward-list/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="f_x">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f_x's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/16/STL-list和forward-list/" itemprop="url">STL-list和forward_list</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-16T09:31:38+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/c-动态数组类-vector/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -334,6 +453,40 @@
 </ul>
 <blockquote>
 <p>使用insert插入元素时，效率较低，与其特点有关。   </p>
+</blockquote>
+<ul>
+<li><p><strong>访问vector中的元素</strong></p>
+<blockquote>
+<p>使用下标用算符[]访问元素，超出容器边界时结果不确定。<br>使用成员方法at()访问元素，超出容器边界时将会报错。<br>使用迭代器访问元素。   </p>
+</blockquote>
+<p>  vector<int> intVec;<br>  intVec.push_back(64);<br>  intVec.push_back(65);<br>  intVec.push_back(66);<br>  //使用 [] 访问元素<br>  for (size_t i = 0; i &lt; intVec.size(); ++i) {</int></p>
+<pre><code>cout &lt;&lt; intVec[i] &lt;&lt; endl;
+</code></pre><p>  }<br>  //使用 at() 访问元素<br>  for (size_t i = 0; i &lt; intVec.size(); ++i) {</p>
+<pre><code>cout &lt;&lt; intVec.at(i) &lt;&lt; endl;
+</code></pre><p>  }<br>  //使用迭代器访问元素<br>  for (vector<int>::const_iterator pos = intVec.begin()</int></p>
+<pre><code>; pos != intVec.end()
+; ++pos)
+</code></pre><p>  {</p>
+<pre><code>cout &lt;&lt; *pos &lt;&lt; endl;
+</code></pre><p>  }</p>
+</li>
+<li><p><strong>删除vector中的元素</strong></p>
+<blockquote>
+<p>使用pop_back()从vector中删除元素所需要的时间是固定的。<br>不能使用偏移位置和元素数删除指定个数的元素。   </p>
+</blockquote>
+<p>  vector<int> intVec;<br>  intVec.push_back(64);<br>  intVec.push_back(65);<br>  intVec.push_back(66);</int></p>
+<p>  //删除vector末尾的元素<br>  intVec.pop_back();</p>
+<p>  //删除迭代器指向的元素<br>  intVec.erase(intVec.begin());</p>
+<p>  //删除两个迭代器之间的元素<br>  intVec.erase(intVec.begin(), intVec.begin() + 2);</p>
+</li>
+<li><p><strong>大小和容量的区别</strong></p>
+<blockquote>
+<p>可以通过成员函数size()和capacity()来获取vector的大小和容量。<br><strong>容量</strong>总是大于等于<strong>大小</strong>，当当前容量不足时，重新分配容量时，会分配比当前所需容量更大的容量（比如容量满时再插入数据时，可能会分配两个元素的容量，或者更多）。<br>可使用成员函数reserve(number),设置当前容器的容量（如果传入的number小于size的话，默认使用size的值。）   </p>
+</blockquote>
+</li>
+</ul>
+<h3 id="STL-deque"><a href="#STL-deque" class="headerlink" title="STL deque"></a>STL deque</h3><blockquote>
+<p>发音：/dek/<br>使用时要包含头文件 <deque><br>deque与vector极其相似，只是可以使用成员函数push_front()和pop_frone()在开头插入和删除元素。   </deque></p>
 </blockquote>
 
           
@@ -1474,7 +1627,7 @@ for(i = 0 ; i &lt; n ; i++){                /*执行次数为n(n+1)/2*/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

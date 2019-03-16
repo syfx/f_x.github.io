@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c++学习,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,14 @@
 
 
 
-<meta name="description" content="前言     预处理器：在编译之前运行的工具。预处理器编译指令是向预处理器发出的命令，总是以符号#开头。根据程序员的指示，决定编译器实际要编译的文本内容。比如：对于一个宏#define PI 3.1415，在编译之前，预处理器会在代码中找到 PI 并将它替换为 3.1415 。  使用#define定义常量  语法： #define identifer(标识符) value(值)栗子：#defin">
-<meta name="keywords" content="c++学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++宏">
-<meta property="og:url" content="http://yoursite.com/2019/03/13/c-宏/index.html">
+<meta property="og:title" content="STL-list和forward_list">
+<meta property="og:url" content="http://yoursite.com/2019/03/16/STL-list和forward-list/index.html">
 <meta property="og:site_name" content="f_x&#39;s blog">
-<meta property="og:description" content="前言     预处理器：在编译之前运行的工具。预处理器编译指令是向预处理器发出的命令，总是以符号#开头。根据程序员的指示，决定编译器实际要编译的文本内容。比如：对于一个宏#define PI 3.1415，在编译之前，预处理器会在代码中找到 PI 并将它替换为 3.1415 。  使用#define定义常量  语法： #define identifer(标识符) value(值)栗子：#defin">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-13T07:05:53.505Z">
+<meta property="og:updated_time" content="2019-03-16T01:31:38.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c++宏">
-<meta name="twitter:description" content="前言     预处理器：在编译之前运行的工具。预处理器编译指令是向预处理器发出的命令，总是以符号#开头。根据程序员的指示，决定编译器实际要编译的文本内容。比如：对于一个宏#define PI 3.1415，在编译之前，预处理器会在代码中找到 PI 并将它替换为 3.1415 。  使用#define定义常量  语法： #define identifer(标识符) value(值)栗子：#defin">
+<meta name="twitter:title" content="STL-list和forward_list">
 
 
 
@@ -120,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/13/c-宏/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/16/STL-list和forward-list/">
 
 
 
 
 
-  <title>c++宏 | f_x's blog</title>
+  <title>STL-list和forward_list | f_x's blog</title>
   
 
 
@@ -233,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/c-宏/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/STL-list和forward-list/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="f_x">
@@ -250,7 +246,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">c++宏</h1>
+          <h1 class="post-title" itemprop="name headline">STL-list和forward_list</h1>
         
 
         <div class="post-meta">
@@ -262,8 +258,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-13T14:50:12+08:00">
-                2019-03-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-16T09:31:38+08:00">
+                2019-03-16
               </time>
             
 
@@ -300,54 +296,7 @@
       
 
       
-        <p><strong>前言</strong>   </p>
-<blockquote>
-<p>预处理器：在编译之前运行的工具。<br><strong>预处理器编译指令</strong>是向预处理器发出的命令，总是以符号<strong>#</strong>开头。根据程序员的指示，决定编译器实际要编译的文本内容。<br>比如：对于一个宏<code>#define PI 3.1415</code>，在编译之前，预处理器会在代码中找到 PI 并将它替换为 3.1415 。</p>
-</blockquote>
-<p><strong>使用#define定义常量</strong></p>
-<ul>
-<li>语法： #define identifer(标识符) value(值)<br>栗子：<br><code>#define PI 3.1415</code><br><code>#define NICKNAME &quot;f_x&quot;</code><br><code>#define THIS_IS_DOUBLE double</code><br><code>#define THIS_IS_FOR for</code>   </li>
-<li><p>预处理器对宏指定的文本进行简单的替换，因此可以用宏来编写简单的函数<br>栗子：   </p>
-<pre><code>#define PI 3.1415
-   #define AREA_CIRCLE(r) ( PI * (r) * (r))
-</code></pre></li>
-</ul>
-<p><strong>为什么要使用这么多括号？</strong>   </p>
-<blockquote>
-<p>对于上面的宏AREA_CIRCLE,若在代码中这样使用<br><code>cout &lt;&lt; AREA_CIRCLE(4+6);</code><br>使用括号时，经预处理器处理后：<br><code>cout &lt;&lt; (3.1415 * (4 + 6) * (4 + 6))</code><br>不使用括号时：<br><code>cout &lt;&lt; 3.1415 * 4 + 6 * 4 + 6</code><br>你懂得。。。   </p>
-</blockquote>
-<p><strong>宏的其他作用</strong></p>
-<ul>
-<li><p>避免头文件的多次包含   </p>
-<blockquote>
-<p>假设有两个头文件class1.h,class2.h,当我们不得不让两个类相互包含时，对预处理器来说，这样会造成递归问题；<br>为了避免这种问题，可以使用宏和预处理器编译指令#ifndef（if-not-define）和endif。   </p>
-</blockquote>
-<pre><code>#ifndef HEADER2_H_H            //如果宏HEADER2_H_H未定义
-#define HEADER2_H_H            //定义宏HEADER2_H_H
-#include &lt;class2.h&gt;
-
-class class1
-{
-    ......
-};
-
-#endif
-</code></pre></li>
-</ul>
-<pre><code>#ifndef HEADER1_H_H            //如果宏HEADER1_H_H未定义
-#define HEADER1_H_H            //定义宏HEADER1_H_H
-#include &lt;class1.h&gt;
-
-class class2
-{
-    ......
-};
-
-#endif   
-</code></pre><blockquote>
-<p>预处理器进行死板的文本替换，这可以减轻程序员的负担，当并不是能减轻编译器的负担。<br>其次，对于宏PI，我们没有太大的控制权，其类型是double还是float？答案是都不是。在预处理器看来，PI就是3.1415，根本不知道其数据类型。<br>所以定义常量时 const 是更好的选择<br><code>const double PI = 3.14215;</code><br><strong>define与const的区别</strong><br>1.起作用的阶段不同：#define在预处理阶段起作用； const在编译或者运行阶段起作用；<br>2.起作用的方式不同：#define进行简单的文本替换，不能进行类型检查；const定义的常量有对应的数据类型；<br>3.储存方式不同：#define定义的宏常量在内存中有多个备份，而const定义的常量在内存中只有一个备份；<br>4.const常量可用于调试，而#define定义的常量不能用于调试（预处理阶段被替换掉了）；</p>
-</blockquote>
-
+        
       
     </div>
     
@@ -362,12 +311,6 @@ class class2
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/c-学习/" rel="tag"># c++学习</a>
-          
-        </div>
-      
 
       
       
@@ -377,8 +320,8 @@ class class2
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/27/算法时间复杂的的计算/" rel="next" title="算法时间复杂的的计算">
-                <i class="fa fa-chevron-left"></i> 算法时间复杂的的计算
+              <a href="/2019/03/15/c-动态数组类-vector/" rel="next" title="c++动态数组类-vector">
+                <i class="fa fa-chevron-left"></i> c++动态数组类-vector
               </a>
             
           </div>
@@ -386,10 +329,6 @@ class class2
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/13/c-模板/" rel="prev" title="c++模板">
-                c++模板 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
