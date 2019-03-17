@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="f_x">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="c++宏">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="f_x&#39;s blog">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="f_x&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>f_x's blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/mypicture1.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">c++宏</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/syfx">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:782933913@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By f_x</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-03-13</span>
+            <span class="time">15:56:39</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/c-学习/">#c++学习</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p><strong>前言</strong>   </p>
+<blockquote>
+<p>预处理器：在编译之前运行的工具。<br><strong>预处理器编译指令</strong>是向预处理器发出的命令，总是以符号<strong>#</strong>开头。根据程序员的指示，决定编译器实际要编译的文本内容。<br>比如：对于一个宏<code>#define PI 3.1415</code>，在编译之前，预处理器会在代码中找到 PI 并将它替换为 3.1415 。</p>
+</blockquote>
+<p><strong>使用#define定义常量</strong></p>
+<ul>
+<li>语法： #define identifer(标识符) value(值)<br>栗子：<br><code>#define PI 3.1415</code><br><code>#define NICKNAME &quot;f_x&quot;</code><br><code>#define THIS_IS_DOUBLE double</code><br><code>#define THIS_IS_FOR for</code>   </li>
+<li><p>预处理器对宏指定的文本进行简单的替换，因此可以用宏来编写简单的函数<br>栗子：   </p>
+<pre><code>#define PI 3.1415
+   #define AREA_CIRCLE(r) ( PI * (r) * (r))
+</code></pre></li>
+</ul>
+<p><strong>为什么要使用这么多括号？</strong>   </p>
+<blockquote>
+<p>对于上面的宏AREA_CIRCLE,若在代码中这样使用<br><code>cout &lt;&lt; AREA_CIRCLE(4+6);</code><br>使用括号时，经预处理器处理后：<br><code>cout &lt;&lt; (3.1415 * (4 + 6) * (4 + 6))</code><br>不使用括号时：<br><code>cout &lt;&lt; 3.1415 * 4 + 6 * 4 + 6</code><br>你懂得。。。   </p>
+</blockquote>
+<p><strong>宏的其他作用</strong></p>
+<ul>
+<li><p>避免头文件的多次包含   </p>
+<blockquote>
+<p>假设有两个头文件class1.h,class2.h,当我们不得不让两个类相互包含时，对预处理器来说，这样会造成递归问题；<br>为了避免这种问题，可以使用宏和预处理器编译指令#ifndef（if-not-define）和endif。   </p>
+</blockquote>
+<pre><code>#ifndef HEADER2_H_H            //如果宏HEADER2_H_H未定义
+#define HEADER2_H_H            //定义宏HEADER2_H_H
+#include &lt;class2.h&gt;
+
+class class1
+{
+    ......
+};
+
+#endif
+</code></pre></li>
+</ul>
+<pre><code>#ifndef HEADER1_H_H            //如果宏HEADER1_H_H未定义
+#define HEADER1_H_H            //定义宏HEADER1_H_H
+#include &lt;class1.h&gt;
+
+class class2
+{
+    ......
+};
+
+#endif   
+</code></pre><blockquote>
+<p>预处理器进行死板的文本替换，这可以减轻程序员的负担，当并不是能减轻编译器的负担。<br>其次，对于宏PI，我们没有太大的控制权，其类型是double还是float？答案是都不是。在预处理器看来，PI就是3.1415，根本不知道其数据类型。<br>所以定义常量时 const 是更好的选择<br><code>const double PI = 3.14215;</code><br><strong>define与const的区别</strong><br>1.起作用的阶段不同：#define在预处理阶段起作用； const在编译或者运行阶段起作用；<br>2.起作用的方式不同：#define进行简单的文本替换，不能进行类型检查；const定义的常量有对应的数据类型；<br>3.储存方式不同：#define定义的宏常量在内存中有多个备份，而const定义的常量在内存中只有一个备份；<br>4.const常量可用于调试，而#define定义的常量不能用于调试（预处理阶段被替换掉了）；</p>
+</blockquote>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

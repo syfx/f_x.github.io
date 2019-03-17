@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="f_x">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="c++动态数组类-vector">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="f_x&#39;s blog">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="f_x&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>f_x's blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/mypicture1.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">c++动态数组类-vector</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/syfx">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:782933913@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By f_x</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-03-15</span>
+            <span class="time">15:56:39</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/c-模板/">#c++模板</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h2 id="STL-vector"><a href="#STL-vector" class="headerlink" title="STL vector"></a>STL vector</h2><blockquote>
+<p>使用vector时需要包含头文件<strong>&lt;vector></strong> </p>
+</blockquote>
+<ul>
+<li><p><strong>vector的特点</strong><br>vector动态数组类：<br>1、无论数组中存在多少元素，在数组末尾添加新元素时所需时间都是固定的。<br>2、在数组中间添加或者删除元素时，与<strong>该元素后面的元素个数</strong>成正比。<br>3、储存的元素是动态的，vector类负责管理内存。   </p>
+</li>
+<li><p><strong>vector的初始化</strong>   </p>
+<blockquote>
+<p>下面的代码介绍了vector的几种初始化方法。   </p>
+</blockquote>
+<pre><code>//默认初始化
+vector&lt;int&gt; intVec;
+
+//初始化时设置至少包含的元素数（并没有限制大小），每个元素初始值默认为0
+vector&lt;int&gt; intVec1(10);
+
+//同上，并设置每个元素的初始化值
+vector&lt;int&gt; intVec2(10, 66);
+
+//使用另外一个vector来初始化
+vector&lt;int&gt; intVec3(intVec2);
+
+//使用另一个vector的两个迭代器来初始化
+vector&lt;int&gt; intVec4(intVec2.cbegin(), intVec2.cbegin() + 5);
+</code></pre></li>
+</ul>
+<blockquote>
+<p>cbegin()和cend()是C++11新增的，它们返回一个const的迭代器，不能用于修改元素。</p>
+</blockquote>
+<ul>
+<li><p><strong>vector插入元素</strong></p>
+<blockquote>
+<p>使用成员函数push_back()在容器末尾插入元素；使用insert()在指定位置插入元素。   </p>
+</blockquote>
+<pre><code>vector&lt;int&gt; intVec(5);
+intVec.push_back(66);
+cout &lt;&lt; intVec.size() &lt;&lt; endl;        //6
+
+//在指定位置插入元素
+intVec.insert(intVec.begin(), 67);
+
+//在指定位置插入指定个数的某个元素
+intVec.insert(intVec.begin(), 2, 66);
+
+//在指定位置插入另一个vector的内容(使用迭代器指定范围)
+vector&lt;int&gt; anoVec(3, 65);
+intVec.insert(intVec.begin(), 
+                    anoVec.begin(), anoVec.end());
+</code></pre></li>
+</ul>
+<blockquote>
+<p>使用insert插入元素时，效率较低，与其特点有关。   </p>
+</blockquote>
+<ul>
+<li><p><strong>访问vector中的元素</strong></p>
+<blockquote>
+<p>使用下标用算符[]访问元素，超出容器边界时结果不确定。<br>使用成员方法at()访问元素，超出容器边界时将会报错。<br>使用迭代器访问元素。   </p>
+</blockquote>
+<pre><code>vector&lt;int&gt; intVec;
+intVec.push_back(64);
+intVec.push_back(65);
+intVec.push_back(66);
+//使用 [] 访问元素
+for (size_t i = 0; i &lt; intVec.size(); ++i) {
+    cout &lt;&lt; intVec[i] &lt;&lt; endl;
+}
+//使用 at() 访问元素
+for (size_t i = 0; i &lt; intVec.size(); ++i) {
+    cout &lt;&lt; intVec.at(i) &lt;&lt; endl;
+}
+//使用迭代器访问元素
+for (vector&lt;int&gt;::const_iterator pos = intVec.begin()
+    ; pos != intVec.end()
+    ; ++pos)
+{
+    cout &lt;&lt; *pos &lt;&lt; endl;
+}
+</code></pre></li>
+<li><p><strong>删除vector中的元素</strong></p>
+<blockquote>
+<p>使用pop_back()从vector中删除元素所需要的时间是固定的。<br>不能使用偏移位置和元素数删除指定个数的元素。   </p>
+</blockquote>
+<pre><code>vector&lt;int&gt; intVec;
+intVec.push_back(64);
+intVec.push_back(65);
+intVec.push_back(66);
+
+//删除vector末尾的元素
+intVec.pop_back();
+
+//删除迭代器指向的元素
+intVec.erase(intVec.begin());
+
+//删除两个迭代器之间的元素
+intVec.erase(intVec.begin(), intVec.begin() + 2);
+</code></pre></li>
+<li><p><strong>大小和容量的区别</strong></p>
+<blockquote>
+<p>可以通过成员函数size()和capacity()来获取vector的大小和容量。<br><strong>容量</strong>总是大于等于<strong>大小</strong>，当当前容量不足时，重新分配容量时，会分配比当前所需容量更大的容量（比如容量满时再插入数据时，可能会分配两个元素的容量，或者更多）。<br>可使用成员函数reserve(number),设置当前容器的容量（如果传入的number小于size的话，默认使用size的值。）   </p>
+</blockquote>
+</li>
+</ul>
+<h3 id="STL-deque"><a href="#STL-deque" class="headerlink" title="STL deque"></a>STL deque</h3><blockquote>
+<p>发音：/dek/<br>使用时要包含头文件 <deque><br>deque与vector极其相似，只是可以使用成员函数push_front()和pop_frone()在开头插入和删除元素。      </deque></p>
+</blockquote>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
