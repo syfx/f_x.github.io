@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html>
-
-	<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-	
   <!-- Html Head Tag-->
   <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
@@ -69,7 +66,7 @@
               </li>
             
               <li>
-                <a href="https://syfx.github.io/">
+                <a href="https://github.com/syfx">
                   
                   Github
                   
@@ -395,24 +392,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-    
-    window.onload = function(){
-        var path = 'https://syfx.github.io/';
-        var localhostItem = String(window.location).split(path)[1];
-        var LiNode = document.querySelectorAll('#menu > li > a')
-        
-        for(var i = 0; i< LiNode.length;i++){
-            var item = String(LiNode[i].href).split(path)[1];
-            if(item == localhostItem && item != undefined){
-                LiNode[i].setAttribute('style','border-bottom:1px solid black');
-            }
-        }
-    };
-
-</script>
-
 
 
     <!-- After Footer Scripts -->
