@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="c++模板,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="f_x&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta name="description" content="简介  使用set与multiset时需要包含头文件set与multiset让使用者能够在容器中快速查找键（键是储存在一维容器中的值），set和multiset的区别在于set中键值要求唯一，后者可以重复。set与multiset的内部结构像是二叉树，插入与素时要对元素进行排序，因此，相对于vector，list那些容器，set与multiset在添加新元素时效率较低，在元素查找方面效率较高。">
+<meta name="keywords" content="c++模板">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL-set和multiset">
+<meta property="og:url" content="http://yoursite.com/2019/03/16/STL-set和multiset/index.html">
 <meta property="og:site_name" content="f_x&#39;s blog">
+<meta property="og:description" content="简介  使用set与multiset时需要包含头文件set与multiset让使用者能够在容器中快速查找键（键是储存在一维容器中的值），set和multiset的区别在于set中键值要求唯一，后者可以重复。set与multiset的内部结构像是二叉树，插入与素时要对元素进行排序，因此，相对于vector，list那些容器，set与multiset在添加新元素时效率较低，在元素查找方面效率较高。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-16T03:52:10.577Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="f_x&#39;s blog">
+<meta name="twitter:title" content="STL-set和multiset">
+<meta name="twitter:description" content="简介  使用set与multiset时需要包含头文件set与multiset让使用者能够在容器中快速查找键（键是储存在一维容器中的值），set和multiset的区别在于set中键值要求唯一，后者可以重复。set与multiset的内部结构像是二叉树，插入与素时要对元素进行排序，因此，相对于vector，list那些容器，set与multiset在添加新元素时效率较低，在元素查找方面效率较高。">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/16/STL-set和multiset/">
 
 
 
 
 
-  <title>Archive | f_x's blog</title>
+  <title>STL-set和multiset | f_x's blog</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -214,247 +219,181 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/STL-set和multiset/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="f_x">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f_x's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">STL-set和multiset</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-16T11:14:26+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 8 posts in total. Keep on posting.
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/16/STL-set和multiset/" itemprop="url">
-              
-                <span itemprop="name">STL-set和multiset</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-16T11:14:26+08:00" content="2019-03-16">
-          03-16
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/16/STL-list和forward-list/" itemprop="url">
-              
-                <span itemprop="name">STL-list和forward_list</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-16T09:31:38+08:00" content="2019-03-16">
-          03-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <ul>
+<li><p><strong>简介</strong></p>
+<blockquote>
+<p>使用set与multiset时需要包含头文件<set><br>set与multiset让使用者能够在容器中快速查找键（键是储存在一维容器中的值），set和multiset的区别在于set中键值要求唯一，后者可以重复。<br>set与multiset的内部结构像是二叉树，插入与素时要对元素进行排序，因此，相对于vector，list那些容器，set与multiset在添加新元素时效率较低，在元素查找方面效率较高。   </set></p>
+<blockquote>
+<p>set与multiset操作相似，下面的介绍以set为例。   </p>
+</blockquote>
+</blockquote>
+</li>
+<li><p><strong>实例化set</strong></p>
+<blockquote>
+<p>实例化一个特定类型的set,以int类型为例：</p>
+</blockquote>
+<pre><code>set&lt;int&gt; intSet;
+</code></pre><blockquote>
+<p>set与multiset在元素插入时对其进行排序，默认使用std::less对插入数据进行排序。<br>要创建二元谓词，可在类中定义一个operator()：   </p>
+</blockquote>
+<pre><code>emplate&lt;typename T&gt;
+struct SortStandard
+{
+    //从大到小排序
+    bool operator()(const T&amp; lhs, const T&amp; rhs)
+    {
+        return (lhs &gt; rhs);
+    }
+};
 
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/15/c-动态数组类-vector/" itemprop="url">
-              
-                <span itemprop="name">c++动态数组类-vector</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-15T09:47:32+08:00" content="2019-03-15">
-          03-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+int main()
+{
+    //指定排序规则的初始化操作
+    set&lt;int, SortStandard&lt;int&gt;&gt; intSet;
+    return 0;
+}
+</code></pre></li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/13/STL-string/" itemprop="url">
-              
-                <span itemprop="name">STL-string</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T15:09:44+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/13/c-模板/" itemprop="url">
-              
-                <span itemprop="name">c++模板</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T14:50:32+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/13/c-宏/" itemprop="url">
-              
-                <span itemprop="name">c++宏</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-13T14:50:12+08:00" content="2019-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c-模板/" rel="tag"># c++模板</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/16/STL-list和forward-list/" rel="next" title="STL-list和forward_list">
+                <i class="fa fa-chevron-left"></i> STL-list和forward_list
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -462,6 +401,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -667,6 +610,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

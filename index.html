@@ -229,6 +229,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/STL-set和multiset/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="f_x">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="f_x's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/16/STL-set和multiset/" itemprop="url">STL-set和multiset</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-16T11:14:26+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p><strong>简介</strong></p>
+<blockquote>
+<p>使用set与multiset时需要包含头文件<set><br>set与multiset让使用者能够在容器中快速查找键（键是储存在一维容器中的值），set和multiset的区别在于set中键值要求唯一，后者可以重复。<br>set与multiset的内部结构像是二叉树，插入与素时要对元素进行排序，因此，相对于vector，list那些容器，set与multiset在添加新元素时效率较低，在元素查找方面效率较高。   </set></p>
+<blockquote>
+<p>set与multiset操作相似，下面的介绍以set为例。   </p>
+</blockquote>
+</blockquote>
+</li>
+<li><p><strong>实例化set</strong></p>
+<blockquote>
+<p>实例化一个特定类型的set,以int类型为例：</p>
+</blockquote>
+<pre><code>set&lt;int&gt; intSet;
+</code></pre><blockquote>
+<p>set与multiset在元素插入时对其进行排序，默认使用std::less对插入数据进行排序。<br>要创建二元谓词，可在类中定义一个operator()：   </p>
+</blockquote>
+<pre><code>emplate&lt;typename T&gt;
+struct SortStandard
+{
+    //从大到小排序
+    bool operator()(const T&amp; lhs, const T&amp; rhs)
+    {
+        return (lhs &gt; rhs);
+    }
+};
+
+int main()
+{
+    //指定排序规则的初始化操作
+    set&lt;int, SortStandard&lt;int&gt;&gt; intSet;
+    return 0;
+}
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/STL-list和forward-list/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -301,11 +455,71 @@
         
           
             <ul>
-<li><strong>list的特点</strong>   <blockquote>
+<li><p><strong>list的特点</strong>   </p>
+<blockquote>
 <p>在list开头、中间、末尾插入数据，所需时间都是固定的，将元素从list中产出所需的时间是固定的。插入或者删除元素后，指向list中其他元素的迭代器仍然有效。<br>不过搜索速度比vector慢，因为元素没有储存在连续的内存单元中。   </p>
 </blockquote>
 </li>
+<li><p><strong>插入元素</strong>   </p>
+<blockquote>
+<p>使用成员函数push_back()和push_front在list末尾和开头插入元素，使用成员函数list在list中插入元素。  </p>
+</blockquote>
+<pre><code>list&lt;int&gt; intList(3, 6);
+intList.push_front(5);
+intList.push_back(7);
+
+//在迭代器指向的位置添加一个元素
+intList.insert(intList.begin(), 4);
+
+//在迭代器指向的位置添加指定数量的某个元素
+intList.insert(intList.end(), 2, 8);
+
+//在迭代器指向的位置插入某个容器两个迭代器之间的元素
+list&lt;int&gt; anoList(2, 9);
+intList.insert(intList.end(), anoList.begin(), anoList.end());
+</code></pre></li>
+<li><p><strong>删除元素</strong></p>
+<blockquote>
+<p>使用list::erase()来删除list中的元素，他有两个重载版本，一个版本接受一个迭代器并删除迭代器指向的元素，另一个接受两个迭代器参数并删除指定范围内的所有元素。</p>
+</blockquote>
+</li>
+<li><p><strong>元素反转和排序</strong></p>
+<blockquote>
+<p>使用list的成员方法reverse()和sort()对list进行反转和排序，执行者两个操作后之前指向元素的迭代器仍然有效。   </p>
+</blockquote>
+<pre><code>list&lt;int&gt; intList;
+intList.push_back(7);
+intList.push_front(5);
+intList.push_back(6);
+
+auto int6 = --intList.end();                                            //6
+list&lt;int&gt;::const_iterator int7 = ++intList.begin();        //7
+//反转
+intList.reverse();
+//排序
+intList.sort();
+cout &lt;&lt; *int6 &lt;&lt; endl;                //6
+cout &lt;&lt; *int7 &lt;&lt; endl;                //7   
+</code></pre></li>
 </ul>
+<blockquote>
+<p>其中排序方法sort()还有一个重载版本，接受一个二元谓词作为参数：</p>
+</blockquote>
+<pre><code>//从大到小排序
+bool MySortStandard(const int&amp; lsh, const int&amp; rsh) {
+    return (lsh &gt; rsh);
+}
+int main()
+{
+    ......
+        //排序
+        intList.sort(MySortStandard);
+    ......
+}
+</code></pre><p><strong>STL forward_list</strong></p>
+<blockquote>
+<p>从c++11起，可以使用单向链表forward_list;<br>使用时需要包含头文件 &lt;forward_list&gt;<br>使用forward时，只能使用push_front()函数在开头插入元素，其他操作与list很像。   </p>
+</blockquote>
 
           
         
@@ -528,7 +742,7 @@ intVec.erase(intVec.begin(), intVec.begin() + 2);
 </li>
 </ul>
 <h3 id="STL-deque"><a href="#STL-deque" class="headerlink" title="STL deque"></a>STL deque</h3><blockquote>
-<p>发音：/dek/<br>使用时要包含头文件 <deque><br>deque与vector极其相似，只是可以使用成员函数push_front()和pop_frone()在开头插入和删除元素。   </deque></p>
+<p>发音：/dek/<br>使用时要包含头文件 <deque><br>deque与vector极其相似，只是可以使用成员函数push_front()和pop_frone()在开头插入和删除元素。      </deque></p>
 </blockquote>
 
           
@@ -1669,7 +1883,7 @@ for(i = 0 ; i &lt; n ; i++){                /*执行次数为n(n+1)/2*/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
