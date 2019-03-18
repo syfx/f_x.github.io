@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="f_x">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="STL-list和forward_list">
+  <meta property="og:title" content="STL-set和multiset">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="f_x&#39;s blog">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">STL-list和forward_list</p>
+          <p class="title">STL-set和multiset</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -109,7 +109,7 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/c-模板/">#c++模板</a>
+<a class="tag" href="/tags/c-STL/">#c++ STL</a>
 
 
           </div>
@@ -117,71 +117,100 @@
         <!-- Post Main Content -->
         <div class="post-content">
           <ul>
-<li><p><strong>list的特点</strong>   </p>
+<li><p><strong>简介</strong></p>
 <blockquote>
-<p>在list开头、中间、末尾插入数据，所需时间都是固定的，将元素从list中产出所需的时间是固定的。插入或者删除元素后，指向list中其他元素的迭代器仍然有效。<br>不过搜索速度比vector慢，因为元素没有储存在连续的内存单元中。   </p>
+<p>使用set与multiset时需要包含头文件 &lt;set><br>set与multiset让使用者能够在容器中快速查找键（键是储存在一维容器中的值），set和multiset的区别在于set中键值要求唯一，后者可以重复。<br>set与multiset的内部结构像是二叉树，插入与素时要对元素进行排序，因此，相对于vector，list那些容器，set与multiset在插入新元素时效率较低（有额外排序开销），在元素查找方面效率较高。因此，它们适用于那些需要频繁查找的程序中。      </p>
+<blockquote>
+<p>set与multiset操作相似，下面的介绍以set为例。   </p>
+</blockquote>
+</blockquote>
+</li>
+<li><p><strong>实例化set</strong></p>
+<blockquote>
+<p>实例化一个特定类型的set,以int类型为例：</p>
+</blockquote>
+<pre><code>set&lt;int&gt; intSet;
+</code></pre><blockquote>
+<p>set与multiset在元素插入时对其进行排序，默认使用std::less对插入数据进行排序。<br>要创建二元谓词，可在类中定义一个operator()：   </p>
+</blockquote>
+<pre><code>emplate&lt;typename T&gt;
+struct SortStandard
+{
+    //从大到小排序
+    bool operator()(const T&amp; lhs, const T&amp; rhs)
+    {
+        return (lhs &gt; rhs);
+    }
+};
+
+int main()
+{
+    //指定排序规则的初始化操作
+    set&lt;int, SortStandard&lt;int&gt;&gt; intSet;
+    return 0;
+}
+</code></pre><blockquote>
+<p>也可以使用另外一个set或者两个set迭代器对其进行初始化：</p>
+</blockquote>
+<pre><code>set&lt;int, SortStandard&lt;int&gt;&gt; intSet;
+set&lt;int&gt; intSet1(intSet.cbegin(), intSet.cend());
+//这里不能用intSet初始化intSet，因为他们两个排序方式不一样
+set&lt;int&gt; intSet2(intSet1);
+</code></pre><blockquote>
+<p><strong>注意：</strong> 上面代码中不能用intSet初始化intSet，因为他们的排序方式不同。   </p>
 </blockquote>
 </li>
 <li><p><strong>插入元素</strong>   </p>
 <blockquote>
-<p>使用成员函数push_back()和push_front在list末尾和开头插入元素，使用成员函数insert在list中插入元素。  </p>
+<p>使用成员函数insert()进行元素插入操作。   </p>
 </blockquote>
-<pre><code>list&lt;int&gt; intList(3, 6);
-intList.push_front(5);
-intList.push_back(7);
+<pre><code>set&lt;int&gt; intSet;
 
-//在迭代器指向的位置添加一个元素
-intList.insert(intList.begin(), 4);
+intSet.insert(-1);
+intSet.insert(600);
+intSet.insert(66);
 
-//在迭代器指向的位置添加指定数量的某个元素
-intList.insert(intList.end(), 2, 8);
-
-//在迭代器指向的位置插入某个容器两个迭代器之间的元素
-list&lt;int&gt; anoList(2, 9);
-intList.insert(intList.end(), anoList.begin(), anoList.end());
-</code></pre></li>
-<li><p><strong>删除元素</strong></p>
-<blockquote>
-<p>使用list::erase()来删除list中的元素，他有两个重载版本，一个版本接受一个迭代器并删除迭代器指向的元素，另一个接受两个迭代器参数并删除指定范围内的所有元素。</p>
-</blockquote>
-</li>
-<li><p><strong>元素反转和排序</strong></p>
-<blockquote>
-<p>使用list的成员方法reverse()和sort()对list进行反转和排序，执行者两个操作后之前指向元素的迭代器仍然有效。   </p>
-</blockquote>
-<pre><code>list&lt;int&gt; intList;
-intList.push_back(7);
-intList.push_front(5);
-intList.push_back(6);
-
-auto int6 = --intList.end();                                            //6
-list&lt;int&gt;::const_iterator int7 = ++intList.begin();        //7
-//反转
-intList.reverse();
-//排序
-intList.sort();
-cout &lt;&lt; *int6 &lt;&lt; endl;                //6
-cout &lt;&lt; *int7 &lt;&lt; endl;                //7   
+set&lt;int&gt; intSet1;
+intSet1.insert(intSet.cbegin(), intSet.cend());
+auto pos = ++intSet1.begin();
+//报错
+//*pos = 16;
 </code></pre></li>
 </ul>
 <blockquote>
-<p>其中排序方法sort()还有一个重载版本，接受一个二元谓词作为参数：</p>
+<p>无论使用begin()还是cbegin()获得的迭代器，都不等对*pos进行赋值操作，因为set不允许改变其内元素的值。<br>set也不能使用 [] 操作符获取元素的值；可以使用迭代器来获取元素值。   </p>
 </blockquote>
-<pre><code>//从大到小排序
-bool MySortStandard(const int&amp; lsh, const int&amp; rsh) {
-    return (lsh &gt; rsh);
-}
-int main()
-{
-    ......
-        //排序
-        intList.sort(MySortStandard);
-    ......
-}
-</code></pre><p><strong>STL forward_list</strong></p>
+<ul>
+<li><p><strong>删除元素</strong>   </p>
 <blockquote>
-<p>从c++11起，可以使用单向链表forward_list;<br>使用时需要包含头文件 &lt;forward_list&gt;<br>使用forward时，只能使用push_front()函数在开头插入元素，其他操作与list很像。   </p>
+<p>关联容器都提供了成员函数erase()。<br>1、根据键删除值：<br>setObject.erase(key);<br>2、传入一个迭代器，删除迭代器指向的值：<br>setObject.erase(iElement);<br>3、使用迭代器指定边界，删除边界内的所有元素：<br>setObject.erase(iLowerBound, iUpperBound);   </p>
 </blockquote>
+<pre><code>set&lt;int&gt; intSet;
+intSet.insert(-1);
+intSet.insert(600);
+intSet.insert(66);
+
+intSet.erase(66);
+intSet.erase(++intSet.begin(), intSet.end());
+</code></pre></li>
+</ul>
+<blockquote>
+<p>当multiset存在多个相同的值时，用setObject.erase(key)删除值时，会将他们全部删除。   </p>
+</blockquote>
+<pre><code>multiset&lt;int&gt; intSet;
+intSet.insert(66);
+intSet.insert(600);
+intSet.insert(66);
+
+intSet.erase(66);
+</code></pre><p><strong>C++11</strong></p>
+<blockquote>
+<p>在C++11中，新增加了散列集合unordered_set和unordered_multiset；它们相对于set和multiset进一步的改善了性能。他们使用散列函数来计算排序索引。   </p>
+<blockquote>
+<p>使用时添加头文件&lt;unordered_set></p>
+</blockquote>
+</blockquote>
+<p><strong>注意</strong>，将对象储存到set或multiset中时，别忘了在类中实现运算符&lt;和==，前者将成为排序谓词，后者用于find()函数。   </p>
 
         </div>
       </div>
