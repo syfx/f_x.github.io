@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="f_x">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="设计模式之工厂模式">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="f_x&#39;s blog">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="f_x&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>f_x's blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/mypicture1.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">设计模式之工厂模式</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/syfx">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:782933913@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By f_x</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-03-18</span>
+            <span class="time">19:01:29</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/设计模式/">#设计模式</a> <a class="tag" href="/tags/C/">#C#</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h2 id="设计模式之工厂模式-Factory-Pattern"><a href="#设计模式之工厂模式-Factory-Pattern" class="headerlink" title="设计模式之工厂模式(Factory Pattern)"></a>设计模式之工厂模式(Factory Pattern)</h2><blockquote>
+<p>工厂模式是最常用的设计模式之一，它属于创建型设计模式；工厂模式 <strong>提供了一种创建对象的最好方式</strong> （如果你有更好的方式就当我没说）；它的主要作用是让对象的创建与对象的使用分离开来，即使用单独的类来<strong> 封装创建实例的逻辑。</strong><br>工厂模式又可以细分为：   </p>
+<ul>
+<li>简单工厂模式   </li>
+<li>工厂模式   </li>
+<li>抽象工厂模式   </li>
+</ul>
+</blockquote>
+<h3 id="1、简单工厂模式-Simple-Factory-Pattern"><a href="#1、简单工厂模式-Simple-Factory-Pattern" class="headerlink" title="1、简单工厂模式(Simple Factory Pattern)"></a>1、简单工厂模式(Simple Factory Pattern)</h3><blockquote>
+<p>又称为静态工厂方法(Static Factory Method)模式；在简单工厂模式中，通常包含一个静态方法，可以根据参数的不同返回不同类的实例。<br>简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。   </p>
+</blockquote>
+<ul>
+<li>简单工厂模式包含以下几种角色：   <ul>
+<li>工厂：负责创建所有具体产品类的实例，工厂类中的静态方法要能够被其它类直接在外界调用，以获得产品对象。   </li>
+<li>抽象产品类：是所有具体产品的父类，负责定义其它具体产品的所共有的公共接口（子类共有的行为）   </li>
+<li>具体产品类：继承自抽象产品类，是工厂角色的创建目标。   </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>如果上面说的不好理解的话，那就来个栗子消化一下吧。   </p>
+</blockquote>
+<p>在一个游戏中，有三种小怪： <strong>MobA</strong> 、<strong>MobB</strong> 、<strong>Mobc</strong> ;<br>在游戏中，他们都可以攻击主角。这时候，我们就可以使用简单工厂模式来控制它们的 出场（实例生成）。   </p>
+</blockquote>
+<hr>
+<blockquote>
+<p>首先，我们应该创建一个抽象怪物类 <strong>Mob</strong> ，让上面那三个小怪类继承自Mob。然后用Mob当做工厂中静态方法的返回对象。<br>不太懂得话，就看看代码吧（c#）：</p>
+</blockquote>
+<pre><code>此处是代码
+</code></pre><p><strong>简单工厂模式的优点与缺点：</strong>   </p>
+<ul>
+<li>优点</li>
+</ul>
+<p>模式分析<br>将对象的创建和对象本身业务处理分离可以降低系统的耦合度，使得两者修改起来都相对容易。<br>在调用工厂类的工厂方法时，由于工厂方法是静态方法，使用起来很方便，可通过类名直接调用，而且只需要传入一个简单的参数即可，在实际开发中，还可以在调用时将所传入的参数保存在XML等格式的配置文件中，修改参数时无须修改任何源代码。<br>简单工厂模式最大的问题在于工厂类的职责相对过重，增加新的产品需要修改工厂类的判断逻辑，这一点与开闭原则是相违背的。<br>简单工厂模式的要点在于：当你需要什么，只需要传入一个正确的参数，就可以获取你所需要的对象，而无须知道其创建细节。</p>
+<p>模式优缺点</p>
+<p>简单工厂模式的优点<br>工厂类含有必要的判断逻辑，可以决定在什么时候创建哪一个产品类的实例，客户端可以免除直接创建产品对象的责任，而仅仅“消费”产品；简单工厂模式通过这种做法实现了对责任的分割，它提供了专门的工厂类用于创建对象。<br>客户端无须知道所创建的具体产品类的类名，只需要知道具体产品类所对应的参数即可，对于一些复杂的类名，通过简单工厂模式可以减少使用者的记忆量。<br>通过引入配置文件，可以在不修改任何客户端代码的情况下更换和增加新的具体产品类，在一定程度上提高了系统的灵活性。</p>
+<p>简单工厂模式的缺点<br>由于工厂类集中了所有产品创建逻辑，一旦不能正常工作，整个系统都要受到影响。<br>使用简单工厂模式将会增加系统中类的个数，在一定程序上增加了系统的复杂度和理解难度。<br>系统扩展困难，一旦添加新产品就不得不修改工厂逻辑，在产品类型较多时，有可能造成工厂逻辑过于复杂，不利于系统的扩展和维护。<br>简单工厂模式由于使用了静态工厂方法，造成工厂角色无法形成基于继承的等级结构。</p>
+<p>模式适用环境<br>在以下情况下可以使用简单工厂模式：<br>工厂类负责创建的对象比较少：由于创建的对象较少，不会造成工厂方法中的业务逻辑太过复杂。<br>客户端只知道传入工厂类的参数，对于如何创建对象不关心：客户端既不需要关心创建细节，甚至连类名都不需要记住，只需要知道类型所对应的参数。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
