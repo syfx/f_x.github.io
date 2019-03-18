@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-03-18</span>
-            <span class="time">19:11:32</span>
+            <span class="time">19:27:43</span>
           </span>
           
         </div>
@@ -145,7 +145,77 @@
 <blockquote>
 <p>首先，我们应该创建一个抽象怪物类 <strong>Mob</strong> ，让上面那三个小怪类继承自Mob。然后用Mob当做工厂中静态方法的返回对象。<br>不太懂得话，就看看代码吧（c#）：</p>
 </blockquote>
-<pre><code>此处是代码
+<pre><code>namespace FactoryPattern
+{
+    //怪物工厂
+    class MobFactory
+    {
+        //获取对象实例的静态方法
+        public static Mob GetMob(string mobName)
+        {
+            switch (mobName) {
+                case &quot;MobA&quot;: return new MobA();
+                case &quot;MobB&quot;: return new MobB();
+                case &quot;MobC&quot;: return new MobC();
+                default: return null;
+            }
+        }
+    }
+
+    ////使用接口实现抽象类会更好
+    //interface I_Mob
+    //{
+    //    //定义攻击接口（规定每个继承自此抽象类的怪物都能进行攻击）
+    //    void Attack();
+    //}
+
+    //抽象怪物类
+    abstract class Mob
+    {
+        //定义攻击接口（规定每个继承自此抽象类的怪物都能进行攻击）
+        public abstract void Attack(); 
+    }
+    //小怪A
+    class MobA : Mob
+    {
+        //重写Acctak方法
+        public override void Attack()
+        {
+            Console.WriteLine(&quot;MobA 进行攻击&quot;);
+        }
+    }
+    //小怪B
+    class MobB : Mob
+    {
+        //重写Acctak方法
+        public override void Attack()
+        {
+            Console.WriteLine(&quot;MobB 进行攻击&quot;);
+        }
+    }
+    //小怪C
+    class MobC : Mob
+    {
+        //重写Acctak方法
+        public override void Attack()
+        {
+            Console.WriteLine(&quot;MobC 进行攻击&quot;);
+        }
+    }
+
+    class Test
+    {
+        static void Main(string[] args)
+        {
+            Mob mob = MobFactory.GetMob(&quot;MobA&quot;);
+            mob.Attack();                                           //MobA进行攻击
+            mob = MobFactory.GetMob(&quot;MobB&quot;);
+            mob.Attack();                                           //MobB进行攻击
+
+            Console.ReadKey();
+        }
+    }
+}
 </code></pre><p><strong>简单工厂模式的优点与缺点：</strong>   </p>
 <ul>
 <li>优点</li>
