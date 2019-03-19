@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-03-18</span>
-            <span class="time">20:42:01</span>
+            <span class="time">15:02:26</span>
           </span>
           
         </div>
@@ -120,7 +120,7 @@
 <p>工厂模式是最常用的设计模式之一，它属于创建型设计模式；工厂模式 <strong>提供了一种创建对象的最好方式</strong> （如果你有更好的方式就当我没说）；它的主要作用是让对象的创建与对象的使用分离开来，即使用单独的类来<strong> 封装创建实例的逻辑。</strong><br>工厂模式又可以细分为：   </p>
 <ul>
 <li>简单工厂模式   </li>
-<li>工厂模式   </li>
+<li>工厂方法模式   </li>
 <li>抽象工厂模式   </li>
 </ul>
 </blockquote>
@@ -250,6 +250,147 @@
 </blockquote>
 </li>
 </ul>
+<h3 id="1、工厂方法模式-Factory-Pattern"><a href="#1、工厂方法模式-Factory-Pattern" class="headerlink" title="1、工厂方法模式(Factory Pattern)"></a>1、工厂方法模式(Factory Pattern)</h3><blockquote>
+<p>又被称多态性工厂模式。在这个模式中，不再使用一个类创建所有的产品实例，而是实现一个抽象的工厂父类角色，然后为每个产品都实现一个具体的工厂子类，抽象工厂父类角色，仅负责给出具体工厂子类必须实现的接口，而具体的创建对象的逻辑在子类中实现。   </p>
+</blockquote>
+<ul>
+<li>工厂方法模式包含的角色：   <ul>
+<li>抽象工厂类：所有具体工厂的父类，规定工厂子类应实现哪些接口。   </li>
+<li>具体工厂类：继承自抽象工厂类，用于创建一个特定的产品。   </li>
+<li>抽象产品类：所有具体产品的父类，负责定义其它具体产品的所共有的公共接口    </li>
+<li>具体产品类：继承自抽象产品类，是具体工厂类角色的创建目标。    </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>根据上述例子实现的具体代码为：</p>
+</blockquote>
+<pre><code>namespace FactoryPattern
+{
+    //怪物接口
+    interface Mob
+    {
+        void Attack();
+    }
+    //小怪A
+    class MobA : Mob
+    {
+        //重写Acctak方法
+        public void Attack()
+        {
+            Console.WriteLine(&quot;MobA 进行攻击&quot;);
+        }
+    }
+    //小怪B
+    class MobB : Mob
+    {
+        //重写Acctak方法
+        public void Attack()
+        {
+            Console.WriteLine(&quot;MobB 进行攻击&quot;);
+        }
+    }
+    //小怪C
+    class MobC : Mob
+    {
+        //重写Acctak方法
+        public void Attack()
+        {
+            Console.WriteLine(&quot;MobC 进行攻击&quot;);
+        }
+    }
+
+    //抽象工厂接口
+    interface Factory
+    {
+        Mob GetMob();
+    }
+    //创建怪物A的工厂
+    class MobA_Factory : Factory
+    {
+        public Mob GetMob()
+        {
+            return new MobA();
+        }
+    }
+    //创建怪物B的工厂
+    class MobB_Factory : Factory
+    {
+        public Mob GetMob()
+        {
+            return new MobB();
+        }
+    }
+    //创建怪物C的工厂
+    class MobC_Factory : Factory
+    {
+        public Mob GetMob()
+        {
+            return new MobC();
+        }
+    }
+
+    class Test
+    {
+        static void Main(string[] args)
+        {
+            //获得小怪A
+            Factory factory = new MobA_Factory();
+            Mob mob = factory.GetMob();
+            mob.Attack();
+            //获得小怪B
+            factory = new MobB_Factory();
+            mob = factory.GetMob();
+            mob.Attack();
+            Console.ReadKey();
+        }
+    }
+}
+</code></pre><p><strong>工厂方法模式分析</strong>   </p>
+<blockquote>
+<p>在这个模式中，将每个具体产品的创建细节分配给每个具体的工厂来实现，这样做不仅使工厂方法具有简单工厂方法的优点，还解决了简单工厂模式职责过重的问题。不过由于每个产品类都要对应一个工厂类，因此使用此模式时，会在一定程度上增加系统的复杂性。</p>
+</blockquote>
+<p><strong>优点</strong>     </p>
+<blockquote>
+<p>工厂方法模式除了具有简单工厂模式的优点外，还具有以下优点：   </p>
+</blockquote>
+<ul>
+<li>进一步的细化了工厂类的职责，真正的实现了在创建实例这块的高内聚、低耦合。   </li>
+<li>当一个工厂出现问题时不会影响到其他工厂，提高了程序的健壮性。   </li>
+<li>提高了程序的灵活性，当新添加一个产品时，只需添加一个产品类和相应产品的工厂类即可。   </li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>要为每个产品类创建具体工厂，增加了代码量。（个人感觉有其优点相比，这点缺点可以忽略了）</li>
+</ul>
+<p><strong>应用场景</strong> </p>
+<h4 id="产品等级结构与产品族"><a href="#产品等级结构与产品族" class="headerlink" title="产品等级结构与产品族"></a>产品等级结构与产品族</h4><blockquote>
+<ul>
+<li>产品等级结构：即产品的继承结构，如在上面所用到的例子中，抽象怪物类Mob与小怪MobA、小怪MobB、小怪MobC之间便构成了一个产品等级结构，抽象怪物类是父类，而不同种类的小怪是其子类。   </li>
+<li>产品族：在抽象工厂模式中会提到，产品族是指由同一个工厂生产的，位于不同产品等级结构中的一组产品。</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>标题1</th>
+<th>标题2</th>
+<th>标题3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文本1</td>
+<td>文本2</td>
+<td>文本3</td>
+</tr>
+<tr>
+<td>文本4</td>
+<td>文本5</td>
+<td>文本6</td>
+</tr>
+</tbody>
+</table>
 
         </div>
       </div>
