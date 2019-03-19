@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-03-18</span>
-            <span class="time">15:02:26</span>
+            <span class="time">18:34:24</span>
           </span>
           
         </div>
@@ -250,7 +250,7 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="1、工厂方法模式-Factory-Pattern"><a href="#1、工厂方法模式-Factory-Pattern" class="headerlink" title="1、工厂方法模式(Factory Pattern)"></a>1、工厂方法模式(Factory Pattern)</h3><blockquote>
+<h3 id="2、工厂方法模式-Factory-Pattern"><a href="#2、工厂方法模式-Factory-Pattern" class="headerlink" title="2、工厂方法模式(Factory Pattern)"></a>2、工厂方法模式(Factory Pattern)</h3><blockquote>
 <p>又被称多态性工厂模式。在这个模式中，不再使用一个类创建所有的产品实例，而是实现一个抽象的工厂父类角色，然后为每个产品都实现一个具体的工厂子类，抽象工厂父类角色，仅负责给出具体工厂子类必须实现的接口，而具体的创建对象的逻辑在子类中实现。   </p>
 </blockquote>
 <ul>
@@ -370,27 +370,26 @@
 <li>产品族：在抽象工厂模式中会提到，产品族是指由同一个工厂生产的，位于不同产品等级结构中的一组产品。</li>
 </ul>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>标题1</th>
-<th>标题2</th>
-<th>标题3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>文本1</td>
-<td>文本2</td>
-<td>文本3</td>
-</tr>
-<tr>
-<td>文本4</td>
-<td>文本5</td>
-<td>文本6</td>
-</tr>
-</tbody>
-</table>
+<p><img src="https://img-blog.csdn.net/20130713162941328?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTG92ZUxpb24=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h3 id="3、抽象工厂模式"><a href="#3、抽象工厂模式" class="headerlink" title="3、抽象工厂模式"></a>3、抽象工厂模式</h3><blockquote>
+<p>抽象工厂模式是当有多个抽象产品时所使用的一种工厂模式。它和工厂方法模式很像，可以把工厂方法模式当成是产品族为1时的抽象工厂模式。   </p>
+</blockquote>
+<ul>
+<li>抽象工厂模式包含的角色：   <ul>
+<li>抽象工厂类：所有具体工厂的父类，实现对具体工厂的规范。   </li>
+<li>具体工厂类：继承自抽象工厂类，用于创建某个产品族中的的产具体产品。   </li>
+<li>抽象产品类：所有具体产品的父类，负责定义其它具体产品的所共有的公共接口    </li>
+<li>具体产品类：继承自抽象产品类，是具体工厂类角色的创建目标之一。   </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>修改一下上面那个例子，除了怪物类外，现在还要新添加一个武器类，武器类中包括武器WpA、WpB、WpC；怪物MobA使用WpA，怪物MobB使用WpB，怪物MobC使用WpC；<br>使用抽象工厂模式实现怪物和武器生成的代码如下：   </p>
+</blockquote>
+<p> <strong>抽象工厂模式分析</strong>   </p>
+<blockquote>
+<p>抽象工厂模式符合单一职责原则、开闭原则、里氏替换原则、依赖倒置原则。它为具有多个产品结构的程序提供了一种获得产品实例的方法。</p>
+</blockquote>
 
         </div>
       </div>
