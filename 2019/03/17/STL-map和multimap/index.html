@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-03-17</span>
-            <span class="time">19:34:32</span>
+            <span class="time">20:06:44</span>
           </span>
           
         </div>
@@ -116,7 +116,19 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>### </p>
+          <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><blockquote>
+<p>map与multimap是键值对容器，支持根据建查找值。multimap可以储存重复的键，而前者只能储存唯一的键。使用两者之前要包含时头文件<map><br>为实现快速查找，map与multimap的内部结构看起来像二叉树，这意味着在map或multimap中插入数据时将对其进行排序；因此，位于map中特定位置的元素不能替换为值不同的新元素。   </map></p>
+</blockquote>
+<p><strong>map及multimap的实例化</strong>   </p>
+<ul>
+<li><p>实例化map和multimap的语法如下：   </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+...
+map&lt;keyType, valueType, Predicate = std::less&lt;keyType&gt;&gt; mapObject;
+multimap&lt;keyType, valueType, Predicate = std::less&lt;keyType&gt;&gt; multimapObject;
+</code></pre></li>
+</ul>
 
         </div>
       </div>
