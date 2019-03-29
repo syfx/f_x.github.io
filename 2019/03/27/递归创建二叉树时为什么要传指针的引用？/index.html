@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="f_x">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="c++宏">
+  <meta property="og:title" content="递归创建二叉树时为什么要传指针的引用？">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="f_x&#39;s blog">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">c++宏</p>
+          <p class="title">递归创建二叉树时为什么要传指针的引用？</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,7 +99,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2019-03-13</span>
+            <span class="date">2019-03-27</span>
             <span class="time">09:11:18</span>
           </span>
           
@@ -109,61 +109,65 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/C/">#C++</a>
+<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/二叉树，-指针/">#二叉树， 指针</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p><strong>前言</strong>   </p>
-<blockquote>
-<p>预处理器：在编译之前运行的工具。<br><strong>预处理器编译指令</strong>是向预处理器发出的命令，总是以符号<strong>#</strong>开头。根据程序员的指示，决定编译器实际要编译的文本内容。<br>比如：对于一个宏<code>#define PI 3.1415</code>，在编译之前，预处理器会在代码中找到 PI 并将它替换为 3.1415 。</p>
+          <blockquote>
+<p>复习了一下二叉树的知识，想用C++实现一颗二叉树，没想到竟然在创建二叉树时忽略了点东西。<br>本来的惯性思维是：<strong>用指针做参数传递时，指针指向的值会被同步改变。</strong>。<br>于是调用创建树的方法时，只是传递了空的指针，然后在函数中为指针开辟空间，递归创建二叉树。 然后遍历二叉树时发现二叉树为空。这是为什么呢？<br>上面惯性思维所想的的确没有错，它是对的；那为什么创建的树为空呢？那是因为，我们在创建树时，在创建方法中改变的是<strong>指针本身的值，而不是指针指向的值的值</strong>。<br>错误的创建代码为：</p>
 </blockquote>
-<p><strong>使用#define定义常量</strong></p>
-<ul>
-<li>语法： #define identifer(标识符) value(值)<br>栗子：<br><code>#define PI 3.1415</code><br><code>#define NICKNAME &quot;f_x&quot;</code><br><code>#define THIS_IS_DOUBLE double</code><br><code>#define THIS_IS_FOR for</code>   </li>
-<li><p>预处理器对宏指定的文本进行简单的替换，因此可以用宏来编写简单的函数<br>栗子：   </p>
-<pre><code>#define PI 3.1415
-   #define AREA_CIRCLE(r) ( PI * (r) * (r))
-</code></pre></li>
-</ul>
-<p><strong>为什么要使用这么多括号？</strong>   </p>
-<blockquote>
-<p>对于上面的宏AREA_CIRCLE,若在代码中这样使用<br><code>cout &lt;&lt; AREA_CIRCLE(4+6);</code><br>使用括号时，经预处理器处理后：<br><code>cout &lt;&lt; (3.1415 * (4 + 6) * (4 + 6))</code><br>不使用括号时：<br><code>cout &lt;&lt; 3.1415 * 4 + 6 * 4 + 6</code><br>你懂得。。。   </p>
-</blockquote>
-<p><strong>宏的其他作用</strong></p>
-<ul>
-<li><p>避免头文件的多次包含   </p>
-<blockquote>
-<p>假设有两个头文件class1.h,class2.h,当我们不得不让两个类相互包含时，对预处理器来说，这样会造成递归问题；<br>为了避免这种问题，可以使用宏和预处理器编译指令#ifndef（if-not-define）和endif。   </p>
-</blockquote>
-<pre><code>#ifndef HEADER2_H_H            //如果宏HEADER2_H_H未定义
-#define HEADER2_H_H            //定义宏HEADER2_H_H
-#include &lt;class2.h&gt;
-
-class class1
+<pre><code>void CreatTree(BiTree*p)
 {
-    ......
-};
-
-#endif
-</code></pre></li>
-</ul>
-<pre><code>#ifndef HEADER1_H_H            //如果宏HEADER1_H_H未定义
-#define HEADER1_H_H            //定义宏HEADER1_H_H
-#include &lt;class1.h&gt;
-
-class class2
-{
-    ......
-};
-
-#endif   
+    char ch;
+    cin &gt;&gt; ch;
+    if (ch == &apos;#&apos;)
+        p = NULL;
+    else {
+        p = new BiTree();
+        p-&gt;value = ch;
+        CreatTree(p-&gt;lift);
+        CreatTree(p-&gt;right);
+    }
+}
 </code></pre><blockquote>
-<p>预处理器进行死板的文本替换，这可以减轻程序员的负担，当并不是能减轻编译器的负担。<br>其次，对于宏PI，我们没有太大的控制权，其类型是double还是float？答案是都不是。在预处理器看来，PI就是3.1415，根本不知道其数据类型。<br>所以定义常量时 const 是更好的选择<br><code>const double PI = 3.14215;</code><br><strong>define与const的区别</strong><br>1.起作用的阶段不同：#define在预处理阶段起作用； const在编译或者运行阶段起作用；<br>2.起作用的方式不同：#define进行简单的文本替换，不能进行类型检查；const定义的常量有对应的数据类型；<br>3.储存方式不同：#define定义的宏常量在内存中有多个备份，而const定义的常量在内存中只有一个备份；<br>4.const常量可用于调试，而#define定义的常量不能用于调试（预处理阶段被替换掉了）；</p>
+<p>在上述代码中，当使用new关键字开辟空间后（new关键在在<strong>自由储存区</strong>申请一快内存，它返回一个指向这块内存的指针），我们又改变了这个指针指向的值；因此，在这里指针本身和指针指向的值都发生了改变。因此，当我们创建二叉树时，应该使用指针的引用或者二级指针。示例代码如下：   </p>
+<ul>
+<li>堆是操作系统维护的一块内存，而自由存储是C++中通过new与delete动态分配和释放对象的抽象概念。堆与自由存储区并不等价。我们可以重载new关键字改用其他内存作为自由储存区。   </li>
+</ul>
 </blockquote>
+<pre><code>//使用二级指针做参数
+void CreatTree(BiTree**p) 
+{
+    char ch;
+    cin &gt;&gt; ch;
+    if (ch == &apos;#&apos;)
+        *p = NULL;
+    else {
+        *p = new BiTree();
+        (*p)-&gt;value = ch;
+        CreatTree(&amp;(*p)-&gt;lift);
+        CreatTree(&amp;(*p)-&gt;right);
+    }
+}
 
+//使用指针的引用做参数
+void CreatTree(BiTree* &amp;p)
+{
+    char ch;
+    cin &gt;&gt; ch;
+    if (ch == &apos;#&apos;)
+        p = NULL;
+    else {
+        p = new BiTree();
+        p-&gt;value = ch;
+        CreatTree(p-&gt;lift);
+        CreatTree(p-&gt;right);
+    }
+}
+</code></pre>
         </div>
       </div>
     </div>
