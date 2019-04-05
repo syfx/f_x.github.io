@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-04</span>
-            <span class="time">21:47:16</span>
+            <span class="time">16:41:30</span>
           </span>
           
         </div>
@@ -123,18 +123,106 @@
 <blockquote>
 <p>常用算法性能分析</p>
 </blockquote>
-<p><img src="http://p.qpic.cn/pic_wework/1948211503/fdfb00f2ed8b878e504b553a62d32a0a37b1b041127d1e3b/0" alt=""></p>
-<h3 id="1、冒泡排序（Bubble-Sort）"><a href="#1、冒泡排序（Bubble-Sort）" class="headerlink" title="1、冒泡排序（Bubble Sort）"></a>1、冒泡排序（Bubble Sort）</h3><p><img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015223238449-2146169197.gif" alt=""></p>
-<h3 id="2、快速排序（Quick-Sort）"><a href="#2、快速排序（Quick-Sort）" class="headerlink" title="2、快速排序（Quick Sort）"></a>2、快速排序（Quick Sort）</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_gif/D67peceibeISwc3aGibUlvZ0XqVnbWtBRiaAY3VU8iaziaYcxAasTdrIu69BOVPYtfvqdvicmlJDS94cG2tjwZhVkdHA/640?wx_fmt=gif" alt=""></p>
-<h3 id="3、选择排序（Selection-Sort）"><a href="#3、选择排序（Selection-Sort）" class="headerlink" title="3、选择排序（Selection Sort）"></a>3、选择排序（Selection Sort）</h3><p><img src="https://img-blog.csdn.net/20161009191035090" alt=""></p>
-<h3 id="4、插入排序（Insertion-Sort）"><a href="#4、插入排序（Insertion-Sort）" class="headerlink" title="4、插入排序（Insertion Sort）"></a>4、插入排序（Insertion Sort）</h3><p><img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015225645277-1151100000.gif" alt=""></p>
-<h3 id="5、希尔排序（Shell-Sort）"><a href="#5、希尔排序（Shell-Sort）" class="headerlink" title="5、希尔排序（Shell Sort）"></a>5、希尔排序（Shell Sort）</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_gif/D67peceibeISwc3aGibUlvZ0XqVnbWtBRiadtZekLQySMDdNsZTx6jyaO6spIkjPFjwqfdhd2XfRUnic1PjV1yRxrw/640?wx_fmt=gif" alt=""></p>
-<h3 id="6、堆排序（Heap-Sort）"><a href="#6、堆排序（Heap-Sort）" class="headerlink" title="6、堆排序（Heap Sort）"></a>6、堆排序（Heap Sort）</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_gif/D67peceibeISwc3aGibUlvZ0XqVnbWtBRian1jgiaGZE9k1xZTp9B1icHia0jIXiba3ibgnIBibdfSN4I5US4WtrQJQMiakw/640?wx_fmt=gif" alt=""></p>
-<h3 id="7、归并排序（Merge-Sort）"><a href="#7、归并排序（Merge-Sort）" class="headerlink" title="7、归并排序（Merge Sort）"></a>7、归并排序（Merge Sort）</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_gif/D67peceibeISwc3aGibUlvZ0XqVnbWtBRiaUbPILFO9cjn2Uy1roWIcGDOC3owGFLvuVicasstic1UjSGXmTZj5oHDw/640?wx_fmt=gif" alt=""></p>
-<h3 id="8、计数排序"><a href="#8、计数排序" class="headerlink" title="8、计数排序"></a>8、计数排序</h3><p><img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231740840-6968181.gif" alt=""></p>
-<h3 id="9、桶排序"><a href="#9、桶排序" class="headerlink" title="9、桶排序"></a>9、桶排序</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_gif/D67peceibeISwc3aGibUlvZ0XqVnbWtBRia0umOurgFRv8ESYzcK6bXknufLgJGLaiaTrDTXUk09R6ia2DhbCPAJx0A/640?wx_fmt=gif" alt=""></p>
-<h3 id="10、基数排序"><a href="#10、基数排序" class="headerlink" title="10、基数排序"></a>10、基数排序</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_gif/D67peceibeISwc3aGibUlvZ0XqVnbWtBRial8LfeK5f941BmtmZcVlP0my2qgBXq6wEZ0PTDrcPqN3ntt7ibPrUxrg/640?wx_fmt=gif" alt=""><br><img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015232453668-1397662527.gif" alt=""></p>
-
+<p><img src="http://p.qpic.cn/pic_wework/1948211503/fdfb00f2ed8b878e504b553a62d32a0a37b1b041127d1e3b/0" alt=""><br><strong>后三个算法中的 k 表示桶的数量</strong></p>
+<blockquote>
+<p><strong>稳定/不稳定</strong>：若i&lt;j,a[i]=a[j],排完序后a[i]与a[j]的相对位置不发生变化(即仍然i&lt;j)，则称算法是稳定的，反之不稳定。这种特性在一些情况下还是有用的，例如对按学生姓名排好序的列表再按成绩排序时，可以保证成绩相同的学生是按照姓名排序的。<br><strong>在位</strong>：如果一个算法不需要额外的储存空间（除了个别储存单元外），我们把它称为是在位的。</p>
+</blockquote>
+<h3 id="1、冒泡排序（Bubble-Sort）"><a href="#1、冒泡排序（Bubble-Sort）" class="headerlink" title="1、冒泡排序（Bubble Sort）"></a>1、冒泡排序（Bubble Sort）</h3><blockquote>
+<p><strong>冒泡排序的基本思想是：每次比较两个相邻的元素，如果它们的顺序错误就把它们交换过来。</strong><br>如果对n个数按从小到大排序的话，就要执行<strong>n-1</strong>趟“冒泡”操作，每执行一趟都将剩余列表中的最大值交换到最后。</p>
+</blockquote>
+<pre><code>void bubblesort(int *array, int length)
+{
+    int temp;
+    //执行length-1趟&quot;冒泡&quot;操作
+    for (int i = 0; i &lt; length - 1; ++i) {
+        //在剩余数列中对满足条件的两个数执行交换操作
+        for (int j = 0; j &lt; length - i - 1; ++j) {
+            if (array[j] &gt; array[j + 1]) {
+                temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+}
+</code></pre><blockquote>
+<p>冒泡排序是一种基于<strong>蛮力法</strong>的算法，因此在处理较多的数据时，使用冒泡排序显然不是一个好的选择。通过这样可以对冒泡排序的性能进行少许提升：<br>若在一次循环中没有进行元素交换的操作，就表示列表已经有序，便可以直接结束算法了。</p>
+</blockquote>
+<h3 id="2、快速排序（Quick-Sort）"><a href="#2、快速排序（Quick-Sort）" class="headerlink" title="2、快速排序（Quick Sort）"></a>2、快速排序（Quick Sort）</h3><blockquote>
+<p>快速排序是最常用的排序算法，它是基于二分思想（分治法）的一种排序，要求升序排列时；   </p>
+<ol>
+<li>在要排序的数列中找一个<strong>基准值（pivot）</strong>   </li>
+<li>然后将数列中小于基准值的数放到基准值左边，大于基准值的数放到基准值的右边   </li>
+<li>递归的对基准值左边和右边的数列执行上述步骤</li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>对数列3 1 2 5 4 6 9 7 10 8执行1、2步骤图示：</strong></li>
+</ul>
+<p><img src="http://p.qpic.cn/pic_wework/1948211503/95936b9a7523aa20e8865abe483f9edb9b569e0d2b88d22d/0" alt=""><br><img src="http://p.qpic.cn/pic_wework/1948211503/b7b149b8c08ca64c8596fc2000bb43870d29849da5b0c48c/0" alt=""><br><img src="http://p.qpic.cn/pic_wework/1948211503/b4b24abbe6212cbd83084f7fc5b618ed65b603308cd5bc16/0" alt=""><br><img src="http://p.qpic.cn/pic_wework/1948211503/93956d9c3576f77fc1431ef3e288c211f8643a5ed84ce2fc/0" alt=""></p>
+<pre><code>void quicksort(int* array, int left, int right)
+{
+    int i, j, t, temp;
+    if (left &gt; right)
+        return;
+    temp = array[left];        //设置基准值
+    i = left;
+    j = right;
+    while (i != j) {
+        //先让 j--,因为基准值在最左边，先 j-- 可以保证 i，j 相遇处的值绝对小于基准值
+        while (array[j] &gt;= temp &amp;&amp; i &lt; j)
+            j--;
+        while (array[i] &lt;= temp &amp;&amp; i &lt; j)
+            i++;
+        if (i &lt; j) {
+            t = array[i];
+            array[i] = array[j];
+            array[j] = t;
+        }
+    }
+    array[left] = array[i];
+    array[i] = temp;
+    quicksort(array, left, i - 1);            //排序基准值左边的数列
+    quicksort(array, i + 1, right);            //排序基准值右边的数列
+}
+</code></pre><ul>
+<li><strong>算法处理过程：</strong><br><img src="http://p.qpic.cn/pic_wework/1948211503/383ec6374f53a5adbb69f3894db5ede63256cf30883a84eb/0" alt=""></li>
+</ul>
+<blockquote>
+<p>快速排序之所以比较快，是因为相比冒泡排序，每次交换是跳跃式的。每次排序的时候设置一个基准点，将小于等于基准点的数全部放到基准点的左边，将大于等于基准点的数全部放到基准点的右边。这样在每次交换的时候就不会像冒泡排序一样只能在相邻的数之间进行交换，交换的距离就大得多了。因此总的比较和交换次数就少了（不用对整体进行操作了），速度自然就提高了。<br>当然在最坏的情况下（例如以两端为基准点对排过序的列表再次排序时），即分裂点位于数列的两段时，仍是相邻的两个数进行了交换。因此快速排序的最差时间复杂度和冒泡排序是一样的；最好情况下，即分裂点在中间时，时间复杂度为O(nlogn)。<br>对于快速算法的优化，包括以下几个方面：</p>
+<ul>
+<li>更好的基准选择方法（如 三平均分区法，以最左边、最右边和中间的元素的中值作为基准值）；   </li>
+<li>当子数组足够小时改用更简单的排序算法；   </li>
+<li>避免递归（非递归快速排序）；</li>
+</ul>
+</blockquote>
+<h3 id="3、选择排序（Selection-Sort）"><a href="#3、选择排序（Selection-Sort）" class="headerlink" title="3、选择排序（Selection Sort）"></a>3、选择排序（Selection Sort）</h3><blockquote>
+<p>选择排序也是蛮力法在排序方面的一种应用。选择排序开始时，我们扫描整个列表找到值最小的元素与第一个元素交换，然后从第二个元素开始扫描整个列表，找到最小值与第二个元素进行交换，直到从第n-1个元素开始扫描整个列表找到最小值与第n-1位元素进行交换。</p>
+</blockquote>
+<pre><code>void SelectionSort(int* array, int len)
+{
+    int temp, minIndex;
+    for (int i = 0; i &lt; len - 1; ++i) {
+        int minIndex = i;
+        for (int j = i + 1; j &lt; len; ++j) {
+            if (array[minIndex] &gt; array[j])
+                minIndex = j;
+        }
+        temp = array[i];
+        array[i] = array[minIndex];
+        array[minIndex] = temp;
+    }
+}
+</code></pre><blockquote>
+<p>无论输入的数列是怎样的，选择排序的时间复杂度都是O(n^2),然而，键的交换次数仅为O(n)。   </p>
+</blockquote>
+<h3 id="4、插入排序（Insertion-Sort）"><a href="#4、插入排序（Insertion-Sort）" class="headerlink" title="4、插入排序（Insertion Sort）"></a>4、插入排序（Insertion Sort）</h3><blockquote>
+<p>插入排序是一种通过<strong>减一技术(减治法)</strong>实现的排序算法。   </p>
+<ul>
+<li>减治技术利用了一个问题给定<strong>实例的解</strong>和同样问题<strong>较小实例的解</strong>之间的某种关系。一旦建立     了这种关系，我们就可以<strong>从顶至下(递归)</strong>或<strong>从底至上(非递归)</strong>地来运用该关系。<br>插入排序就建立了这种关系：（假设一个列表的前n-1项已经有序，我们可以通过把第n项元素插入到这个较小规模的有序列表中，得到最终的有序列表）。</li>
+</ul>
+</blockquote>
+<h3 id="5、希尔排序（Shell-Sort）"><a href="#5、希尔排序（Shell-Sort）" class="headerlink" title="5、希尔排序（Shell Sort）"></a>5、希尔排序（Shell Sort）</h3><h3 id="6、堆排序（Heap-Sort）"><a href="#6、堆排序（Heap-Sort）" class="headerlink" title="6、堆排序（Heap Sort）"></a>6、堆排序（Heap Sort）</h3><h3 id="7、归并排序（Merge-Sort）"><a href="#7、归并排序（Merge-Sort）" class="headerlink" title="7、归并排序（Merge Sort）"></a>7、归并排序（Merge Sort）</h3>
         </div>
       </div>
     </div>
