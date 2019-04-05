@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-04</span>
-            <span class="time">16:41:30</span>
+            <span class="time">17:24:18</span>
           </span>
           
         </div>
@@ -157,7 +157,7 @@
 </ol>
 </blockquote>
 <ul>
-<li><strong>对数列3 1 2 5 4 6 9 7 10 8执行1、2步骤图示：</strong></li>
+<li><strong>对数列6 1 2 7 9 3 4 5 10 8执行1、2步骤图示：</strong><br>注意 j 先出发</li>
 </ul>
 <p><img src="http://p.qpic.cn/pic_wework/1948211503/95936b9a7523aa20e8865abe483f9edb9b569e0d2b88d22d/0" alt=""><br><img src="http://p.qpic.cn/pic_wework/1948211503/b7b149b8c08ca64c8596fc2000bb43870d29849da5b0c48c/0" alt=""><br><img src="http://p.qpic.cn/pic_wework/1948211503/b4b24abbe6212cbd83084f7fc5b618ed65b603308cd5bc16/0" alt=""><br><img src="http://p.qpic.cn/pic_wework/1948211503/93956d9c3576f77fc1431ef3e288c211f8643a5ed84ce2fc/0" alt=""></p>
 <pre><code>void quicksort(int* array, int left, int right)
@@ -189,7 +189,7 @@
 <li><strong>算法处理过程：</strong><br><img src="http://p.qpic.cn/pic_wework/1948211503/383ec6374f53a5adbb69f3894db5ede63256cf30883a84eb/0" alt=""></li>
 </ul>
 <blockquote>
-<p>快速排序之所以比较快，是因为相比冒泡排序，每次交换是跳跃式的。每次排序的时候设置一个基准点，将小于等于基准点的数全部放到基准点的左边，将大于等于基准点的数全部放到基准点的右边。这样在每次交换的时候就不会像冒泡排序一样只能在相邻的数之间进行交换，交换的距离就大得多了。因此总的比较和交换次数就少了（不用对整体进行操作了），速度自然就提高了。<br>当然在最坏的情况下（例如以两端为基准点对排过序的列表再次排序时），即分裂点位于数列的两段时，仍是相邻的两个数进行了交换。因此快速排序的最差时间复杂度和冒泡排序是一样的；最好情况下，即分裂点在中间时，时间复杂度为O(nlogn)。<br>对于快速算法的优化，包括以下几个方面：</p>
+<p>快速排序之所以比较快，是因为相比冒泡排序，每次交换是跳跃式的。每次排序的时候设置一个基准点，将小于等于基准点的数全部放到基准点的左边，将大于等于基准点的数全部放到基准点的右边。这样在每次交换的时候就不会像冒泡排序一样只能在相邻的数之间进行交换，交换的距离就大得多了。因此总的比较和交换次数就少了，速度自然就提高了。<br>当然在最坏的情况下（例如以两端为基准点对<strong>有序</strong>列表再次排序时），即分裂点位于数列的两端时，仍是相邻的两个数进行了交换。因此快速排序的最差时间复杂度和冒泡排序是一样的；最好情况下，即分裂点在中间时，时间复杂度为O(nlogn)。<br>对于快速算法的优化，包括以下几个方面：</p>
 <ul>
 <li>更好的基准选择方法（如 三平均分区法，以最左边、最右边和中间的元素的中值作为基准值）；   </li>
 <li>当子数组足够小时改用更简单的排序算法；   </li>
@@ -219,9 +219,42 @@
 <h3 id="4、插入排序（Insertion-Sort）"><a href="#4、插入排序（Insertion-Sort）" class="headerlink" title="4、插入排序（Insertion Sort）"></a>4、插入排序（Insertion Sort）</h3><blockquote>
 <p>插入排序是一种通过<strong>减一技术(减治法)</strong>实现的排序算法。   </p>
 <ul>
-<li>减治技术利用了一个问题给定<strong>实例的解</strong>和同样问题<strong>较小实例的解</strong>之间的某种关系。一旦建立     了这种关系，我们就可以<strong>从顶至下(递归)</strong>或<strong>从底至上(非递归)</strong>地来运用该关系。<br>插入排序就建立了这种关系：（假设一个列表的前n-1项已经有序，我们可以通过把第n项元素插入到这个较小规模的有序列表中，得到最终的有序列表）。</li>
+<li>减治技术利用了一个问题给定<strong>实例的解</strong>和同样问题<strong>较小实例的解</strong>之间的某种关系。一旦建立     了这种关系，我们就可以<strong>从顶至下(递归)</strong>或<strong>从底至上(非递归)</strong>地来运用该关系。 </li>
 </ul>
+<p>插入排序就建立了这种关系：假设一个列表的前n-1项已经有序，我们可以通过把第n项元素插入到这个较小规模的有序列表中，得到最终的有序列表。<br>假设当前要插入的元素为temp，我们从右到左扫描这个有序的子数组，遇到第一个小于等于temp的元素，然后把temp插入到该元素后面。</p>
 </blockquote>
+<pre><code>//插入排序
+void InsertionSort(int* array, int len)
+{
+    int temp, preIndex;
+    for (int i = 1; i &lt; len; ++i) {
+        temp = array[i];            //储存当前要向有序链表中插入的元素的值
+        preIndex = i;
+        while (preIndex &gt; 0 &amp;&amp; temp &lt; array[preIndex - 1]) {
+            array[preIndex] = array[preIndex - 1];
+            preIndex--;
+        }
+        array[preIndex] = temp;
+    }
+}
+
+//插入排序（递归）
+void InsertionSort2(int* array, int len)
+{
+    if (len == 1)
+        return;
+    InsertionSort2(array, len - 1);
+
+    int preIndex, temp;
+    temp = array[len - 1];
+    preIndex = len - 1;
+    while (preIndex &gt; 0 &amp;&amp; temp &lt; array[preIndex - 1]) {
+        array[preIndex] = array[preIndex - 1];
+        --preIndex;
+    }
+    array[preIndex] = temp;
+}
+</code></pre><p>在最坏情况下，temp &lt; array[preIndex - 1]的执行次数达到最大（比如是个递减的列表(相对而言，上述代码是升序排序)），这是算法复杂度为O(n^2)。然而，对于有序数组这种最优输入，该算法有着非常好的性能。对于升序排序来说，当输入的列表为升序列表时，temp &lt; array[preIndex - 1]只需执行n次，即时间复杂度为O(n)。因此，当输入数列<strong>基本有序</strong>时，插入排序也能够有良好的性能</p>
 <h3 id="5、希尔排序（Shell-Sort）"><a href="#5、希尔排序（Shell-Sort）" class="headerlink" title="5、希尔排序（Shell Sort）"></a>5、希尔排序（Shell Sort）</h3><h3 id="6、堆排序（Heap-Sort）"><a href="#6、堆排序（Heap-Sort）" class="headerlink" title="6、堆排序（Heap Sort）"></a>6、堆排序（Heap Sort）</h3><h3 id="7、归并排序（Merge-Sort）"><a href="#7、归并排序（Merge-Sort）" class="headerlink" title="7、归并排序（Merge Sort）"></a>7、归并排序（Merge Sort）</h3>
         </div>
       </div>
