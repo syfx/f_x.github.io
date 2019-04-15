@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-04</span>
-            <span class="time">21:11:13</span>
+            <span class="time">21:23:23</span>
           </span>
           
         </div>
@@ -368,7 +368,7 @@ void PrintListFromTailToHeadByStack(myList head)
 }
 </code></pre><h4 id="10、已知一个单链表中存在环，求进入环中的第一个结点"><a href="#10、已知一个单链表中存在环，求进入环中的第一个结点" class="headerlink" title="10、已知一个单链表中存在环，求进入环中的第一个结点"></a>10、已知一个单链表中存在环，求进入环中的第一个结点</h4><p><img src="http://p.qpic.cn/pic_wework/1948211503/6b6d96648f6e5c4b4eeef80f655b0c0c2e54c6a083e12304/0" alt=""></p>
 <blockquote>
-<p>设链表头距离环入口的长度为L，快慢指针相遇的位置为cross，该位置距离环入口的长度为S。考虑快慢指针移动的距离，慢指针走了L+S，快指针走了L+S+nR(n表示两只镇相遇前快指针走的圈数)。由于快指针的速度是慢指针的两倍，相同时间下快指针走过的路程就是慢指针的两倍，所以有2(L+S)=L+S+nR，化简得L+S=nR<br>当n=1时，即快指针在相遇之前多走了一圈，即L+S=R，也就是L=R−S，因此可以使用两个指针，一个指针从链表头部移动，一个从快慢指针第一次相遇处开始移动，每次移动一个节点的距离，则两指针相等时所指向的结点就是进入环的第一个结点。</p>
+<p>设链表头距离环入口的长度为L，快慢指针相遇的位置为cross，该位置距离环入口的长度为S。考虑快慢指针移动的距离，慢指针走了L+S，快指针走了L+S+nR(n表示两只镇相遇前快指针走的圈数)。由于快指针的速度是慢指针的两倍，相同时间下快指针走过的路程就是慢指针的两倍，所以有2(L+S)=L+S+nR，化简得L+S=nR<br>当n=1时，即快指针在相遇之前多走了一圈，即L+S=R，也就是L=R−S，因此可以使用两个指针，一个指针从链表头部移动，一个从快慢指针第一次相遇处的后个指针开始移动，每次移动一个节点的距离，则两指针相等时所指向的结点就是进入环的第一个结点。   </p>
 </blockquote>
 <pre><code>myList CircularListEntrance(myList head)
 {
@@ -383,6 +383,7 @@ void PrintListFromTailToHeadByStack(myList head)
         if (slow == fast) {
             fast = head;
             while (slow != fast) {
+                //这里让指向第一次相遇处的指针先走
                 slow = slow-&gt;next;
                 fast = fast-&gt;next;
             }
