@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="f_x">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="STL-list和forward_list">
+  <meta property="og:title" content="最短路径算法Floyd与Dijkstra">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="f_x&#39;s blog">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">STL-list和forward_list</p>
+          <p class="title">最短路径算法Floyd与Dijkstra</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,7 +99,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2019-03-16</span>
+            <span class="date">2019-04-17</span>
             <span class="time">21:52:51</span>
           </span>
           
@@ -109,78 +109,15 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/STL/">#STL</a>
+<a class="tag" href="/tags/算法-最短路径-图/">#算法; 最短路径; 图</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <ul>
-<li><p><strong>list的特点</strong>   </p>
-<blockquote>
-<p>在list开头、中间、末尾插入数据，所需时间都是固定的，将元素从list中产出所需的时间是固定的。插入或者删除元素后，指向list中其他元素的迭代器仍然有效。<br>不过搜索速度比vector慢，因为元素没有储存在连续的内存单元中。   </p>
-</blockquote>
-</li>
-<li><p><strong>插入元素</strong>   </p>
-<blockquote>
-<p>使用成员函数push_back()和push_front在list末尾和开头插入元素，使用成员函数insert在list中插入元素。  </p>
-</blockquote>
-<pre><code>list&lt;int&gt; intList(3, 6);
-intList.push_front(5);
-intList.push_back(7);
-
-//在迭代器指向的位置添加一个元素
-intList.insert(intList.begin(), 4);
-
-//在迭代器指向的位置添加指定数量的某个元素
-intList.insert(intList.end(), 2, 8);
-
-//在迭代器指向的位置插入某个容器两个迭代器之间的元素
-list&lt;int&gt; anoList(2, 9);
-intList.insert(intList.end(), anoList.begin(), anoList.end());
-</code></pre></li>
-<li><p><strong>删除元素</strong></p>
-<blockquote>
-<p>使用list::erase()来删除list中的元素，他有两个重载版本，一个版本接受一个迭代器并删除迭代器指向的元素，另一个接受两个迭代器参数并删除指定范围内的所有元素。</p>
-</blockquote>
-</li>
-<li><p><strong>元素反转和排序</strong></p>
-<blockquote>
-<p>使用list的成员方法reverse()和sort()对list进行反转和排序，执行者两个操作后之前指向元素的迭代器仍然有效。   </p>
-</blockquote>
-<pre><code>list&lt;int&gt; intList;
-intList.push_back(7);
-intList.push_front(5);
-intList.push_back(6);
-
-auto int6 = --intList.end();                                            //6
-list&lt;int&gt;::const_iterator int7 = ++intList.begin();        //7
-//反转
-intList.reverse();
-//排序
-intList.sort();
-cout &lt;&lt; *int6 &lt;&lt; endl;                //6
-cout &lt;&lt; *int7 &lt;&lt; endl;                //7   
-</code></pre></li>
-</ul>
-<blockquote>
-<p>其中排序方法sort()还有一个重载版本，接受一个二元谓词作为参数：</p>
-</blockquote>
-<pre><code>//从大到小排序
-bool MySortStandard(const int&amp; lsh, const int&amp; rsh) {
-    return (lsh &gt; rsh);
-}
-int main()
-{
-    ......
-        //排序
-        intList.sort(MySortStandard);
-    ......
-}
-</code></pre><p><strong>STL forward_list</strong></p>
-<blockquote>
-<p>从c++11起，可以使用单向链表forward_list;<br>使用时需要包含头文件 &lt;forward_list&gt;<br>使用forward时，只能使用push_front()函数在开头插入元素，其他操作与list很像。   </p>
+          <h3 id="一、弗洛伊德算法（Floyd-Warsshall）"><a href="#一、弗洛伊德算法（Floyd-Warsshall）" class="headerlink" title="一、弗洛伊德算法（Floyd-Warsshall）"></a>一、弗洛伊德算法（Floyd-Warsshall）</h3><blockquote>
+<p>Floyd算法的思想比较简单，它的核心代码只有5行；</p>
 </blockquote>
 
         </div>
