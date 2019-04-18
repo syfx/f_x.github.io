@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-17</span>
-            <span class="time">09:59:27</span>
+            <span class="time">16:34:32</span>
           </span>
           
         </div>
@@ -109,7 +109,7 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/算法-最短路径-图/">#算法; 最短路径; 图</a>
+<a class="tag" href="/tags/算法/">#算法</a> <a class="tag" href="/tags/最短路径/">#最短路径</a> <a class="tag" href="/tags/图/">#图</a>
 
 
           </div>
@@ -147,7 +147,39 @@
 </blockquote>
 <p> 对于有向图G：<br><img src="http://p.qpic.cn/pic_wework/1948211503/c8cec3d80ab6b3b9e5d697e65a4cfbf9f23b6b3a2a6272f0/0" alt=""></p>
 <blockquote>
-<p>在算法中，我们声明一个dis数组用来储存源点到其余顶点的的最短路径的“预估值”。以0号顶点为源点，有：<br><strong>dis[0] = 0   dis[1] = 2  dis[3] = 6  dis[4] = 4</strong><br>在dis表中选择到源点“预估值”最小的顶点（不包括源点本身），为dis[1] = 2;选择1号顶点后，dis[1]的值就可以从“预估值”变成“确定值”了；为什么呢？因为目前到源点最近的顶点为1号顶点，且图中边的权重都是正数（此算法不适用于带负权图），因此，不可能找到一个中转点使得从源点到1号顶点的路径更短。因此，在算法中，我们还需要使用一个数组book来标记源点到当前点的路径是否为确定值。   </p>
+<p>在算法中，我们声明一个dis数组用来储存源点到其余顶点的的最短路径的“预估值”。以0号顶点为源点，有：   </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>价格</th>
+<th>数量  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>香蕉</td>
+<td>$1</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>苹果</td>
+<td>$1</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>草莓</td>
+<td>$1</td>
+<td>7</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>dis[0] = 0   dis[1] = 2  dis[2] = 6  dis[3] = 4</strong><br>在dis表中选择到源点“预估值”最小的顶点（不包括源点本身），为dis[1] = 2;选择1号顶点后，dis[1]的值就可以从“预估值”变成“确定值”了；为什么呢？因为目前到源点最近的顶点为1号顶点，且图中边的权重都是正数（此算法不适用于带负权图），因此，不可能找到一个中转点使得从源点到1号顶点的路径更短。因此，在算法中，我们还需要使用一个数组book来标记源点到当前点的最短路径是否为确定值。<br><strong>dis[0] = 0 dis[1] = 2  dis[2] = 6  dis[3] = 4</strong><br><strong>book[0] = 1  book[1] = 1 book[2] = 0 book[3] = 0</strong><br>确定源点到1号顶点的最短路径之后，我们对1号顶点的所有出边进行松弛：对于1号顶点，有一条出边1-&gt;2，我们讨论当通过1号顶点进行中转时，源点到2号顶点的路径是否能更短，即比较dis[2]与dis[1] + G[1][2]的大小，如果更短，则更新dis[2]的值。这一过程称为边的松弛。<br>对1号顶点的所有出边松弛完毕后，继续在“预估值”中选取最小的值执行边松弛操作，直到所有“预估值”变为“确定值”。</p>
 </blockquote>
 
         </div>
