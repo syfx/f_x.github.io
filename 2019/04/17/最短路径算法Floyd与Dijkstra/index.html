@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-17</span>
-            <span class="time">17:17:40</span>
+            <span class="time">17:24:25</span>
           </span>
           
         </div>
@@ -154,63 +154,11 @@
 <blockquote>
 <p>在算法中，我们声明一个dis数组用来储存源点到其余顶点的的最短路径的“预估值”。以0号顶点为源点，有：    </p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">dis[0]</th>
-<th style="text-align:center">dis[1]</th>
-<th style="text-align:center">dis[2]</th>
-<th style="text-align:center">dis[3] </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">6</td>
-<td style="text-align:center">4 </td>
-</tr>
-</tbody>
-</table>
+<p><img src="http://p.qpic.cn/pic_wework/1948211503/d4d2dfc447ed7b3a3f9b73c399bc945848a023b66c121091/0" alt=""></p>
 <blockquote>
 <p>在dis表中选择到源点“预估值”最小的顶点（不包括源点本身），为dis[1] = 2;选择1号顶点后，dis[1]的值就可以从“预估值”变成“确定值”了；为什么呢？因为目前到源点最近的顶点为1号顶点，且图中边的权重都是正数（此算法不适用于带负权图），因此，不可能找到一个中转点使得从源点到1号顶点的路径更短。<br>这样的话，我们就还需要使用一个数组book来标记源点到当前点的最短路径是否为确定值（一般使用两个列表来分别储存“预估值”与“确定值”）。     </p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">dis[0]</th>
-<th style="text-align:center">dis[1]</th>
-<th style="text-align:center">dis[2]</th>
-<th style="text-align:center">dis[3]    </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">3</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">book[0]</th>
-<th style="text-align:center">book[1]</th>
-<th style="text-align:center">book[2]</th>
-<th style="text-align:center">book[3]</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0 </td>
-</tr>
-</tbody>
-</table>
+<p><img src="http://p.qpic.cn/pic_wework/1948211503/b4b2bfa455b687c5b64bc652096a40a12dab663aab792e89/0" alt=""></p>
 <blockquote>
 <p>确定源点到1号顶点的最短路径之后，我们对1号顶点的所有出边进行松弛：对于1号顶点，有一条出边1-&gt;2，我们讨论当通过1号顶点进行中转时，源点到2号顶点的路径是否能更短，即比较dis[2]与dis[1] + G[1][2]的大小，如果更短，则更新dis[2]的值。这一过程称为边的松弛。<br>对1号顶点的所有出边松弛完毕后，继续在“预估值”中选取最小的值执行边松弛操作，直到所有“预估值”变为“确定值”。</p>
 </blockquote>
