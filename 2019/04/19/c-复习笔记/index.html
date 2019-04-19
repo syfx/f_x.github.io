@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-04-19</span>
-            <span class="time">19:10:33</span>
+            <span class="time">20:15:58</span>
           </span>
           
         </div>
@@ -172,7 +172,21 @@
 </blockquote>
 <p>CLR管理内存、线程执行、代码执行、代码安全验证、编译以及其他系统服务。这些功能是在CLR上运行的托管代码所固有的。这套环境及体系之完善，以至于就像一个小型的系统一样，所以通常形象的称CLR为”.NET虚拟机”。</p>
 </blockquote>
-<h3 id="2、C-简介"><a href="#2、C-简介" class="headerlink" title="2、C#简介"></a>2、C#简介</h3><h4 id="1-C-及其特点"><a href="#1-C-及其特点" class="headerlink" title="1. C#及其特点"></a>1. C#及其特点</h4><blockquote>
+<h4 id="NET程序的编译执行"><a href="#NET程序的编译执行" class="headerlink" title=".NET程序的编译执行"></a>.NET程序的编译执行</h4><blockquote>
+<ul>
+<li>对于用非托管语言(c/c++)编写的程序源代码，编译时翻译器将源码翻译为本地 机器语言，以文件形式保存在硬盘上；运行时，操作系统将文件读出到内存，然后CPU从内存中取出指令执行。    </li>
+<li>对于托管代码，编译时将源码翻译为微软中间语言（IL）代码，运行的时候通过JIT（即时编译器）翻译为本地机器语言，同时.NET代码运行时有一个CLR环境来管理程序。   <blockquote>
+<p>翻译器与解释器：   </p>
+<ul>
+<li>在编译时<strong>翻译器</strong>将代码翻译成机器语言保存到文件中（例如C/C++,c#…）；执行效率高，不过难以移植。   </li>
+<li>在运行时<strong>解释器</strong>对源码逐行进行翻译和执行（例如Python）；执行效率较低，不过易于移植。   </li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><img src="http://p.qpic.cn/pic_wework/1948211503/01070d1133a261b41edd9346720be2c008e98d1b93db163c/0" alt="">   </p>
+<h3 id="二、C-简介"><a href="#二、C-简介" class="headerlink" title="二、C#简介"></a>二、C#简介</h3><h4 id="1、-C-及其特点"><a href="#1、-C-及其特点" class="headerlink" title="1、 C#及其特点"></a>1、 C#及其特点</h4><blockquote>
 <p>C#是微软公司在2000年7月发布的一种全新且<strong>简单、安全、面向对象</strong>的程序设计语言，是专门为.NET的应用而开发的语言。它吸收了C++、Visual Basic、Delphi、Java等语言的优点，体现了当今最新的程序设计技术的功能和精华。C#继承了C语言的语法风格，同时又继承了C++的面向对象特性。不同的是，C#的对象模型已经面向Internet进行了重新设计，使用的是.NET框架的类库；<strong>C#不再提供对指针类型的支持，使得程序不能随便访问内存地址空间，从而更加健壮；C#不再支持 多重继承，避免了以往类层次结构中由于多重继承带来的可怕后果</strong>。.NET框架为C#提供了一个强大的、易用的、逻辑结构一致的程序设计环境。同时，公共语言运行时（Common Language Runtime）为C#程序语言提供了一个托管的运行时环境，使程序比以往更加稳定、安全。<br>总结一下，c#特点有：    </p>
 <ul>
 <li>语言简洁。   </li>
@@ -184,13 +198,13 @@
 <li>与XML相融合。   </li>
 </ul>
 </blockquote>
-<h4 id="2-c-存在哪些缺点呢？"><a href="#2-c-存在哪些缺点呢？" class="headerlink" title="2. c#存在哪些缺点呢？"></a>2. c#存在哪些缺点呢？</h4><blockquote>
+<h4 id="2、-c-存在哪些缺点呢？"><a href="#2、-c-存在哪些缺点呢？" class="headerlink" title="2、 c#存在哪些缺点呢？"></a>2、 c#存在哪些缺点呢？</h4><blockquote>
 <ul>
 <li>不适合开发高性能的程序：因为中间语言和编译过程，比C/C++等语言会慢一些，还有就是内存自动回收机制导致难以立即释放不需要的内存，不采用(不建议)内联函数和析构函数。   </li>
 <li>Windows平台以外支持有限： 因为需要安装.NET框架体系</li>
 </ul>
 </blockquote>
-<h4 id="3-c-与其它语言的比较"><a href="#3-c-与其它语言的比较" class="headerlink" title="3. c#与其它语言的比较"></a>3. c#与其它语言的比较</h4><blockquote>
+<h4 id="3、-c-与其它语言的比较"><a href="#3、-c-与其它语言的比较" class="headerlink" title="3、 c#与其它语言的比较"></a>3、 c#与其它语言的比较</h4><blockquote>
 <ul>
 <li>C#与C++的比较      <ul>
 <li>编译目标：C++代码直接编译为本地可执行代码，而C#默认编译为中间语言（IL）代码，执行时再通过Just-In-Time将需要的模块临时编译成本地代码。   </li>
