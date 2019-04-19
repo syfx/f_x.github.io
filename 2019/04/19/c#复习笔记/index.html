@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="f_x">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="c#复习笔记">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="f_x&#39;s blog">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="f_x&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>f_x's blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/mypicture3.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">c#复习笔记</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/syfx">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:782933913@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By f_x</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-04-19</span>
+            <span class="time">11:18:06</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/c/">#c#</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>###一、什么是.NET</p>
+<p>.NET是一个微软搭造的开发者平台，它主要包括：   </p>
+<ol>
+<li>支持(面向)该平台的编程语言(如C#、Visual Basic、C++/CLI、F#、IronPython、IronRuby…)   </li>
+<li>用于该平台下开发人员的技术框架体系(<strong>即 .NET实现</strong>)   </li>
+<li>用于支持开发人员开发的软件工具(即SDK，如VS2017、VS Code等)   </li>
+</ol>
+<blockquote>
+<ul>
+<li>.NET实现<br>Microsoft 积极开发和维护的主要 .NET实现 有4个：.NET Framework、.NET Core、Mono 和 UWP。<br>每个 .NET实现 都具有以下组件：<ol>
+<li>一个或多个运行时。    <ul>
+<li>.NET运行时<br>  运行时是用于托管程序的执行环境。 操作系统属于运行时环境，但不属于 .NET 运行时。 下面是 .NET 运行时的一些示例：<ul>
+<li>.NET Framework 公共语言运行时 (CLR)</li>
+<li>.NET Core 核心公共语言运行时 (CoreCLR)</li>
+<li>适用于通用 Windows 平台的 .NET Native</li>
+<li>用于 Xamarin.iOS、Xamarin.Android、Xamarin.Mac 和 Mono 桌面框架的 Mono 运行时</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现 .NET Standard 并且可实现其他 API 的类库。 示例：.NET Framework 基类库、.NET Core 基类库。  <ul>
+<li>.NET Standard<br>  .NET Standard 是一组由 .NET 实现的基类库实现的 API。 更正式地说，它是构成协定统一集（这些协定是编写代码的依据）的特定 .NET API 组。 这些协定在每个 .NET实现 中实现。 这可实现不同 .NET实现 间的可移植性，有效地使代码可在任何位置运行。  </li>
+</ul>
+</li>
+<li>可选择包含一个或多个应用程序框架。 示例：ASP.NET、Windows 窗体…(包含在 .NET Framework 中)</li>
+<li>可包含开发工具。 某些开发工具在多个实现之间共享。   </li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<p>####.NET架构结构<br><img src="http://p.qpic.cn/pic_wework/1948211503/e9efe5f95612423a370ff2bd921d91a831e60fed1ac22fa4/0" alt=""></p>
+<p>####1、CTS-通用类型系统(Common Type System)   </p>
+<blockquote>
+<p>.NET实现对语言不可知。 <strong>这意味着程序员可以使用可编译为 IL 的任意语言进行编写代码。而且这些通过不同语言进行编写的代码进行交互(即跨语言操作)</strong>。   </p>
+<ul>
+<li>跨语言操作：比如，c#和vb是.NET下两个不同的语言，不过在c#中写的类可以在vb中当做自家写的类一样正常使用。<br>为透明地执行此操作，必须使用某种通用方式描所有受支持类型。 这正是 CTS 的职责。 其功能如下：      </li>
+<li>建立用于跨语言执行的框架。   </li>
+<li>提供面向对象的模型，支持在 .NET 实现上实现各种语言。   </li>
+<li>定义处理类型时所有语言都必须遵守的一组规则。   </li>
+<li>提供包含应用程序开发中使用的基本基元数据类型（如 Boolean、Byte、Char 等）的库。  </li>
+</ul>
+</blockquote>
+<p>####2、CLS-公共语言规范(Common Language Specification) </p>
+<blockquote>
+<p>为实现完全互操作性情景，代码中创建的所有对象都必须依赖于使用它的语言（即其调用方）的某些共性。 由于存在多种不同语言，因此 .NET 在公共语言规范 (CLS) 中指定了这些共性。然后定义了一组规则，开发者都遵守这个规则来编码，那么代码就能被任意.NET平台支持的语言所通用。<br>而与其说是规则，不如说它是一组语言互操作的标准规范，这就是CLS。</p>
+<blockquote>
+<p>注意：<strong>CLS 遵从性的规则仅适用于组件的公共接口，而非其私有实现。</strong></p>
+</blockquote>
+</blockquote>
+<p>####3、CLR-公共语言运行时(Common Language Runtime)</p>
+<blockquote>
+<p>公共语言运行库是 .NET Framework 的基础。可以将运行库看成一个在执行时管理代码的代理，它提供核心服务（如内存管理、线程管理和远程处理），而且还强制实施严格的类型安全以及可确保安全性和可靠性的其他形式的代码准确性。事实上，代码管理的概念是运行库的基本原则。以运行库为目标的代码称为托管代码，而不以运行库为目标的代码称为非托管代码。公共语言运行库管理内存、线程执行、代码执行、代码安全验证、编译以及其他系统服务。这些功能是在公共语言运行库上运行的托管代码所固有的。</p>
+</blockquote>
+<p>###2、C#简介<br>1．C#及其特点</p>
+<blockquote>
+<p>C#是微软公司在2000年7月发布的一种全新且<strong>简单、安全、面向对象</strong>的程序设计语言，是专门为.NET的应用而开发的语言。它吸收了C++、Visual Basic、Delphi、Java等语言的优点，体现了当今最新的程序设计技术的功能和精华。C#继承了C语言的语法风格，同时又继承了C++的面向对象特性。不同的是，C#的对象模型已经面向Internet进行了重新设计，使用的是.NET框架的类库；<strong>C#不再提供对指针类型的支持，使得程序不能随便访问内存地址空间，从而更加健壮；C#不再支持 多重继承，避免了以往类层次结构中由于多重继承带来的可怕后果</strong>。.NET框架为C#提供了一个强大的、易用的、逻辑结构一致的程序设计环境。同时，公共语言运行时（Common Language Runtime）为C#程序语言提供了一个托管的运行时环境，使程序比以往更加稳定、安全。<br>总结一下，c#特点有：    </p>
+<ul>
+<li>语言简洁。   </li>
+<li>保留了C++的强大功能。   </li>
+<li>快速应用开发功能。   </li>
+<li>语言的自由性。   </li>
+<li>强大的Web服务器控件。   </li>
+<li>支持跨平台。   </li>
+<li>与XML相融合。   </li>
+</ul>
+</blockquote>
+<p>2．C#与C++的比较    </p>
+<blockquote>
+<p>C#对C++进行了多处改进，主要区别如下：      </p>
+<ul>
+<li>编译目标：C++代码直接编译为本地可执行代码，而C#默认编译为中间语言（IL）代码，执行时再通过Just-In-Time将需要的模块临时编译成本地代码。   </li>
+<li>内存管理：C++需要显式地删除动态分配给堆的内存，而C#不需要这么做，C#采用垃圾回收机制自动在合适的时机回收不再使用的内存。   </li>
+<li>指针：C++中大量地使用指针，而C#使用对类实例的引用，如果确实想在C#中使用指针，必须声明该内容是非安全的。不过，一般情况下C#中没有必要使用指针。   </li>
+<li>字符串处理：在C#中，字符串是作为一种基本数据类型来对待的，因此比C++中对字符串的处理要简单得多。   </li>
+<li>库：C++依赖于以继承和模板为基础的标准库，C#则依赖于.NET基库。</li>
+<li>C++允许类的多继承，而C#只允许类的单继承，而通过接口实现多继承。</li>
+</ul>
+</blockquote>
+<p>3．C#与Java的比较</p>
+<blockquote>
+<ul>
+<li>C#面向对象的程度比Java高。   </li>
+<li>C#中的基本类型都是面向对象的。   </li>
+<li>C#具有比Java更强大的功能。<br>C#语言的执行速度比Java快。</li>
+</ul>
+</blockquote>
+<p>####1．.NET框架类库        </p>
+<blockquote>
+<p>.NET Framework 类库是一个与公共语言运行库紧密集成的可重用的类型集合，是对Windows API封装的全新设计，它为开发人员提供了一个统一的、面向对象的、分层的和可扩展的庞大类库。该类库是面向对象的，使 .NET Framework 类型易于使用，而且还减少了学习 .NET Framework 的新功能所需要的时间。此外，第三方组件可与 .NET Framework 中的类无缝集成。<br>例如，用.NET Framework 集合类实现一组可用于开发您自己的集合类的接口。您的集合类将与.NET Framework 中的类无缝地混合。<br>.NET Framework 类型使您能够完成一系列常见编程任务（包括字符串管理、数据收集、数据库连接以及文件访问等任务）。除这些常见任务之外，类库还包括支持多种专用开发方案的类型。例如，可使用 .NET Framework 开发下列类型的应用程序和服务：   </p>
+<ul>
+<li>控制台应用程序。   </li>
+<li>Windows GUI应用程序（Windows 窗体）。   </li>
+<li>ASP.NET应用程序。   </li>
+<li>XML Web services。   </li>
+<li>Windows 服务。   </li>
+</ul>
+</blockquote>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
