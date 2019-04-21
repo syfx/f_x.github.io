@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="fx">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="算法时间复杂的的计算">
+  <meta property="og:title" content="c#多线程">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="fx&#39;s study notes">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">算法时间复杂的的计算</p>
+          <p class="title">c#多线程</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,45 +99,16 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-11-27</span>
+            <span class="date">2019-04-21</span>
             <span class="time">17:34:36</span>
           </span>
           
         </div>
         <!-- Tags -->
         
-          <div class="post-tags text-muted">
-            Tags: 
-
-<a class="tag" href="/tags/算法/">#算法</a>
-
-
-          </div>
-        
         <!-- Post Main Content -->
         <div class="post-content">
-          <p><code>一般用大写O()来表示算法的时间复杂度写法，通常叫做大O记法。</code><br><code>一般情况下，随着n的增大，T(n)增长最慢的算法为最优算法。</code>   </p>
-<p><strong>大O推导法：</strong> </p>
-<pre><code>用常数1取代运行时间中的所有加法常数
-   在修改后的运行函数中，只保留最高阶项
-如果最高阶项存在且不是1，则去除与这个项相乘的常数  
-</code></pre><p><strong>示例：</strong></p>
-<pre><code>n++;                                      /*执行次数为1*/
-function(n);                              /*执行次数为n*/
-int i,j;
-for(i = 0 ; i &lt; n ; i++){                 /*执行次数为nXn*/
-    for(j = 0; j &lt; n; j++){
-        function(i);  
-    }
-}
-for(i = 0 ; i &lt; n ; i++){                /*执行次数为n(n+1)/2*/
-  for(j = i ; j &lt; n ; j++){
-      /*时间复杂度为O(1)的程序*/  
-  }  
-}
-</code></pre><p>它的执行次数f(n) = 1 + n + n^2 + n(n+1)/2,<br>根据推导大O阶的方法，最终它的时间复杂度为：O(n^2)</p>
-<p><img src="https://i.imgur.com/Z1poILo.png" alt=""><br><strong>时间复杂度所耗费的时间是：</strong><br>O(1) &lt; O(logn) &lt; O(n) &lt; O(nlogn) &lt; O(n2) &lt; O(n3) &lt;O(2n) &lt; O(n!) &lt;O(nn)</p>
-
+          
         </div>
       </div>
     </div>
