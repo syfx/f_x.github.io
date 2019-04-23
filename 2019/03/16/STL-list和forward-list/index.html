@@ -1,224 +1,99 @@
-<!DOCTYPE html>
-<html>
-  <!-- Html Head Tag-->
-  <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="fx">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="STL-list和forward_list">
-  <meta property="og:description" content="">
-  <meta property="og:site_name" content="fx&#39;s study notes">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="http://yoursite.com">
-  
-    <link rel="alternate" href="/atom.xml" title="fx&#39;s study notes" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
+extends includes/layout.pug
 
-  <!-- Site Title -->
-  <title>fx's study notes</title>
+block top_img
+  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
+  if (top_img && page.top_img !== false)
+    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
+    - var flag = top_img === true ? 'no-bg' : ''
+    div#top-container(style=bg_img class=flag)
+      include ./includes/header.pug
+      #post-info
+        #post-title= page.title || _p('no_title')
+        #post-meta
+          if (theme.post_meta.date_type)
+            - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
+            time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+          if (theme.post_meta.categories && page.categories.data.length > 0)
+            if (theme.post_meta.date_type)
+              span.post-meta__separator |
+            each item, index in page.categories.data
+              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
+              a(href=url_for(item.path)).post-meta__categories #[=item.name]
+              if (index < page.categories.data.length - 1)
+                 i.fa.fa-angle-right(aria-hidden="true")
+          if (theme.disqus.enable && theme.disqus.count)
+            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+              span.post-meta__separator |
+            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
+            a(href=url_for(page.path) + '#disqus_thread')
+              span.disqus-comment-count(data-disqus-identifier=page.path)
+          if (theme.wordcount && theme.wordcount.enable)
+            .post-meta-wordcount
+              span= _p('post.wordcount') + ': '
+              span.word-count= wordcount(page.content)
+              span.post-meta__separator |
+              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+  else
+    div#top-container.plain
+      include ./includes/header.pug
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  
-  <link rel="stylesheet" href="/css/style.light.css">
-
-  <!-- Google Analytics -->
-  
-
-</head>
-
-  <body>
-    <!-- Page Header -->
-
-
-<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">STL-list和forward_list</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/syfx">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:782933913@qq.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By fx</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2019-03-16</span>
-            <span class="time">20:48:18</span>
-          </span>
-          
-        </div>
-        <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
-
-<a class="tag" href="/tags/C/">#C++</a> <a class="tag" href="/tags/STL/">#STL</a>
-
-
-          </div>
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <ul>
-<li><p><strong>list的特点</strong>   </p>
-<blockquote>
-<p>在list开头、中间、末尾插入数据，所需时间都是固定的，将元素从list中产出所需的时间是固定的。插入或者删除元素后，指向list中其他元素的迭代器仍然有效。<br>不过搜索速度比vector慢，因为元素没有储存在连续的内存单元中。   </p>
-</blockquote>
-</li>
-<li><p><strong>插入元素</strong>   </p>
-<blockquote>
-<p>使用成员函数push_back()和push_front在list末尾和开头插入元素，使用成员函数insert在list中插入元素。  </p>
-</blockquote>
-<pre><code>list&lt;int&gt; intList(3, 6);
-intList.push_front(5);
-intList.push_back(7);
-
-//在迭代器指向的位置添加一个元素
-intList.insert(intList.begin(), 4);
-
-//在迭代器指向的位置添加指定数量的某个元素
-intList.insert(intList.end(), 2, 8);
-
-//在迭代器指向的位置插入某个容器两个迭代器之间的元素
-list&lt;int&gt; anoList(2, 9);
-intList.insert(intList.end(), anoList.begin(), anoList.end());
-</code></pre></li>
-<li><p><strong>删除元素</strong></p>
-<blockquote>
-<p>使用list::erase()来删除list中的元素，他有两个重载版本，一个版本接受一个迭代器并删除迭代器指向的元素，另一个接受两个迭代器参数并删除指定范围内的所有元素。</p>
-</blockquote>
-</li>
-<li><p><strong>元素反转和排序</strong></p>
-<blockquote>
-<p>使用list的成员方法reverse()和sort()对list进行反转和排序，执行者两个操作后之前指向元素的迭代器仍然有效。   </p>
-</blockquote>
-<pre><code>list&lt;int&gt; intList;
-intList.push_back(7);
-intList.push_front(5);
-intList.push_back(6);
-
-auto int6 = --intList.end();                                            //6
-list&lt;int&gt;::const_iterator int7 = ++intList.begin();        //7
-//反转
-intList.reverse();
-//排序
-intList.sort();
-cout &lt;&lt; *int6 &lt;&lt; endl;                //6
-cout &lt;&lt; *int7 &lt;&lt; endl;                //7   
-</code></pre></li>
-</ul>
-<blockquote>
-<p>其中排序方法sort()还有一个重载版本，接受一个二元谓词作为参数：</p>
-</blockquote>
-<pre><code>//从大到小排序
-bool MySortStandard(const int&amp; lsh, const int&amp; rsh) {
-    return (lsh &gt; rsh);
-}
-int main()
-{
-    ......
-        //排序
-        intList.sort(MySortStandard);
-    ......
-}
-</code></pre><p><strong>STL forward_list</strong></p>
-<blockquote>
-<p>从c++11起，可以使用单向链表forward_list;<br>使用时需要包含头文件 &lt;forward_list&gt;<br>使用forward时，只能使用push_front()函数在开头插入元素，其他操作与list很像。   </p>
-</blockquote>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-
-
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
-          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
-        </p><p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
-  });
-</script>
-
-  </body>
-</html>
-
+block content
+  article#post(class="")
+    if (!top_img)
+      #post-title.plain= page.title || _p('no_title')
+      #post-meta
+        if (theme.post_meta.date_type)
+          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
+          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+        if (theme.post_meta.categories && page.categories.data.length > 0)
+          if (theme.post_meta.date_type)
+            span.post-meta__separator |
+          each item, index in page.categories.data
+            i.fa.fa-inbox(aria-hidden="true")
+            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
+            if (index < page.categories.data.length - 1)
+                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
+        if (theme.disqus.enable && theme.disqus.count)
+          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+            span.post-meta__separator |
+          i.fa.fa-comment-o(aria-hidden="true")
+          a(href=url_for(page.path) + '#disqus_thread')
+            span.disqus-comment-count(data-disqus-identifier=page.path)
+        if (theme.wordcount && theme.wordcount.enable)
+          span.post-meta__separator |
+          span.post-meta-wordcount
+            span= _p('post.wordcount') + ': '
+            span.word-count= wordcount(page.content)
+            span.post-meta__separator |
+            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+    #post-content.article-container!= page.content
+  if (theme.post_copyright && theme.post_copyright.enable)
+    .post-copyright
+      .post-copyright__author
+        span.post-copyright-meta= _p('post.copyright.author') + ": "
+        span.post-copyright-info
+          a(href=`mailto:${config.email}`) #[=config.author]
+      .post-copyright__type
+        span.post-copyright-meta= _p('post.copyright.link') + ": "
+        span.post-copyright-info
+          a(href=url_for(page.permalink)) #[=page.permalink]
+      .post-copyright__notice
+        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
+        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
+  if (theme.post_meta.tags)
+    .post-meta__tag-list
+      each item, index in page.tags.data
+        a(href=url_for(item.path)).post-meta__tags #[=item.name]
+  if (theme.QR_code)
+    if (theme.QR_code.length > 0)
+      .post-qr-code
+        each item in theme.QR_code
+          .post-qr-code-item
+            img.post-qr-code__img(src=(item.itemlist||item).img)
+            .post-qr-code__desc=(item.itemlist||item).text
+  include includes/share/index.pug
+  include includes/pagination.pug
+  if (theme.adv && theme.adv.enable)
+    .post-adv!= theme.adv.info
+  if page.comments !== false
+    include includes/comments/index.pug

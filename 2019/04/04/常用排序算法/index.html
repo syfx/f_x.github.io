@@ -1,408 +1,99 @@
-<!DOCTYPE html>
-<html>
-  <!-- Html Head Tag-->
-  <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="fx">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="常用排序算法">
-  <meta property="og:description" content="">
-  <meta property="og:site_name" content="fx&#39;s study notes">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="http://yoursite.com">
-  
-    <link rel="alternate" href="/atom.xml" title="fx&#39;s study notes" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
+extends includes/layout.pug
 
-  <!-- Site Title -->
-  <title>fx's study notes</title>
+block top_img
+  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
+  if (top_img && page.top_img !== false)
+    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
+    - var flag = top_img === true ? 'no-bg' : ''
+    div#top-container(style=bg_img class=flag)
+      include ./includes/header.pug
+      #post-info
+        #post-title= page.title || _p('no_title')
+        #post-meta
+          if (theme.post_meta.date_type)
+            - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
+            time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+          if (theme.post_meta.categories && page.categories.data.length > 0)
+            if (theme.post_meta.date_type)
+              span.post-meta__separator |
+            each item, index in page.categories.data
+              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
+              a(href=url_for(item.path)).post-meta__categories #[=item.name]
+              if (index < page.categories.data.length - 1)
+                 i.fa.fa-angle-right(aria-hidden="true")
+          if (theme.disqus.enable && theme.disqus.count)
+            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+              span.post-meta__separator |
+            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
+            a(href=url_for(page.path) + '#disqus_thread')
+              span.disqus-comment-count(data-disqus-identifier=page.path)
+          if (theme.wordcount && theme.wordcount.enable)
+            .post-meta-wordcount
+              span= _p('post.wordcount') + ': '
+              span.word-count= wordcount(page.content)
+              span.post-meta__separator |
+              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+  else
+    div#top-container.plain
+      include ./includes/header.pug
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  
-  <link rel="stylesheet" href="/css/style.light.css">
-
-  <!-- Google Analytics -->
-  
-
-</head>
-
-  <body>
-    <!-- Page Header -->
-
-
-<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">常用排序算法</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/syfx">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:782933913@qq.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By fx</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2019-04-04</span>
-            <span class="time">20:48:17</span>
-          </span>
-          
-        </div>
-        <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
-
-<a class="tag" href="/tags/算法/">#算法</a>
-
-
-          </div>
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <h2 id="常用排序算法"><a href="#常用排序算法" class="headerlink" title="常用排序算法"></a>常用排序算法</h2><blockquote>
-<p>常用算法分类</p>
-</blockquote>
-<p><img src="http://p.qpic.cn/pic_wework/1948211503/aaac57a57a48b9b14644657fdd9edc9ea7fe380cd2fc0316/0" alt=""></p>
-<blockquote>
-<p>常用算法性能分析</p>
-</blockquote>
-<p><img src="http://p.qpic.cn/pic_wework/1948211503/fdfb00f2ed8b878e504b553a62d32a0a37b1b041127d1e3b/0" alt=""><br><strong>后三个算法中的 k 表示桶的数量</strong></p>
-<blockquote>
-<p><strong>稳定/不稳定</strong>：若i&lt;j,a[i]=a[j],排完序后a[i]与a[j]的相对位置不发生变化(即仍然i&lt;j)，则称算法是稳定的，反之不稳定。这种特性在一些情况下还是有用的，例如对按学生姓名排好序的列表再按成绩排序时，可以保证成绩相同的学生是按照姓名排序的。<br><strong>在位</strong>：如果一个算法不需要额外的储存空间（除了个别储存单元外），我们把它称为是在位的。</p>
-</blockquote>
-<h3 id="1、冒泡排序（Bubble-Sort）"><a href="#1、冒泡排序（Bubble-Sort）" class="headerlink" title="1、冒泡排序（Bubble Sort）"></a>1、冒泡排序（Bubble Sort）</h3><blockquote>
-<p><strong>冒泡排序的基本思想是：每次比较两个相邻的元素，如果它们的顺序错误就把它们交换过来。</strong><br>如果对n个数按从小到大排序的话，就要执行<strong>n-1</strong>趟“冒泡”操作，每执行一趟都将剩余列表中的最大值交换到最后。</p>
-</blockquote>
-<pre><code>void bubblesort(int *array, int length)
-{
-    int temp;
-    //执行length-1趟&quot;冒泡&quot;操作
-    for (int i = 0; i &lt; length - 1; ++i) {
-        //在剩余数列中对满足条件的两个数执行交换操作
-        for (int j = 0; j &lt; length - i - 1; ++j) {
-            if (array[j] &gt; array[j + 1]) {
-                temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
-            }
-        }
-    }
-}
-</code></pre><blockquote>
-<p>冒泡排序是一种基于<strong>蛮力法</strong>的算法，因此在处理较多的数据时，使用冒泡排序显然不是一个好的选择。通过这样可以对冒泡排序的性能进行少许提升：<br>若在一次循环中没有进行元素交换的操作，就表示列表已经有序，便可以直接结束算法了。</p>
-</blockquote>
-<h3 id="2、快速排序（Quick-Sort）"><a href="#2、快速排序（Quick-Sort）" class="headerlink" title="2、快速排序（Quick Sort）"></a>2、快速排序（Quick Sort）</h3><blockquote>
-<p>快速排序是最常用的排序算法，它是基于二分思想（分治法）的一种排序，要求升序排列时；   </p>
-<ol>
-<li>在要排序的数列中找一个<strong>基准值（pivot）</strong>   </li>
-<li>然后将数列中小于基准值的数放到基准值左边，大于基准值的数放到基准值的右边   </li>
-<li>递归的对基准值左边和右边的数列执行上述步骤</li>
-</ol>
-</blockquote>
-<ul>
-<li><strong>对数列6 1 2 7 9 3 4 5 10 8执行1、2步骤图示：</strong><br>注意 j 先出发</li>
-</ul>
-<p><img src="http://p.qpic.cn/pic_wework/1948211503/95936b9a7523aa20e8865abe483f9edb9b569e0d2b88d22d/0" alt=""><br><img src="http://p.qpic.cn/pic_wework/1948211503/b7b149b8c08ca64c8596fc2000bb43870d29849da5b0c48c/0" alt=""><br><img src="http://p.qpic.cn/pic_wework/1948211503/b4b24abbe6212cbd83084f7fc5b618ed65b603308cd5bc16/0" alt=""><br><img src="http://p.qpic.cn/pic_wework/1948211503/93956d9c3576f77fc1431ef3e288c211f8643a5ed84ce2fc/0" alt=""></p>
-<pre><code>void quicksort(int* array, int left, int right)
-{
-    int i, j, t, temp;
-    if (left &gt; right)
-        return;
-    temp = array[left];        //设置基准值
-    i = left;
-    j = right;
-    while (i != j) {
-        //先让 j--,因为基准值在最左边，先 j-- 可以保证 i，j 相遇处的值绝对小于基准值
-        while (array[j] &gt;= temp &amp;&amp; i &lt; j)
-            j--;
-        while (array[i] &lt;= temp &amp;&amp; i &lt; j)
-            i++;
-        if (i &lt; j) {
-            t = array[i];
-            array[i] = array[j];
-            array[j] = t;
-        }
-    }
-    array[left] = array[i];
-    array[i] = temp;
-    quicksort(array, left, i - 1);            //排序基准值左边的数列
-    quicksort(array, i + 1, right);            //排序基准值右边的数列
-}
-</code></pre><ul>
-<li><strong>算法处理过程：</strong><br><img src="http://p.qpic.cn/pic_wework/1948211503/383ec6374f53a5adbb69f3894db5ede63256cf30883a84eb/0" alt=""></li>
-</ul>
-<blockquote>
-<p>快速排序之所以比较快，是因为相比冒泡排序，每次交换是跳跃式的。每次排序的时候设置一个基准点，将小于等于基准点的数全部放到基准点的左边，将大于等于基准点的数全部放到基准点的右边。这样在每次交换的时候就不会像冒泡排序一样只能在相邻的数之间进行交换，交换的距离就大得多了。因此总的比较和交换次数就少了，速度自然就提高了。<br>当然在最坏的情况下（例如以两端为基准点对<strong>有序</strong>列表再次排序时），即分裂点位于数列的两端时，仍是相邻的两个数进行了交换。因此快速排序的最差时间复杂度和冒泡排序是一样的；最好情况下，即分裂点在中间时，时间复杂度为O(nlogn)。<br>对于快速算法的优化，包括以下几个方面：</p>
-<ul>
-<li>更好的基准选择方法（如 三平均分区法，以最左边、最右边和中间的元素的中值作为基准值）；   </li>
-<li>当子数组足够小时改用更简单的排序算法；   </li>
-<li>避免递归（非递归快速排序）；</li>
-</ul>
-</blockquote>
-<h3 id="3、选择排序（Selection-Sort）"><a href="#3、选择排序（Selection-Sort）" class="headerlink" title="3、选择排序（Selection Sort）"></a>3、选择排序（Selection Sort）</h3><blockquote>
-<p>选择排序也是蛮力法在排序方面的一种应用。选择排序开始时，我们扫描整个列表找到值最小的元素与第一个元素交换，然后从第二个元素开始扫描整个列表，找到最小值与第二个元素进行交换，直到从第n-1个元素开始扫描整个列表找到最小值与第n-1位元素进行交换。</p>
-</blockquote>
-<pre><code>void SelectionSort(int* array, int len)
-{
-    int temp, minIndex;
-    for (int i = 0; i &lt; len - 1; ++i) {
-        int minIndex = i;
-        for (int j = i + 1; j &lt; len; ++j) {
-            if (array[minIndex] &gt; array[j])
-                minIndex = j;
-        }
-        temp = array[i];
-        array[i] = array[minIndex];
-        array[minIndex] = temp;
-    }
-}
-</code></pre><blockquote>
-<p>无论输入的数列是怎样的，选择排序的时间复杂度都是O(n^2),然而，键的交换次数仅为O(n)。   </p>
-</blockquote>
-<h3 id="4、插入排序（Insertion-Sort）"><a href="#4、插入排序（Insertion-Sort）" class="headerlink" title="4、插入排序（Insertion Sort）"></a>4、插入排序（Insertion Sort）</h3><blockquote>
-<p>插入排序是一种通过<strong>减一技术(减治法)</strong>实现的排序算法。   </p>
-<ul>
-<li>减治技术利用了一个问题给定<strong>实例的解</strong>和同样问题<strong>较小实例的解</strong>之间的某种关系。一旦建立     了这种关系，我们就可以<strong>从顶至下(递归)</strong>或<strong>从底至上(非递归)</strong>地来运用该关系。 </li>
-</ul>
-<p>插入排序就建立了这种关系：假设一个列表的前n-1项已经有序，我们可以通过把第n项元素插入到这个较小规模的有序列表中，得到最终的有序列表。<br>假设当前要插入的元素为temp，我们从右到左扫描这个有序的子数组，遇到第一个小于等于temp的元素，然后把temp插入到该元素后面。</p>
-</blockquote>
-<pre><code>//插入排序
-void InsertionSort(int* array, int len)
-{
-    int temp, preIndex;
-    for (int i = 1; i &lt; len; ++i) {
-        temp = array[i];            //储存当前要向有序链表中插入的元素的值
-        preIndex = i;
-        while (preIndex &gt; 0 &amp;&amp; temp &lt; array[preIndex - 1]) {
-            array[preIndex] = array[preIndex - 1];
-            preIndex--;
-        }
-        array[preIndex] = temp;
-    }
-}
-
-//插入排序（递归）
-void InsertionSort2(int* array, int len)
-{
-    if (len == 1)
-        return;
-    InsertionSort2(array, len - 1);
-
-    int preIndex, temp;
-    temp = array[len - 1];
-    preIndex = len - 1;
-    while (preIndex &gt; 0 &amp;&amp; temp &lt; array[preIndex - 1]) {
-        array[preIndex] = array[preIndex - 1];
-        --preIndex;
-    }
-    array[preIndex] = temp;
-}
-</code></pre><p>在最坏情况下，temp &lt; array[preIndex - 1]的执行次数达到最大（比如是个递减的列表(相对而言，上述代码是升序排序)），这是算法复杂度为O(n^2)。然而，对于有序数组这种最优输入，该算法有着非常好的性能。对于升序排序来说，当输入的列表为升序列表时，temp &lt; array[preIndex - 1]只需执行n次，即时间复杂度为O(n)。因此，当输入数列<strong>基本有序</strong>时，插入排序能够有更好的性能</p>
-<h3 id="5、希尔排序（Shell-Sort）"><a href="#5、希尔排序（Shell-Sort）" class="headerlink" title="5、希尔排序（Shell Sort）"></a>5、希尔排序（Shell Sort）</h3><blockquote>
-<p>希尔排序又称“缩小增量排序”，希尔排序从“减少记录个数”和“序列基本有序”两个方面对直接插入排序进行了改进。在希尔排序中，对列表进行分组，对每组记录进行直接插入排序，经过几次分组之后，整个列表中的记录都“基本有序”了，这时在对整体进行一次直接插入排序。<br>希尔排序通过相隔某个“增量”对记录进行分组。</p>
-</blockquote>
-<pre><code>void ShellSort(int* array, int len)
-{
-    int temp, preIndex;
-    //增量（grp）为1时，对整个数组进行直接插入排序，
-    //此时的数列基本上是排好序的了。
-    for (int grp = len / 2; grp &gt; 0; grp /= 2) {
-        //对每组进行插入排序
-        for (int i = grp; i &lt; len; ++i) {
-            preIndex = i - grp;
-            temp = array[i];
-            while (preIndex &gt;= 0 &amp;&amp; array[preIndex] &gt; temp) {
-                array[preIndex + grp] = array[preIndex];
-                preIndex -= grp;
-            }
-            array[preIndex + grp] = temp;
-        }
-    }
-}
-</code></pre><blockquote>
-<p>希尔排序只能用于顺序结构，不能用于链式结构，增量序列可以有各种取法，但应该使增量序列的值没有除1之外的公因子，并且最后一个增量的值必须为1，记录总的比较次数和移动次数比直接插入排序要少，记录个数越多，效果越明显，因此，希尔排序更适合初始记录无须、数据量较大时的情况。</p>
-</blockquote>
-<h3 id="6、堆排序（Heap-Sort）"><a href="#6、堆排序（Heap-Sort）" class="headerlink" title="6、堆排序（Heap Sort）"></a>6、堆排序（Heap Sort）</h3><blockquote>
-<p>堆排序是一种树型选择排序，在排序过程中，将待排序序列看成一棵完全二叉树。利用完全二叉树中双亲结点与孩子结点之间的内在关系，在当前序列中选择最大（或最小）的记录。通过大根堆（或小根堆）堆顶记录的关键字最大（或最小）这一特征，来选择当前序列中的最大（或最小）的记录。   </p>
-<ul>
-<li>堆的定义（1 &lt;= i &lt;= n/2）<br>（1）ki &gt;= k2i且ki &gt;= k2i+1  （2）ki &lt;= ki且ki &lt;= ki+1<br>按堆的定义将带排序序列调整为大根堆，交换r[1]与r[n],调整剩余数列为大顶堆（即只需将当前堆顶元素向下调整即可），直到堆中只剩一个元素为止。</li>
-</ul>
-</blockquote>
-<pre><code>//向下调整
-void SiftDown(int *array, int n, int i)
-{
-    //如果当前结点至少存在一个孩子结点，比较它与孩子结点的大小
-    while ((2 * i + 1) &lt;= n) {
-        int t = i;
-        if (array[t] &lt; array[2 * i + 1])
-            t = 2 * i + 1;
-        if ((2 * i + 2) &lt;= n &amp;&amp; array[t] &lt; array[2 * i + 2])
-            t = 2 * i + 2;
-        //当前结点比它的孩子结点小，进行交换
-        if (t != i) {
-            int temp = array[t];
-            array[t] = array[i];
-            array[i] = temp;
-            i = t;        //当前结点的索引变为t
-        }
-        //当前结点比它两个孩子结点的值大，结束调整
-        else
-            break;
-    }
-}
-void HeapSort(int *array, int n)
-{
-    //（初始化堆）从最后一个非叶结点的结点开始依次进行向上调整
-    for (int i = n / 2; i &gt;= 0; --i) {
-        SiftDown(array, n, i);
-    }
-    //将堆顶元素放到最后，并在剩余的 n-- 数内对新的堆顶元素向下调整
-    while (n &gt;= 0) {
-        int temp = array[n];
-        array[n] = array[0];
-        array[0] = temp;
-        SiftDown(array, --n, 0);
-    }
-}
-</code></pre><blockquote>
-<p>对于堆排序，初建堆时比较次数较多，因此记录较少时不宜采用，当记录较多时较为高效。</p>
-</blockquote>
-<h3 id="7、归并排序（Merge-Sort）"><a href="#7、归并排序（Merge-Sort）" class="headerlink" title="7、归并排序（Merge Sort）"></a>7、归并排序（Merge Sort）</h3><blockquote>
-<p>归并排序就是将两个或者两个以上的有序列表合成一个有序列表的过程。将2个有序表合成一个有序表的过程称为2-路归并。对一个有n个记录的列表进行归并排序时，可以将列表看成是n个有序的子序列，每个序列的长度为1。然后两两合并得到n/2个长度为2或1的有序子序列，再两两合并，直到得到一个长度为n的有序序列为止。<br>在归并时，分别从两个要归并的序列中得到最小的值，放到一个新的列表中，重复这个过程直到其中一个列表为空，然后将非空列表中的剩余部分直接复制到新列表中。</p>
-</blockquote>
-<p><img src="http://p.qpic.cn/pic_wework/1948211503/64626c74be2f621b6f7ee6552b8440ea17f32eb3974d660c/0" alt=""></p>
-<pre><code>void merge(int *array, int L_left, int L_right, int R_left, int R_right)
-{
-    //申请一个新数组用来储存排好序的数组
-    int *temp = new int[R_right - L_left + 1];
-    int i = L_left, j = R_left, k = 0;
-    //将两数组中的数据有序归并到temp中
-    while (i &lt;= L_right &amp;&amp; j &lt;= R_right) {
-        temp[k++] = (array[i] &lt; array[j]) ? array[i++] : array[j++];
-    }
-    //将左数组或者右数组中剩余的有序数列归并到temp中
-    while (i &lt;= L_right) {
-        temp[k++] = array[i++];
-    }
-    while (j &lt;= R_right) {
-        temp[k++] = array[j++];
-    }
-    //将排好序的数列替换到原数列中
-    k = 0;
-    for (i = L_left; i &lt;= R_right; ++i) {
-        array[i] = temp[k++];
-    }
-    //释放临时开辟的空间
-    delete[] temp;
-}
-void MergeSort(int *array, int left, int right)
-{
-    if (left + 1 &lt;= right) {
-        MergeSort(array, left, (right + left) / 2);
-        MergeSort(array, (right + left) / 2 + 1, right);
-        merge(array, left, (right + left) / 2, (right + left) / 2 + 1, right);
-    }
-}
-</code></pre><blockquote>
-<p>用顺序表实现归并排序时，需要和待排序记录个数相等的辅助储存空间，因此空间复杂度为O(n)，归并排序可用于练市结构，且不需要附加的储存空间。</p>
-</blockquote>
-<blockquote>
-<p><strong>以上排序算法测试源代码：</strong> <a href="https://github.com/syfx/Sort/blob/master/Sort/Sort.cpp" target="_blank" rel="noopener">https://github.com/syfx/Sort/blob/master/Sort/Sort.cpp</a></p>
-</blockquote>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-
-
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
-          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
-        </p><p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
-  });
-</script>
-
-  </body>
-</html>
-
+block content
+  article#post(class="")
+    if (!top_img)
+      #post-title.plain= page.title || _p('no_title')
+      #post-meta
+        if (theme.post_meta.date_type)
+          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
+          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+        if (theme.post_meta.categories && page.categories.data.length > 0)
+          if (theme.post_meta.date_type)
+            span.post-meta__separator |
+          each item, index in page.categories.data
+            i.fa.fa-inbox(aria-hidden="true")
+            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
+            if (index < page.categories.data.length - 1)
+                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
+        if (theme.disqus.enable && theme.disqus.count)
+          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+            span.post-meta__separator |
+          i.fa.fa-comment-o(aria-hidden="true")
+          a(href=url_for(page.path) + '#disqus_thread')
+            span.disqus-comment-count(data-disqus-identifier=page.path)
+        if (theme.wordcount && theme.wordcount.enable)
+          span.post-meta__separator |
+          span.post-meta-wordcount
+            span= _p('post.wordcount') + ': '
+            span.word-count= wordcount(page.content)
+            span.post-meta__separator |
+            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+    #post-content.article-container!= page.content
+  if (theme.post_copyright && theme.post_copyright.enable)
+    .post-copyright
+      .post-copyright__author
+        span.post-copyright-meta= _p('post.copyright.author') + ": "
+        span.post-copyright-info
+          a(href=`mailto:${config.email}`) #[=config.author]
+      .post-copyright__type
+        span.post-copyright-meta= _p('post.copyright.link') + ": "
+        span.post-copyright-info
+          a(href=url_for(page.permalink)) #[=page.permalink]
+      .post-copyright__notice
+        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
+        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
+  if (theme.post_meta.tags)
+    .post-meta__tag-list
+      each item, index in page.tags.data
+        a(href=url_for(item.path)).post-meta__tags #[=item.name]
+  if (theme.QR_code)
+    if (theme.QR_code.length > 0)
+      .post-qr-code
+        each item in theme.QR_code
+          .post-qr-code-item
+            img.post-qr-code__img(src=(item.itemlist||item).img)
+            .post-qr-code__desc=(item.itemlist||item).text
+  include includes/share/index.pug
+  include includes/pagination.pug
+  if (theme.adv && theme.adv.enable)
+    .post-adv!= theme.adv.info
+  if page.comments !== false
+    include includes/comments/index.pug

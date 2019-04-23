@@ -1,241 +1,99 @@
-<!DOCTYPE html>
-<html>
-  <!-- Html Head Tag-->
-  <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="fx">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="计算机操作系统学习笔记">
-  <meta property="og:description" content="">
-  <meta property="og:site_name" content="fx&#39;s study notes">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="http://yoursite.com">
-  
-    <link rel="alternate" href="/atom.xml" title="fx&#39;s study notes" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
+extends includes/layout.pug
 
-  <!-- Site Title -->
-  <title>fx's study notes</title>
+block top_img
+  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
+  if (top_img && page.top_img !== false)
+    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
+    - var flag = top_img === true ? 'no-bg' : ''
+    div#top-container(style=bg_img class=flag)
+      include ./includes/header.pug
+      #post-info
+        #post-title= page.title || _p('no_title')
+        #post-meta
+          if (theme.post_meta.date_type)
+            - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
+            time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+          if (theme.post_meta.categories && page.categories.data.length > 0)
+            if (theme.post_meta.date_type)
+              span.post-meta__separator |
+            each item, index in page.categories.data
+              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
+              a(href=url_for(item.path)).post-meta__categories #[=item.name]
+              if (index < page.categories.data.length - 1)
+                 i.fa.fa-angle-right(aria-hidden="true")
+          if (theme.disqus.enable && theme.disqus.count)
+            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+              span.post-meta__separator |
+            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
+            a(href=url_for(page.path) + '#disqus_thread')
+              span.disqus-comment-count(data-disqus-identifier=page.path)
+          if (theme.wordcount && theme.wordcount.enable)
+            .post-meta-wordcount
+              span= _p('post.wordcount') + ': '
+              span.word-count= wordcount(page.content)
+              span.post-meta__separator |
+              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+  else
+    div#top-container.plain
+      include ./includes/header.pug
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  
-  <link rel="stylesheet" href="/css/style.light.css">
-
-  <!-- Google Analytics -->
-  
-
-</head>
-
-  <body>
-    <!-- Page Header -->
-
-
-<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">计算机操作系统学习笔记</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/syfx">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:782933913@qq.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By fx</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2018-11-08</span>
-            <span class="time">20:48:18</span>
-          </span>
-          
-        </div>
-        <!-- Tags -->
-        
-          <div class="post-tags text-muted">
-            Tags: 
-
-<a class="tag" href="/tags/操作系统/">#操作系统</a>
-
-
-          </div>
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <blockquote>
-<p>可以把操作系统比作是电脑上的“政府”，主要的只能是与硬件交互，管理资源。</p>
-<p><strong>好的操作系统应有的特点：</strong>公平（资源分配上），高效，稳定，安全，方便。</p>
-<p><strong>主要分类有：</strong>单处理器系统，所处理器系统，集群系统；嵌入式系统，多媒体系统；单任务系统，多任务系统……</p>
-</blockquote>
-<blockquote>
-<p><strong>常见操作系统</strong></p>
-</blockquote>
-<ul>
-<li><strong>windows</strong>:Windows系列操作系统是微软公司在二十世纪九十年代研制成功的图形化工作界面操作系统，俗称“视窗”。<br>优点：</li>
-</ul>
-<ol>
-<li>易用性高，生态圈完善，兼容性高；</li>
-<li>硬件丰富；</li>
-<li>游戏娱乐性强；</li>
-<li>图形化界面较为完善；<br>缺点：</li>
-<li>安全性低；</li>
-<li>系统漏洞较多；（因为是闭源的，参与测试的人少）</li>
-<li>稳定性差；（蓝屏）</li>
-</ol>
-<ul>
-<li><strong>Mac OS X：</strong>OS X（前称Mac OS X）是苹果公司为麦金塔电脑开发的专属操作系统。它是一套Unix基础的操作系统，包含两个主要的部分：核心名为Darwin，是以FreeBSD源代码和Mach微核心为基础，由苹果公司和独立开发者社区协力开发；<br>优点：</li>
-</ul>
-<ol>
-<li>安全性高；</li>
-<li>mac下没有很多win下多余的东西，没有磁盘碎片，不用整理硬盘，不用分区，几乎没有死机，不用关机，基本没用过进程管理器。所有和使用无关的东西，都被藏起来，用户很容易学习和使用；</li>
-<li>设置简单；</li>
-<li>稳定性高，BUG较少；<br>缺点：</li>
-<li>兼容性差；（较windows而言，其实也不差）</li>
-</ol>
-<ul>
-<li><strong>Linux</strong>: Linux是一套免费使用和自由传播的类Unix操作系统，是一个多用户、多任务、支持多线程和多CPU的操作系统。它能运行主要的UNIX工具软件、应用程序和网络协议。它支持32位和64位硬件。Linux继承了Unix以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统。<br>优点：</li>
-</ul>
-<ol>
-<li>安全、易维护、稳定；</li>
-<li>软件自由、开源；</li>
-<li>低成本、低配置要求；<br>缺点：</li>
-<li>应用软件较少；</li>
-<li>图形界面不够好；</li>
-</ol>
-<ul>
-<li><strong>UNIX:</strong> UNIX是一个强大的多用户、多任务操作系统，支持多处理器架构、属于分时操作系统。<br>优点：</li>
-</ul>
-<ol>
-<li>开源；</li>
-<li>将所有设备用文件标识，可使用与处理文件相同的<strong>命令</strong>和<strong>系统调用集</strong>访问设备。</li>
-<li>具有可移植行。<br>缺点：</li>
-<li>UNIX系统的标准I/O库相对其底层的系统调用接口已变得越来越复杂了。</li>
-<li>传统的UNIX内核不够灵活，不具备很好的可扩充性。大部分代码也很难复用。</li>
-</ol>
-<ul>
-<li><strong>Android：</strong>Android是一种以Linux为基础的开放源代码的操作系统，主要用于便携式设备。<br>优点：</li>
-</ul>
-<ol>
-<li>开放性强、具有丰富的硬件选择。<br>缺点：</li>
-<li>对硬件要求较高。</li>
-<li>安全性较低。</li>
-</ol>
-<ul>
-<li><strong>iOS:</strong> iOS与苹果的Mac OS X操作系统一样，属于类Unix的商业操作系统。<br>优点：</li>
-</ul>
-<ol>
-<li>流畅的操作体验、丰富的应用程序、精美的系统界面、较高的安全性。<br>缺点：</li>
-<li>系统封闭，权限控制严格，用户受限制多。</li>
-</ol>
-<ul>
-<li><strong>FreeBSD：</strong>FreeBSD是一种类UNIX操作系统，是由经过BSD、386BSD和4.4BSD发展而来的Unix的一个重要分支。FreeBSD 提供先进的网络、性能、安全以及兼容性，这些特性在其他现代操作系统上仍有所缺失，即使是一些最好的商业操作系统。<br>优点：</li>
-</ul>
-<ol>
-<li>强大的网络性能；</li>
-<li>先进的嵌入式平台；</li>
-<li>可以运行大量的程序；</li>
-<li>易于安装及使用；</li>
-<li>开源</li>
-</ol>
-<ul>
-<li><strong>VxWork：</strong>VxWorks操作系统是美国WindRiver公司于1983年设计开发的一种嵌入式实时操作系统(RTOS)，是嵌入式开发环境的关键组成部分。它以其良好的可靠性和卓越的实时性被广泛地应用在通信、军事、航空、航天等高精尖技术及实时性要求极高的领域中，如卫星通讯、军事演习、弹道制导、飞机导航等。<br>优点：</li>
-</ul>
-<ol>
-<li>稳定、可靠性；</li>
-<li>实时性；</li>
-<li>可裁剪行；</li>
-</ol>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-
-
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
-          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
-        </p><p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
-  });
-</script>
-
-  </body>
-</html>
-
+block content
+  article#post(class="")
+    if (!top_img)
+      #post-title.plain= page.title || _p('no_title')
+      #post-meta
+        if (theme.post_meta.date_type)
+          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
+          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
+        if (theme.post_meta.categories && page.categories.data.length > 0)
+          if (theme.post_meta.date_type)
+            span.post-meta__separator |
+          each item, index in page.categories.data
+            i.fa.fa-inbox(aria-hidden="true")
+            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
+            if (index < page.categories.data.length - 1)
+                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
+        if (theme.disqus.enable && theme.disqus.count)
+          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
+            span.post-meta__separator |
+          i.fa.fa-comment-o(aria-hidden="true")
+          a(href=url_for(page.path) + '#disqus_thread')
+            span.disqus-comment-count(data-disqus-identifier=page.path)
+        if (theme.wordcount && theme.wordcount.enable)
+          span.post-meta__separator |
+          span.post-meta-wordcount
+            span= _p('post.wordcount') + ': '
+            span.word-count= wordcount(page.content)
+            span.post-meta__separator |
+            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
+    #post-content.article-container!= page.content
+  if (theme.post_copyright && theme.post_copyright.enable)
+    .post-copyright
+      .post-copyright__author
+        span.post-copyright-meta= _p('post.copyright.author') + ": "
+        span.post-copyright-info
+          a(href=`mailto:${config.email}`) #[=config.author]
+      .post-copyright__type
+        span.post-copyright-meta= _p('post.copyright.link') + ": "
+        span.post-copyright-info
+          a(href=url_for(page.permalink)) #[=page.permalink]
+      .post-copyright__notice
+        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
+        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
+  if (theme.post_meta.tags)
+    .post-meta__tag-list
+      each item, index in page.tags.data
+        a(href=url_for(item.path)).post-meta__tags #[=item.name]
+  if (theme.QR_code)
+    if (theme.QR_code.length > 0)
+      .post-qr-code
+        each item in theme.QR_code
+          .post-qr-code-item
+            img.post-qr-code__img(src=(item.itemlist||item).img)
+            .post-qr-code__desc=(item.itemlist||item).text
+  include includes/share/index.pug
+  include includes/pagination.pug
+  if (theme.adv && theme.adv.enable)
+    .post-adv!= theme.adv.info
+  if page.comments !== false
+    include includes/comments/index.pug
