@@ -20,33 +20,33 @@
 <blockquote>
 <p>实例化一个特定类型的set,以int类型为例：</p>
 </blockquote>
-<pre><code>  set&lt;int&gt; intSet;
+<pre><code>set&lt;int&gt; intSet;
 </code></pre><blockquote>
 <p>set与multiset在元素插入时对其进行排序，默认使用std::less对插入数据进行排序。<br>要创建二元谓词，可在类中定义一个operator()：   </p>
 </blockquote>
-<pre><code>  emplate&lt;typename T&gt;
-  struct SortStandard
-  {
-      //从大到小排序
-      bool operator()(const T&amp; lhs, const T&amp; rhs)
-      {
-          return (lhs &gt; rhs);
-      }
-  };
+<pre><code>emplate&lt;typename T&gt;
+struct SortStandard
+{
+    //从大到小排序
+    bool operator()(const T&amp; lhs, const T&amp; rhs)
+    {
+        return (lhs &gt; rhs);
+    }
+};
 
-  int main()
-  {
-      //指定排序规则的初始化操作
-      set&lt;int, SortStandard&lt;int&gt;&gt; intSet;
-      return 0;
-  }
+int main()
+{
+    //指定排序规则的初始化操作
+    set&lt;int, SortStandard&lt;int&gt;&gt; intSet;
+    return 0;
+}
 </code></pre><blockquote>
 <p>也可以使用另外一个set或者两个set迭代器对其进行初始化：</p>
 </blockquote>
-<pre><code>  set&lt;int, SortStandard&lt;int&gt;&gt; intSet;
-  set&lt;int&gt; intSet1(intSet.cbegin(), intSet.cend());
-  //这里不能用intSet初始化intSet，因为他们两个排序方式不一样
-  set&lt;int&gt; intSet2(intSet1);
+<pre><code>set&lt;int, SortStandard&lt;int&gt;&gt; intSet;
+set&lt;int&gt; intSet1(intSet.cbegin(), intSet.cend());
+//这里不能用intSet初始化intSet，因为他们两个排序方式不一样
+set&lt;int&gt; intSet2(intSet1);
 </code></pre><blockquote>
 <p><strong>注意：</strong> 上面代码中不能用intSet初始化intSet，因为他们的排序方式不同。   </p>
 </blockquote>
@@ -55,17 +55,17 @@
 <blockquote>
 <p>使用成员函数insert()进行元素插入操作。   </p>
 </blockquote>
-<pre><code>  set&lt;int&gt; intSet;
+<pre><code>set&lt;int&gt; intSet;
 
-  intSet.insert(-1);
-  intSet.insert(600);
-  intSet.insert(66);
+intSet.insert(-1);
+intSet.insert(600);
+intSet.insert(66);
 
-  set&lt;int&gt; intSet1;
-  intSet1.insert(intSet.cbegin(), intSet.cend());
-  auto pos = ++intSet1.begin();
-  //报错
-  //*pos = 16;
+set&lt;int&gt; intSet1;
+intSet1.insert(intSet.cbegin(), intSet.cend());
+auto pos = ++intSet1.begin();
+//报错
+//*pos = 16;
 </code></pre></li>
 </ul>
 <blockquote>
@@ -76,24 +76,24 @@
 <blockquote>
 <p>关联容器都提供了成员函数erase()。<br>1、根据键删除值：<br>setObject.erase(key);<br>2、传入一个迭代器，删除迭代器指向的值：<br>setObject.erase(iElement);<br>3、使用迭代器指定边界，删除边界内的所有元素：<br>setObject.erase(iLowerBound, iUpperBound);   </p>
 </blockquote>
-<pre><code>  set&lt;int&gt; intSet;
-  intSet.insert(-1);
-  intSet.insert(600);
-  intSet.insert(66);
+<pre><code>set&lt;int&gt; intSet;
+intSet.insert(-1);
+intSet.insert(600);
+intSet.insert(66);
 
-  intSet.erase(66);
-  intSet.erase(++intSet.begin(), intSet.end());
+intSet.erase(66);
+intSet.erase(++intSet.begin(), intSet.end());
 </code></pre></li>
 </ul>
 <blockquote>
 <p>当multiset存在多个相同的值时，用setObject.erase(key)删除值时，会将他们全部删除。   </p>
 </blockquote>
-<pre><code>    multiset&lt;int&gt; intSet;
-    intSet.insert(66);
-    intSet.insert(600);
-    intSet.insert(66);
+<pre><code>multiset&lt;int&gt; intSet;
+intSet.insert(66);
+intSet.insert(600);
+intSet.insert(66);
 
-    intSet.erase(66);
+intSet.erase(66);
 </code></pre><p><strong>C++11</strong></p>
 <blockquote>
 <p>在C++11中，新增加了散列集合unordered_set和unordered_multiset；它们相对于set和multiset进一步的改善了性能。他们使用散列函数来计算排序索引。   </p>

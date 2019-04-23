@@ -17,19 +17,19 @@
 <blockquote>
 <p>使用成员函数push_back()和push_front在list末尾和开头插入元素，使用成员函数insert在list中插入元素。  </p>
 </blockquote>
-<pre><code>  list&lt;int&gt; intList(3, 6);
-  intList.push_front(5);
-  intList.push_back(7);
+<pre><code>list&lt;int&gt; intList(3, 6);
+intList.push_front(5);
+intList.push_back(7);
 
-  //在迭代器指向的位置添加一个元素
-  intList.insert(intList.begin(), 4);
+//在迭代器指向的位置添加一个元素
+intList.insert(intList.begin(), 4);
 
-  //在迭代器指向的位置添加指定数量的某个元素
-  intList.insert(intList.end(), 2, 8);
+//在迭代器指向的位置添加指定数量的某个元素
+intList.insert(intList.end(), 2, 8);
 
-  //在迭代器指向的位置插入某个容器两个迭代器之间的元素
-  list&lt;int&gt; anoList(2, 9);
-  intList.insert(intList.end(), anoList.begin(), anoList.end());
+//在迭代器指向的位置插入某个容器两个迭代器之间的元素
+list&lt;int&gt; anoList(2, 9);
+intList.insert(intList.end(), anoList.begin(), anoList.end());
 </code></pre></li>
 <li><p><strong>删除元素</strong></p>
 <blockquote>
@@ -40,35 +40,35 @@
 <blockquote>
 <p>使用list的成员方法reverse()和sort()对list进行反转和排序，执行者两个操作后之前指向元素的迭代器仍然有效。   </p>
 </blockquote>
-<pre><code>  list&lt;int&gt; intList;
-  intList.push_back(7);
-  intList.push_front(5);
-  intList.push_back(6);
+<pre><code>list&lt;int&gt; intList;
+intList.push_back(7);
+intList.push_front(5);
+intList.push_back(6);
 
-  auto int6 = --intList.end();                                            //6
-  list&lt;int&gt;::const_iterator int7 = ++intList.begin();        //7
-  //反转
-  intList.reverse();
-  //排序
-  intList.sort();
-  cout &lt;&lt; *int6 &lt;&lt; endl;                //6
-  cout &lt;&lt; *int7 &lt;&lt; endl;                //7   
+auto int6 = --intList.end();                                            //6
+list&lt;int&gt;::const_iterator int7 = ++intList.begin();        //7
+//反转
+intList.reverse();
+//排序
+intList.sort();
+cout &lt;&lt; *int6 &lt;&lt; endl;                //6
+cout &lt;&lt; *int7 &lt;&lt; endl;                //7   
 </code></pre></li>
 </ul>
 <blockquote>
 <p>其中排序方法sort()还有一个重载版本，接受一个二元谓词作为参数：</p>
 </blockquote>
-<pre><code>    //从大到小排序
-    bool MySortStandard(const int&amp; lsh, const int&amp; rsh) {
-        return (lsh &gt; rsh);
-    }
-    int main()
-    {
-        ......
-            //排序
-            intList.sort(MySortStandard);
-        ......
-    }
+<pre><code>//从大到小排序
+bool MySortStandard(const int&amp; lsh, const int&amp; rsh) {
+    return (lsh &gt; rsh);
+}
+int main()
+{
+    ......
+        //排序
+        intList.sort(MySortStandard);
+    ......
+}
 </code></pre><p><strong>STL forward_list</strong></p>
 <blockquote>
 <p>从c++11起，可以使用单向链表forward_list;<br>使用时需要包含头文件 &lt;forward_list&gt;<br>使用forward时，只能使用push_front()函数在开头插入元素，其他操作与list很像。   </p>

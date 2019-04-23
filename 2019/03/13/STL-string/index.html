@@ -90,41 +90,41 @@ int main()
 </blockquote>
 <ul>
 <li><p><strong>实例化string</strong>   </p>
-<pre><code>  const char* C_StyleString = &quot;Hello String&quot;;
-  const char* cString = &quot;Hello String&quot;;
-  //使用构造函数初始化
-  string str(cString);
-  //使用等号初始化
-  string str1 = cString;
-  //使用string类型数据初始化
-  string strCopy(cString);
-  //使用某个字符串的前n位初始化
-  string str2(&quot;Hello String&quot;, 5);
-  //使用指定数量的字符初始化
-  string str3(6, &#39;a&#39;);                    //str3 = aaaaaa
-  //string str3(6, &#39;adf&#39;);                //str3 = ffffff
+<pre><code>const char* C_StyleString = &quot;Hello String&quot;;
+const char* cString = &quot;Hello String&quot;;
+//使用构造函数初始化
+string str(cString);
+//使用等号初始化
+string str1 = cString;
+//使用string类型数据初始化
+string strCopy(cString);
+//使用某个字符串的前n位初始化
+string str2(&quot;Hello String&quot;, 5);
+//使用指定数量的字符初始化
+string str3(6, &apos;a&apos;);                    //str3 = aaaaaa
+//string str3(6, &apos;adf&apos;);                //str3 = ffffff
 </code></pre></li>
 <li><p><strong>访问string的内容</strong></p>
-<pre><code>  //通过[]访问元素
-  for (int i = 0; i &lt; str.length(); ++i) {
-      cout &lt;&lt; str[i] &lt;&lt; endl;
-  }
-  //通过迭代器访问
-  for (string::const_iterator pos = str.begin()
-      ; pos != str.end()
-      ; ++pos)
-  {
-      //*pos = &#39;h&#39;;                //报错，pos指向的值是const类型的，不可更改
-      cout &lt;&lt; *pos &lt;&lt; endl;
-  }
-  //通过迭代器访问
-  for (string::iterator pos = str.begin()
-      ; pos != str.end()
-      ; ++pos)
-  {
-      *pos = &#39;6&#39;;                    //不报错
-      cout &lt;&lt; *pos &lt;&lt; endl;
-  }
+<pre><code>//通过[]访问元素
+for (int i = 0; i &lt; str.length(); ++i) {
+    cout &lt;&lt; str[i] &lt;&lt; endl;
+}
+//通过迭代器访问
+for (string::const_iterator pos = str.begin()
+    ; pos != str.end()
+    ; ++pos)
+{
+    //*pos = &apos;h&apos;;                //报错，pos指向的值是const类型的，不可更改
+    cout &lt;&lt; *pos &lt;&lt; endl;
+}
+//通过迭代器访问
+for (string::iterator pos = str.begin()
+    ; pos != str.end()
+    ; ++pos)
+{
+    *pos = &apos;6&apos;;                    //不报错
+    cout &lt;&lt; *pos &lt;&lt; endl;
+}
 </code></pre></li>
 </ul>
 <blockquote>
@@ -153,10 +153,10 @@ str4.append(str6);            //str4 = Hello World Beautiful!
 int index = str6.find(&quot;World&quot;, 0);    
 cout &lt;&lt; index &lt;&lt; endl;                        //6
 //查找str6中所有 l 的索引
-size_t charPos = str6.find(&#39;l&#39;, 0);
+size_t charPos = str6.find(&apos;l&apos;, 0);
 while (charPos != string::npos) {            
     cout &lt;&lt; charPos &lt;&lt; endl;                //2 3 9
-    charPos = str6.find(&#39;l&#39;, ++charPos);
+    charPos = str6.find(&apos;l&apos;, ++charPos);
 }
 </code></pre><blockquote>
 <p>size_t在32位架构上是4字节，在64位架构上是8字节，在不同架构上进行编译时需要注意这个问题。而int在不同架构下都是4字节；且int为带符号数，size_t为无符号数。</p>
@@ -173,7 +173,7 @@ while (charPos != string::npos) {
 <pre><code>//删除索引在 区间[14,19) 内的字符串
 myStr.erase(14,5);            //Life is always this.
 </code></pre><p>2.删除迭代器iChar指向的字符。</p>
-<pre><code>auto iChar = find(myStr.begin(), myStr.end(), &#39;.&#39;);
+<pre><code>auto iChar = find(myStr.begin(), myStr.end(), &apos;.&apos;);
 myStr.erase(iChar);            //Life is always like this
 </code></pre><p>3.删除两个迭代器指定范围内的字符串。</p>
 <pre><code>myStr.erase(++myStr.begin(), myStr.end());    //L

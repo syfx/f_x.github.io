@@ -13,30 +13,30 @@
 <p><strong>map及multimap的实例化</strong>   </p>
 <ul>
 <li><p>实例化map和multimap的语法如下：   </p>
-<pre><code>  #include &lt;iostream&gt;
-  using namespace std;
-  ...
-  map&lt;keyType, valueType, Predicate = std::less&lt;keyType&gt;&gt; mapObject;
-  multimap&lt;keyType, valueType, Predicate = std::less&lt;keyType&gt;&gt; multimapObject;
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+...
+map&lt;keyType, valueType, Predicate = std::less&lt;keyType&gt;&gt; mapObject;
+multimap&lt;keyType, valueType, Predicate = std::less&lt;keyType&gt;&gt; multimapObject;
 </code></pre><blockquote>
 <p>其中Predicate可图换为自定义谓词———一个实现了operator()的类或结构。例：</p>
 </blockquote>
-<pre><code>  //实现从大到小排序的谓词
-  template&lt;typename KeyType&gt;
-  struct ReverseSort
-  {
-      bool operator()(const KeyType&amp; key1, const KeyType&amp; key2)
-      {
-          return (key1 &gt; key2);
-      }
-  }      
+<pre><code>//实现从大到小排序的谓词
+template&lt;typename KeyType&gt;
+struct ReverseSort
+{
+    bool operator()(const KeyType&amp; key1, const KeyType&amp; key2)
+    {
+        return (key1 &gt; key2);
+    }
+}      
 </code></pre><p><strong>插入元素</strong></p>
 <blockquote>
 <p>在两种容器之中插入元素时，都可以使用成员函数insert:<br><code>map&lt;int, string&gt; mapInt_String</code><br><code>mapInt_String.insert(make_pair(0, &quot;Number One&quot;));</code><br><code>mapInt_String.insert(pair&lt;int, string&gt;(2, &quot;Number Two&quot;));</code>      </p>
 </blockquote>
 </li>
-<li><strong>std::pair</strong><br>主要作用是将两个数据组合成一个数据，两个数据可以是同一类型或者不同类型。<br>pair实质上是一个结构体，其主要的两个成员变量是<strong>first</strong>和<strong>second</strong>，这两个变量可以直接使用。<br>初始化一个pair可以使用构造函数，也可以使用std::make_pair函数。<br>make_pair函数的定义如下：<br>  <code>template pair make_pair(T1 a, T2 b) { return pair(a, b); }</code><br>在需要pair类型做参数的位置，可以直接调用make_pair生成pair对象。<br>mark_pair可以接受隐式的类型转换，这样可以获得更高的灵活度。但是这样会出现如下问题：<br>例如有如下两个定义：   <pre><code>  ```std::pair&lt;int, float&gt;(1, 1.1);```   
-  ```std::make_pair(1, 1.1);```   
+<li><strong>std::pair</strong><br>主要作用是将两个数据组合成一个数据，两个数据可以是同一类型或者不同类型。<br>pair实质上是一个结构体，其主要的两个成员变量是<strong>first</strong>和<strong>second</strong>，这两个变量可以直接使用。<br>初始化一个pair可以使用构造函数，也可以使用std::make_pair函数。<br>make_pair函数的定义如下：<br>  <code>template pair make_pair(T1 a, T2 b) { return pair(a, b); }</code><br>在需要pair类型做参数的位置，可以直接调用make_pair生成pair对象。<br>mark_pair可以接受隐式的类型转换，这样可以获得更高的灵活度。但是这样会出现如下问题：<br>例如有如下两个定义：   <pre><code>```std::pair&lt;int, float&gt;(1, 1.1);```   
+```std::make_pair(1, 1.1);```   
 </code></pre>使用构造函数生成的pair对象的second变量是float类型，而用make_pair生成的pair对象的second变量将是double类型。   </li>
 </ul>
 <p><strong>查找元素</strong></p>

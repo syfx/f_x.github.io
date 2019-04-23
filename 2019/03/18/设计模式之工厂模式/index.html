@@ -156,87 +156,87 @@
 <blockquote>
 <p>根据上述例子实现的具体代码为：</p>
 </blockquote>
-<pre><code>    namespace FactoryPattern
+<pre><code>namespace FactoryPattern
+{
+    //怪物接口
+    interface Mob
     {
-        //怪物接口
-        interface Mob
+        void Attack();
+    }
+    //小怪A
+    class MobA : Mob
+    {
+        //重写Acctak方法
+        public void Attack()
         {
-            void Attack();
-        }
-        //小怪A
-        class MobA : Mob
-        {
-            //重写Acctak方法
-            public void Attack()
-            {
-                Console.WriteLine(&quot;MobA 进行攻击&quot;);
-            }
-        }
-        //小怪B
-        class MobB : Mob
-        {
-            //重写Acctak方法
-            public void Attack()
-            {
-                Console.WriteLine(&quot;MobB 进行攻击&quot;);
-            }
-        }
-        //小怪C
-        class MobC : Mob
-        {
-            //重写Acctak方法
-            public void Attack()
-            {
-                Console.WriteLine(&quot;MobC 进行攻击&quot;);
-            }
-        }
-
-        //抽象工厂接口
-        interface Factory
-        {
-            Mob GetMob();
-        }
-        //创建怪物A的工厂
-        class MobA_Factory : Factory
-        {
-            public Mob GetMob()
-            {
-                return new MobA();
-            }
-        }
-        //创建怪物B的工厂
-        class MobB_Factory : Factory
-        {
-            public Mob GetMob()
-            {
-                return new MobB();
-            }
-        }
-        //创建怪物C的工厂
-        class MobC_Factory : Factory
-        {
-            public Mob GetMob()
-            {
-                return new MobC();
-            }
-        }
-
-        class Test
-        {
-            static void Main(string[] args)
-            {
-                //获得小怪A
-                Factory factory = new MobA_Factory();
-                Mob mob = factory.GetMob();
-                mob.Attack();
-                //获得小怪B
-                factory = new MobB_Factory();
-                mob = factory.GetMob();
-                mob.Attack();
-                Console.ReadKey();
-            }
+            Console.WriteLine(&quot;MobA 进行攻击&quot;);
         }
     }
+    //小怪B
+    class MobB : Mob
+    {
+        //重写Acctak方法
+        public void Attack()
+        {
+            Console.WriteLine(&quot;MobB 进行攻击&quot;);
+        }
+    }
+    //小怪C
+    class MobC : Mob
+    {
+        //重写Acctak方法
+        public void Attack()
+        {
+            Console.WriteLine(&quot;MobC 进行攻击&quot;);
+        }
+    }
+
+    //抽象工厂接口
+    interface Factory
+    {
+        Mob GetMob();
+    }
+    //创建怪物A的工厂
+    class MobA_Factory : Factory
+    {
+        public Mob GetMob()
+        {
+            return new MobA();
+        }
+    }
+    //创建怪物B的工厂
+    class MobB_Factory : Factory
+    {
+        public Mob GetMob()
+        {
+            return new MobB();
+        }
+    }
+    //创建怪物C的工厂
+    class MobC_Factory : Factory
+    {
+        public Mob GetMob()
+        {
+            return new MobC();
+        }
+    }
+
+    class Test
+    {
+        static void Main(string[] args)
+        {
+            //获得小怪A
+            Factory factory = new MobA_Factory();
+            Mob mob = factory.GetMob();
+            mob.Attack();
+            //获得小怪B
+            factory = new MobB_Factory();
+            mob = factory.GetMob();
+            mob.Attack();
+            Console.ReadKey();
+        }
+    }
+}
 </code></pre><p><strong>工厂方法模式分析</strong>   </p>
 <blockquote>
 <p>在这个模式中，将每个具体产品的创建细节分配给每个具体的工厂来实现，这样做不仅使工厂方法具有简单工厂方法的优点，还解决了简单工厂模式职责过重的问题。不过由于每个产品类都要对应一个工厂类，因此使用此模式时，会在一定程度上增加系统的复杂性。</p>
@@ -277,145 +277,145 @@
 <blockquote>
 <p>修改一下上面那个例子，除了怪物类外，现在还要新添加一个武器类，武器类中包括武器WpA、WpB、WpC；怪物MobA使用WpA，怪物MobB使用WpB，怪物MobC使用WpC；<br>使用抽象工厂模式实现怪物和武器生成的代码如下：   </p>
 </blockquote>
-<pre><code>    //怪物接口
-    interface Mob
+<pre><code>//怪物接口
+interface Mob
+{
+    void Attack();
+}
+//小怪A
+class MobA : Mob
+{
+    //重写Acctak方法
+    public void Attack()
     {
-        void Attack();
+        Console.WriteLine(&quot;MobA 进行攻击&quot;);
     }
-    //小怪A
-    class MobA : Mob
+}
+//小怪B
+class MobB : Mob
+{
+    //重写Acctak方法
+    public void Attack()
     {
-        //重写Acctak方法
-        public void Attack()
-        {
-            Console.WriteLine(&quot;MobA 进行攻击&quot;);
-        }
+        Console.WriteLine(&quot;MobB 进行攻击&quot;);
     }
-    //小怪B
-    class MobB : Mob
+}
+//小怪C
+class MobC : Mob
+{
+    //重写Acctak方法
+    public void Attack()
     {
-        //重写Acctak方法
-        public void Attack()
-        {
-            Console.WriteLine(&quot;MobB 进行攻击&quot;);
-        }
+        Console.WriteLine(&quot;MobC 进行攻击&quot;);
     }
-    //小怪C
-    class MobC : Mob
-    {
-        //重写Acctak方法
-        public void Attack()
-        {
-            Console.WriteLine(&quot;MobC 进行攻击&quot;);
-        }
-    }
+}
 
-    //武器接口
-    interface Wp
+//武器接口
+interface Wp
+{
+    //攻击加成
+    void AtkAdd();
+}
+//武器WpA
+class WpA : Wp
+{
+    public void AtkAdd()
     {
-        //攻击加成
-        void AtkAdd();
+        Console.WriteLine(&quot;MobA专属武器，MobA提高了攻击力&quot;);
     }
-    //武器WpA
-    class WpA : Wp
+}
+//武器WpA
+class WpB : Wp
+{
+    public void AtkAdd()
     {
-        public void AtkAdd()
-        {
-            Console.WriteLine(&quot;MobA专属武器，MobA提高了攻击力&quot;);
-        }
+        Console.WriteLine(&quot;MobB专属武器，MobB提高了攻击力&quot;);
     }
-    //武器WpA
-    class WpB : Wp
+}
+//武器WpC
+class WpC : Wp
+{
+    public void AtkAdd()
     {
-        public void AtkAdd()
-        {
-            Console.WriteLine(&quot;MobB专属武器，MobB提高了攻击力&quot;);
-        }
+        Console.WriteLine(&quot;MobC专属武器，MobC提高了攻击力&quot;);
     }
-    //武器WpC
-    class WpC : Wp
-    {
-        public void AtkAdd()
-        {
-            Console.WriteLine(&quot;MobC专属武器，MobC提高了攻击力&quot;);
-        }
-    }
+}
 
-    //工厂接口
-    interface Factory
-    {
-        //获取怪物实例的方法
-        Mob GetMob();
-        //获取武器实例的方法
-        Wp GetWp();
+//工厂接口
+interface Factory
+{
+    //获取怪物实例的方法
+    Mob GetMob();
+    //获取武器实例的方法
+    Wp GetWp();
+}
+
+//A类怪物武器产品族工厂
+class A_Factory : Factory
+{
+    //获取怪物实例的方法
+    public Mob GetMob() {
+        return new MobA();
     }
-
-    //A类怪物武器产品族工厂
-    class A_Factory : Factory
+    //获取武器实例的方法
+    public Wp GetWp()
     {
-        //获取怪物实例的方法
-        public Mob GetMob() {
-            return new MobA();
-        }
-        //获取武器实例的方法
-        public Wp GetWp()
-        {
-            return new WpA();
-        }
+        return new WpA();
     }
+}
 
-    //A类怪物武器产品族工厂
-    class B_Factory : Factory
+//A类怪物武器产品族工厂
+class B_Factory : Factory
+{
+    //获取怪物实例的方法
+    public Mob GetMob()
     {
-        //获取怪物实例的方法
-        public Mob GetMob()
-        {
-            return new MobB();
-        }
-        //获取武器实例的方法
-        public Wp GetWp()
-        {
-            return new WpB();
-        }
+        return new MobB();
     }
-
-    //A类怪物武器产品族工厂
-    class C_Factory : Factory
+    //获取武器实例的方法
+    public Wp GetWp()
     {
-        //获取怪物实例的方法
-        public Mob GetMob()
-        {
-            return new MobC();
-        }
-        //获取武器实例的方法
-        public Wp GetWp()
-        {
-            return new WpC();
-        }
+        return new WpB();
     }
+}
 
-
-    class Test
+//A类怪物武器产品族工厂
+class C_Factory : Factory
+{
+    //获取怪物实例的方法
+    public Mob GetMob()
     {
-        static void Main(string[] args)
-        {
-            //A类产品族工厂
-            Factory factory = new A_Factory();
-            Mob moba = factory.GetMob();
-            Wp wpa = factory.GetWp();
-            wpa.AtkAdd();
-            moba.Attack();
-
-            //B类产品族工厂
-            factory = new C_Factory();
-            Mob mobb = factory.GetMob();
-            Wp wpb = factory.GetWp();
-            wpb.AtkAdd();
-            mobb.Attack();
-
-            Console.ReadKey();
-        }
+        return new MobC();
     }
+    //获取武器实例的方法
+    public Wp GetWp()
+    {
+        return new WpC();
+    }
+}
+
+
+class Test
+{
+    static void Main(string[] args)
+    {
+        //A类产品族工厂
+        Factory factory = new A_Factory();
+        Mob moba = factory.GetMob();
+        Wp wpa = factory.GetWp();
+        wpa.AtkAdd();
+        moba.Attack();
+
+        //B类产品族工厂
+        factory = new C_Factory();
+        Mob mobb = factory.GetMob();
+        Wp wpb = factory.GetWp();
+        wpb.AtkAdd();
+        mobb.Attack();
+
+        Console.ReadKey();
+    }
+}
 </code></pre><p> <strong>抽象工厂模式分析</strong>   </p>
 <blockquote>
 <p>抽象工厂模式符合单一职责原则、开闭原则、里氏替换原则、依赖倒置原则。它为具有多个产品结构的程序提供了一种获得产品实例的方法。</p>

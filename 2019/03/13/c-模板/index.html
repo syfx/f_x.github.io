@@ -16,39 +16,39 @@
 <p>template &lt;参数列表&gt;<br>模板函数/类的声明   </p>
 </blockquote>
 <p>   参数列表中包含关键字typename，它定义了参数objectTyep，objectType是一个占位符，当对象实例化模板时（创建类实例时）将使用指定的对象类型替换它：</p>
-<pre><code>  //模板函数   
-  template &lt;typename T&gt;   
-  const T&amp; GetMax(const T&amp; num1, const T&amp; num2)   
-  {
-      if(num1 &lt; num2)
-          return num2;
-      return num1;   
-  }   
+<pre><code>//模板函数   
+template &lt;typename T&gt;   
+const T&amp; GetMax(const T&amp; num1, const T&amp; num2)   
+{
+    if(num1 &lt; num2)
+        return num2;
+    return num1;   
+}   
 
-  //模板类   
-  template &lt;typename T1, typename T2&gt;   
-  class Template   
-  {   
-  private:   
-      T1 m_Obj1;   
-      T2 m_Obj2;   
-  public:   
-      Template(T1 obj1, T2 obj2):   
-        m_Obj1(obj1), m_Obj2(obj2){ }   
+//模板类   
+template &lt;typename T1, typename T2&gt;   
+class Template   
+{   
+private:   
+    T1 m_Obj1;   
+    T2 m_Obj2;   
+public:   
+    Template(T1 obj1, T2 obj2):   
+      m_Obj1(obj1), m_Obj2(obj2){ }   
 
-        void print(){   
-          cout &lt;&lt; m_Obj1 &lt;&lt; &quot;  &quot; &lt;&lt; m_Obj2 &lt;&lt; endl;   
-        }   
-  };   
+      void print(){   
+        cout &lt;&lt; m_Obj1 &lt;&lt; &quot;  &quot; &lt;&lt; m_Obj2 &lt;&lt; endl;   
+      }   
+};   
 
-  int main()   
-  {   
-      Template&lt;int, float&gt; tem(66, 66.6);   
-      tem.print();   
-      cout &lt;&lt; GetMax&lt;float&gt;(25.5, 123) &lt;&lt; endl;   
-      cout &lt;&lt; GetMax(25.5, 123.0)
-      return 0;   
-  }   
+int main()   
+{   
+    Template&lt;int, float&gt; tem(66, 66.6);   
+    tem.print();   
+    cout &lt;&lt; GetMax&lt;float&gt;(25.5, 123) &lt;&lt; endl;   
+    cout &lt;&lt; GetMax(25.5, 123.0)
+    return 0;   
+}   
 </code></pre></li>
 </ul>
 <blockquote>

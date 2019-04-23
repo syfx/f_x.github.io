@@ -17,20 +17,20 @@
 <blockquote>
 <p>下面的代码介绍了vector的几种初始化方法。   </p>
 </blockquote>
-<pre><code>  //默认初始化
-  vector&lt;int&gt; intVec;
+<pre><code>//默认初始化
+vector&lt;int&gt; intVec;
 
-  //初始化时设置至少包含的元素数（并没有限制大小），每个元素初始值默认为0
-  vector&lt;int&gt; intVec1(10);
+//初始化时设置至少包含的元素数（并没有限制大小），每个元素初始值默认为0
+vector&lt;int&gt; intVec1(10);
 
-  //同上，并设置每个元素的初始化值
-  vector&lt;int&gt; intVec2(10, 66);
+//同上，并设置每个元素的初始化值
+vector&lt;int&gt; intVec2(10, 66);
 
-  //使用另外一个vector来初始化
-  vector&lt;int&gt; intVec3(intVec2);
+//使用另外一个vector来初始化
+vector&lt;int&gt; intVec3(intVec2);
 
-  //使用另一个vector的两个迭代器来初始化
-  vector&lt;int&gt; intVec4(intVec2.cbegin(), intVec2.cbegin() + 5);
+//使用另一个vector的两个迭代器来初始化
+vector&lt;int&gt; intVec4(intVec2.cbegin(), intVec2.cbegin() + 5);
 </code></pre></li>
 </ul>
 <blockquote>
@@ -41,20 +41,20 @@
 <blockquote>
 <p>使用成员函数push_back()在容器末尾插入元素；使用insert()在指定位置插入元素。   </p>
 </blockquote>
-<pre><code>  vector&lt;int&gt; intVec(5);
-  intVec.push_back(66);
-  cout &lt;&lt; intVec.size() &lt;&lt; endl;        //6
+<pre><code>vector&lt;int&gt; intVec(5);
+intVec.push_back(66);
+cout &lt;&lt; intVec.size() &lt;&lt; endl;        //6
 
-  //在指定位置插入元素
-  intVec.insert(intVec.begin(), 67);
+//在指定位置插入元素
+intVec.insert(intVec.begin(), 67);
 
-  //在指定位置插入指定个数的某个元素
-  intVec.insert(intVec.begin(), 2, 66);
+//在指定位置插入指定个数的某个元素
+intVec.insert(intVec.begin(), 2, 66);
 
-  //在指定位置插入另一个vector的内容(使用迭代器指定范围)
-  vector&lt;int&gt; anoVec(3, 65);
-  intVec.insert(intVec.begin(), 
-                      anoVec.begin(), anoVec.end());
+//在指定位置插入另一个vector的内容(使用迭代器指定范围)
+vector&lt;int&gt; anoVec(3, 65);
+intVec.insert(intVec.begin(), 
+                    anoVec.begin(), anoVec.end());
 </code></pre></li>
 </ul>
 <blockquote>
@@ -65,43 +65,43 @@
 <blockquote>
 <p>使用下标用算符[]访问元素，超出容器边界时结果不确定。<br>使用成员方法at()访问元素，超出容器边界时将会报错。<br>使用迭代器访问元素。   </p>
 </blockquote>
-<pre><code>  vector&lt;int&gt; intVec;
-  intVec.push_back(64);
-  intVec.push_back(65);
-  intVec.push_back(66);
-  //使用 [] 访问元素
-  for (size_t i = 0; i &lt; intVec.size(); ++i) {
-      cout &lt;&lt; intVec[i] &lt;&lt; endl;
-  }
-  //使用 at() 访问元素
-  for (size_t i = 0; i &lt; intVec.size(); ++i) {
-      cout &lt;&lt; intVec.at(i) &lt;&lt; endl;
-  }
-  //使用迭代器访问元素
-  for (vector&lt;int&gt;::const_iterator pos = intVec.begin()
-      ; pos != intVec.end()
-      ; ++pos)
-  {
-      cout &lt;&lt; *pos &lt;&lt; endl;
-  }
+<pre><code>vector&lt;int&gt; intVec;
+intVec.push_back(64);
+intVec.push_back(65);
+intVec.push_back(66);
+//使用 [] 访问元素
+for (size_t i = 0; i &lt; intVec.size(); ++i) {
+    cout &lt;&lt; intVec[i] &lt;&lt; endl;
+}
+//使用 at() 访问元素
+for (size_t i = 0; i &lt; intVec.size(); ++i) {
+    cout &lt;&lt; intVec.at(i) &lt;&lt; endl;
+}
+//使用迭代器访问元素
+for (vector&lt;int&gt;::const_iterator pos = intVec.begin()
+    ; pos != intVec.end()
+    ; ++pos)
+{
+    cout &lt;&lt; *pos &lt;&lt; endl;
+}
 </code></pre></li>
 <li><p><strong>删除vector中的元素</strong></p>
 <blockquote>
 <p>使用pop_back()从vector中删除元素所需要的时间是固定的。<br>不能使用偏移位置和元素数删除指定个数的元素。   </p>
 </blockquote>
-<pre><code>  vector&lt;int&gt; intVec;
-  intVec.push_back(64);
-  intVec.push_back(65);
-  intVec.push_back(66);
+<pre><code>vector&lt;int&gt; intVec;
+intVec.push_back(64);
+intVec.push_back(65);
+intVec.push_back(66);
 
-  //删除vector末尾的元素
-  intVec.pop_back();
+//删除vector末尾的元素
+intVec.pop_back();
 
-  //删除迭代器指向的元素
-  intVec.erase(intVec.begin());
+//删除迭代器指向的元素
+intVec.erase(intVec.begin());
 
-  //删除两个迭代器之间的元素
-  intVec.erase(intVec.begin(), intVec.begin() + 2);
+//删除两个迭代器之间的元素
+intVec.erase(intVec.begin(), intVec.begin() + 2);
 </code></pre></li>
 <li><p><strong>大小和容量的区别</strong></p>
 <blockquote>

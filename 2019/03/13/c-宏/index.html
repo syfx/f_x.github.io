@@ -15,8 +15,8 @@
 <ul>
 <li>语法： #define identifer(标识符) value(值)<br>栗子：<br><code>#define PI 3.1415</code><br><code>#define NICKNAME &quot;f_x&quot;</code><br><code>#define THIS_IS_DOUBLE double</code><br><code>#define THIS_IS_FOR for</code>   </li>
 <li><p>预处理器对宏指定的文本进行简单的替换，因此可以用宏来编写简单的函数<br>栗子：   </p>
-<pre><code>  #define PI 3.1415
-     #define AREA_CIRCLE(r) ( PI * (r) * (r))
+<pre><code>#define PI 3.1415
+   #define AREA_CIRCLE(r) ( PI * (r) * (r))
 </code></pre></li>
 </ul>
 <p><strong>为什么要使用这么多括号？</strong>   </p>
@@ -29,28 +29,28 @@
 <blockquote>
 <p>假设有两个头文件class1.h,class2.h,当我们不得不让两个类相互包含时，对预处理器来说，这样会造成递归问题；<br>为了避免这种问题，可以使用宏和预处理器编译指令#ifndef（if-not-define）和endif。   </p>
 </blockquote>
-<pre><code>  #ifndef HEADER2_H_H            //如果宏HEADER2_H_H未定义
-  #define HEADER2_H_H            //定义宏HEADER2_H_H
-  #include &lt;class2.h&gt;
+<pre><code>#ifndef HEADER2_H_H            //如果宏HEADER2_H_H未定义
+#define HEADER2_H_H            //定义宏HEADER2_H_H
+#include &lt;class2.h&gt;
 
-  class class1
-  {
-      ......
-  };
+class class1
+{
+    ......
+};
 
-  #endif
+#endif
 </code></pre></li>
 </ul>
-<pre><code>    #ifndef HEADER1_H_H            //如果宏HEADER1_H_H未定义
-    #define HEADER1_H_H            //定义宏HEADER1_H_H
-    #include &lt;class1.h&gt;
+<pre><code>#ifndef HEADER1_H_H            //如果宏HEADER1_H_H未定义
+#define HEADER1_H_H            //定义宏HEADER1_H_H
+#include &lt;class1.h&gt;
 
-    class class2
-    {
-        ......
-    };
+class class2
+{
+    ......
+};
 
-    #endif   
+#endif   
 </code></pre><blockquote>
 <p>预处理器进行死板的文本替换，这可以减轻程序员的负担，当并不是能减轻编译器的负担。<br>其次，对于宏PI，我们没有太大的控制权，其类型是double还是float？答案是都不是。在预处理器看来，PI就是3.1415，根本不知道其数据类型。<br>所以定义常量时 const 是更好的选择<br><code>const double PI = 3.14215;</code><br><strong>define与const的区别</strong><br>1.起作用的阶段不同：#define在预处理阶段起作用； const在编译或者运行阶段起作用；<br>2.起作用的方式不同：#define进行简单的文本替换，不能进行类型检查；const定义的常量有对应的数据类型；<br>3.储存方式不同：#define定义的宏常量在内存中有多个备份，而const定义的常量在内存中只有一个备份；<br>4.const常量可用于调试，而#define定义的常量不能用于调试（预处理阶段被替换掉了）；</p>
 </blockquote>
