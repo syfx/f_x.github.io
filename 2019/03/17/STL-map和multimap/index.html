@@ -1,99 +1,65 @@
-extends includes/layout.pug
-
-block top_img
-  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
-  if (top_img && page.top_img !== false)
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var flag = top_img === true ? 'no-bg' : ''
-    div#top-container(style=bg_img class=flag)
-      include ./includes/header.pug
-      #post-info
-        #post-title= page.title || _p('no_title')
-        #post-meta
-          if (theme.post_meta.date_type)
-            - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
-            time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-          if (theme.post_meta.categories && page.categories.data.length > 0)
-            if (theme.post_meta.date_type)
-              span.post-meta__separator |
-            each item, index in page.categories.data
-              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
-              a(href=url_for(item.path)).post-meta__categories #[=item.name]
-              if (index < page.categories.data.length - 1)
-                 i.fa.fa-angle-right(aria-hidden="true")
-          if (theme.disqus.enable && theme.disqus.count)
-            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-              span.post-meta__separator |
-            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
-            a(href=url_for(page.path) + '#disqus_thread')
-              span.disqus-comment-count(data-disqus-identifier=page.path)
-          if (theme.wordcount && theme.wordcount.enable)
-            .post-meta-wordcount
-              span= _p('post.wordcount') + ': '
-              span.word-count= wordcount(page.content)
-              span.post-meta__separator |
-              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-  else
-    div#top-container.plain
-      include ./includes/header.pug
-
-block content
-  article#post(class="")
-    if (!top_img)
-      #post-title.plain= page.title || _p('no_title')
-      #post-meta
-        if (theme.post_meta.date_type)
-          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
-          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-        if (theme.post_meta.categories && page.categories.data.length > 0)
-          if (theme.post_meta.date_type)
-            span.post-meta__separator |
-          each item, index in page.categories.data
-            i.fa.fa-inbox(aria-hidden="true")
-            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
-            if (index < page.categories.data.length - 1)
-                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
-        if (theme.disqus.enable && theme.disqus.count)
-          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-            span.post-meta__separator |
-          i.fa.fa-comment-o(aria-hidden="true")
-          a(href=url_for(page.path) + '#disqus_thread')
-            span.disqus-comment-count(data-disqus-identifier=page.path)
-        if (theme.wordcount && theme.wordcount.enable)
-          span.post-meta__separator |
-          span.post-meta-wordcount
-            span= _p('post.wordcount') + ': '
-            span.word-count= wordcount(page.content)
-            span.post-meta__separator |
-            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
-  if (theme.post_copyright && theme.post_copyright.enable)
-    .post-copyright
-      .post-copyright__author
-        span.post-copyright-meta= _p('post.copyright.author') + ": "
-        span.post-copyright-info
-          a(href=`mailto:${config.email}`) #[=config.author]
-      .post-copyright__type
-        span.post-copyright-meta= _p('post.copyright.link') + ": "
-        span.post-copyright-info
-          a(href=url_for(page.permalink)) #[=page.permalink]
-      .post-copyright__notice
-        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-  if (theme.post_meta.tags)
-    .post-meta__tag-list
-      each item, index in page.tags.data
-        a(href=url_for(item.path)).post-meta__tags #[=item.name]
-  if (theme.QR_code)
-    if (theme.QR_code.length > 0)
-      .post-qr-code
-        each item in theme.QR_code
-          .post-qr-code-item
-            img.post-qr-code__img(src=(item.itemlist||item).img)
-            .post-qr-code__desc=(item.itemlist||item).text
-  include includes/share/index.pug
-  include includes/pagination.pug
-  if (theme.adv && theme.adv.enable)
-    .post-adv!= theme.adv.info
-  if page.comments !== false
-    include includes/comments/index.pug
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="STL-map和multimap"><meta name="keywords" content="C++,STL"><meta name="author" content="fx"><meta name="copyright" content="fx"><title>STL-map和multimap | fx's study notes</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">fx</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">21</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">14</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">fx's study notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">STL-map和multimap</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-17</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><blockquote>
+<p>map与multimap是键值对容器，支持根据键查找值。multimap可以储存重复的键，而前者只能储存唯一的键。使用两者之前要包含时头文件<map><br>为实现快速查找，map与multimap的内部结构看起来像二叉树，这意味着在map或multimap中插入数据时将对其进行排序；因此，位于map中特定位置的元素不能替换为值不同的新元素。   </map></p>
+</blockquote>
+<p><strong>map及multimap的实例化</strong>   </p>
+<ul>
+<li><p>实例化map和multimap的语法如下：   </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+...
+map&lt;keyType, valueType, Predicate = std::less&lt;keyType&gt;&gt; mapObject;
+multimap&lt;keyType, valueType, Predicate = std::less&lt;keyType&gt;&gt; multimapObject;
+</code></pre><blockquote>
+<p>其中Predicate可图换为自定义谓词———一个实现了operator()的类或结构。例：</p>
+</blockquote>
+<pre><code>//实现从大到小排序的谓词
+template&lt;typename KeyType&gt;
+struct ReverseSort
+{
+    bool operator()(const KeyType&amp; key1, const KeyType&amp; key2)
+    {
+        return (key1 &gt; key2);
+    }
+}      
+</code></pre><p><strong>插入元素</strong></p>
+<blockquote>
+<p>在两种容器之中插入元素时，都可以使用成员函数insert:<br><code>map&lt;int, string&gt; mapInt_String</code><br><code>mapInt_String.insert(make_pair(0, &quot;Number One&quot;));</code><br><code>mapInt_String.insert(pair&lt;int, string&gt;(2, &quot;Number Two&quot;));</code>      </p>
+</blockquote>
+</li>
+<li><strong>std::pair</strong><br>主要作用是将两个数据组合成一个数据，两个数据可以是同一类型或者不同类型。<br>pair实质上是一个结构体，其主要的两个成员变量是<strong>first</strong>和<strong>second</strong>，这两个变量可以直接使用。<br>初始化一个pair可以使用构造函数，也可以使用std::make_pair函数。<br>make_pair函数的定义如下：<br>  <code>template pair make_pair(T1 a, T2 b) { return pair(a, b); }</code><br>在需要pair类型做参数的位置，可以直接调用make_pair生成pair对象。<br>mark_pair可以接受隐式的类型转换，这样可以获得更高的灵活度。但是这样会出现如下问题：<br>例如有如下两个定义：   <pre><code>```std::pair&lt;int, float&gt;(1, 1.1);```   
+```std::make_pair(1, 1.1);```   
+</code></pre>使用构造函数生成的pair对象的second变量是float类型，而用make_pair生成的pair对象的second变量将是double类型。   </li>
+</ul>
+<p><strong>查找元素</strong></p>
+<blockquote>
+<p>可使用成员方法find在这两个容器中查找元素。find返回一个迭代器：<br><code>auto iPairFind = mapInt_String.find(key);</code><br>使用迭代器iPairFind之前，要检查该迭代器：<br><code>if(iPairFind != mapInt_String.end())</code>   </p>
+<ul>
+<li>注意：<br>在multimap中，因为key值不唯一，因此在使用find查找元素时，返回的迭代器指向首次查找得到的元素。如果想得到所有值，应该使用multimap::count()确定有多少值与指定的key对应。   </li>
+</ul>
+</blockquote>
+<p><strong>删除元素</strong>   </p>
+<blockquote>
+<p>使用成员函数erase对来删除元素。   </p>
+<ul>
+<li>通过指定的key来删除元素：<br><code>mapObject.erase(key);</code>   </li>
+<li>删除迭代器指向的元素：<br><code>mapObject.erase(iElement);</code>      </li>
+<li>使用迭代器指定边界，删除指定范围内的所有元素：<br><code>mapObject.erase(iLowBound, iUpperBound);</code>   </li>
+</ul>
+</blockquote>
+<p><strong>std::unordered_map与std::unordered_multimap</strong>   </p>
+<blockquote>
+<p>从C++11起，STL支持散列映射——std::unordered_map,使用时需包含头文件&lt;unordered_map&gt;<br>unordered_map的的平均插入和删除时间是固定的，查找元素的时间也是固定的。</p>
+</blockquote>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">fx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2019/03/17/STL-map和multimap/">http://yoursite.com/2019/03/17/STL-map和multimap/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a><a class="post-meta__tags" href="/tags/STL/">STL</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/03/18/设计模式之工厂模式/"><i class="fa fa-chevron-left">  </i><span>设计模式之工厂模式</span></a></div><div class="next-post pull-right"><a href="/2019/03/17/OpenGL简介及其环境配置/"><span>OpenGL简介及其环境配置</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2019 By fx</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script></body></html>

@@ -1,99 +1,441 @@
-extends includes/layout.pug
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="设计模式之工厂模式"><meta name="keywords" content="设计模式"><meta name="author" content="fx"><meta name="copyright" content="fx"><title>设计模式之工厂模式 | fx's study notes</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式之工厂模式-Factory-Pattern"><span class="toc-number">1.</span> <span class="toc-text">设计模式之工厂模式(Factory Pattern)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、简单工厂模式-Simple-Factory-Pattern"><span class="toc-number">1.1.</span> <span class="toc-text">1、简单工厂模式(Simple Factory Pattern)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、工厂方法模式-Factory-Pattern"><span class="toc-number">1.2.</span> <span class="toc-text">2、工厂方法模式(Factory Pattern)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#产品等级结构与产品族"><span class="toc-number">1.2.1.</span> <span class="toc-text">产品等级结构与产品族</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、抽象工厂模式"><span class="toc-number">1.3.</span> <span class="toc-text">3、抽象工厂模式</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">fx</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">21</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">14</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">fx's study notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">设计模式之工厂模式</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-18</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="设计模式之工厂模式-Factory-Pattern"><a href="#设计模式之工厂模式-Factory-Pattern" class="headerlink" title="设计模式之工厂模式(Factory Pattern)"></a>设计模式之工厂模式(Factory Pattern)</h2><blockquote>
+<p>工厂模式是最常用的设计模式之一，它属于创建型设计模式；工厂模式 <strong>提供了一种创建对象的最好方式</strong> （如果你有更好的方式就当我没说）；它的主要作用是让对象的创建与对象的使用分离开来，即使用单独的类来<strong> 封装创建实例的逻辑。</strong><br>工厂模式又可以细分为：   </p>
+<ul>
+<li>简单工厂模式   </li>
+<li>工厂方法模式   </li>
+<li>抽象工厂模式   </li>
+</ul>
+</blockquote>
+<h3 id="1、简单工厂模式-Simple-Factory-Pattern"><a href="#1、简单工厂模式-Simple-Factory-Pattern" class="headerlink" title="1、简单工厂模式(Simple Factory Pattern)"></a>1、简单工厂模式(Simple Factory Pattern)</h3><blockquote>
+<p>又称为静态工厂方法(Static Factory Method)模式；在简单工厂模式中，通常包含一个静态方法，可以根据参数的不同返回不同类的实例。<br>简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。   </p>
+</blockquote>
+<ul>
+<li>简单工厂模式包含以下几种角色：   <ul>
+<li>工厂：负责创建所有具体产品类的实例，工厂类中的静态方法要能够被其它类直接在外界调用，以获得产品对象。   </li>
+<li>抽象产品类：是所有具体产品的父类，负责定义其它具体产品的所共有的公共接口（子类共有的行为）   </li>
+<li>具体产品类：继承自抽象产品类，是工厂角色的创建目标。   </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>如果上面说的不好理解的话，那就来个栗子消化一下吧。   </p>
+</blockquote>
+<p>在一个游戏中，有三种小怪： <strong>MobA</strong> 、<strong>MobB</strong> 、<strong>Mobc</strong> ;<br>在游戏中，他们都可以攻击主角。这时候，我们就可以使用简单工厂模式来控制它们的 出场（实例生成）。   </p>
+</blockquote>
+<hr>
+<blockquote>
+<p>首先，我们应该创建一个抽象怪物类 <strong>Mob</strong> ，让上面那三个小怪类继承自Mob。然后用Mob当做工厂中静态方法的返回对象。<br>不太懂得话，就看看代码吧（c#）：</p>
+</blockquote>
+<pre><code>namespace FactoryPattern
+{
+    //怪物工厂
+    class MobFactory
+    {
+        //获取对象实例的静态方法
+        public static Mob GetMob(string mobName)
+        {
+            switch (mobName) {
+                case &quot;MobA&quot;: return new MobA();
+                case &quot;MobB&quot;: return new MobB();
+                case &quot;MobC&quot;: return new MobC();
+                default: return null;
+            }
+        }
+    }
 
-block top_img
-  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
-  if (top_img && page.top_img !== false)
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var flag = top_img === true ? 'no-bg' : ''
-    div#top-container(style=bg_img class=flag)
-      include ./includes/header.pug
-      #post-info
-        #post-title= page.title || _p('no_title')
-        #post-meta
-          if (theme.post_meta.date_type)
-            - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
-            time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-          if (theme.post_meta.categories && page.categories.data.length > 0)
-            if (theme.post_meta.date_type)
-              span.post-meta__separator |
-            each item, index in page.categories.data
-              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
-              a(href=url_for(item.path)).post-meta__categories #[=item.name]
-              if (index < page.categories.data.length - 1)
-                 i.fa.fa-angle-right(aria-hidden="true")
-          if (theme.disqus.enable && theme.disqus.count)
-            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-              span.post-meta__separator |
-            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
-            a(href=url_for(page.path) + '#disqus_thread')
-              span.disqus-comment-count(data-disqus-identifier=page.path)
-          if (theme.wordcount && theme.wordcount.enable)
-            .post-meta-wordcount
-              span= _p('post.wordcount') + ': '
-              span.word-count= wordcount(page.content)
-              span.post-meta__separator |
-              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-  else
-    div#top-container.plain
-      include ./includes/header.pug
+    ////使用接口实现抽象类会更好
+    //interface I_Mob
+    //{
+    //    //定义攻击接口（规定每个继承自此抽象类的怪物都能进行攻击）
+    //    void Attack();
+    //}
 
-block content
-  article#post(class="")
-    if (!top_img)
-      #post-title.plain= page.title || _p('no_title')
-      #post-meta
-        if (theme.post_meta.date_type)
-          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
-          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-        if (theme.post_meta.categories && page.categories.data.length > 0)
-          if (theme.post_meta.date_type)
-            span.post-meta__separator |
-          each item, index in page.categories.data
-            i.fa.fa-inbox(aria-hidden="true")
-            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
-            if (index < page.categories.data.length - 1)
-                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
-        if (theme.disqus.enable && theme.disqus.count)
-          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-            span.post-meta__separator |
-          i.fa.fa-comment-o(aria-hidden="true")
-          a(href=url_for(page.path) + '#disqus_thread')
-            span.disqus-comment-count(data-disqus-identifier=page.path)
-        if (theme.wordcount && theme.wordcount.enable)
-          span.post-meta__separator |
-          span.post-meta-wordcount
-            span= _p('post.wordcount') + ': '
-            span.word-count= wordcount(page.content)
-            span.post-meta__separator |
-            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
-  if (theme.post_copyright && theme.post_copyright.enable)
-    .post-copyright
-      .post-copyright__author
-        span.post-copyright-meta= _p('post.copyright.author') + ": "
-        span.post-copyright-info
-          a(href=`mailto:${config.email}`) #[=config.author]
-      .post-copyright__type
-        span.post-copyright-meta= _p('post.copyright.link') + ": "
-        span.post-copyright-info
-          a(href=url_for(page.permalink)) #[=page.permalink]
-      .post-copyright__notice
-        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-  if (theme.post_meta.tags)
-    .post-meta__tag-list
-      each item, index in page.tags.data
-        a(href=url_for(item.path)).post-meta__tags #[=item.name]
-  if (theme.QR_code)
-    if (theme.QR_code.length > 0)
-      .post-qr-code
-        each item in theme.QR_code
-          .post-qr-code-item
-            img.post-qr-code__img(src=(item.itemlist||item).img)
-            .post-qr-code__desc=(item.itemlist||item).text
-  include includes/share/index.pug
-  include includes/pagination.pug
-  if (theme.adv && theme.adv.enable)
-    .post-adv!= theme.adv.info
-  if page.comments !== false
-    include includes/comments/index.pug
+    //抽象怪物类
+    abstract class Mob
+    {
+        //定义攻击接口（规定每个继承自此抽象类的怪物都能进行攻击）
+        public abstract void Attack(); 
+    }
+    //小怪A
+    class MobA : Mob
+    {
+        //重写Acctak方法
+        public override void Attack()
+        {
+            Console.WriteLine(&quot;MobA 进行攻击&quot;);
+        }
+    }
+    //小怪B
+    class MobB : Mob
+    {
+        //重写Acctak方法
+        public override void Attack()
+        {
+            Console.WriteLine(&quot;MobB 进行攻击&quot;);
+        }
+    }
+    //小怪C
+    class MobC : Mob
+    {
+        //重写Acctak方法
+        public override void Attack()
+        {
+            Console.WriteLine(&quot;MobC 进行攻击&quot;);
+        }
+    }
+
+    class Test
+    {
+        static void Main(string[] args)
+        {
+            Mob mob = MobFactory.GetMob(&quot;MobA&quot;);
+            mob.Attack();                                           //MobA进行攻击
+            mob = MobFactory.GetMob(&quot;MobB&quot;);
+            mob.Attack();                                           //MobB进行攻击
+
+            Console.ReadKey();
+        }
+    }
+}
+</code></pre><p><strong>简单工厂模式分析</strong>    </p>
+<blockquote>
+<ul>
+<li>将对象的创建和对象本身业务处理分离可以降低系统的耦合度，使得两者修改起来都相对容易。    </li>
+<li>对于简单工厂模式，由于其方法是静态的，因此使用起来比较方便。   </li>
+<li>简单工厂模式虽然满足单一职则原则，不过工厂类的职责相对过重，而且增加新的产品时需要修改工厂类的判断逻辑，不符合开闭原则。</li>
+</ul>
+</blockquote>
+<p> <strong>模式优缺点及使用场景</strong>   </p>
+<ul>
+<li><p>优点   </p>
+<blockquote>
+<ul>
+<li>简单工厂模式实现了对责任的分割，它提供了专门的工厂类用于创建对象，降低系统的耦合度。    </li>
+<li>客户端无须知道所创建的具体产品类的类名，只需要知道具体产品类所对应的参数即可。   </li>
+</ul>
+</blockquote>
+</li>
+<li><p>缺点</p>
+<blockquote>
+<ul>
+<li>由于工厂类集中了所有产品创建逻辑，一旦不能正常工作，整个系统都要受到影响。   </li>
+<li>使用简单工厂模式将会增加系统中类的个数，在一定程序上增加了系统的复杂度和理解难度。   </li>
+<li>系统扩展困难，一旦添加新产品就不得不修改工厂逻辑，在产品类型较多时，有可能造成工厂逻辑过于复杂，不利于系统的扩展和维护。   </li>
+<li>简单工厂模式由于使用了静态工厂方法，造成工厂角色无法形成基于继承的等级结构。   </li>
+</ul>
+</blockquote>
+</li>
+<li><p>使用场景   </p>
+<blockquote>
+<p>当需要创建的对象较少且以后基本上不要增加新的对象时，用这个工厂方式还是不错的。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2、工厂方法模式-Factory-Pattern"><a href="#2、工厂方法模式-Factory-Pattern" class="headerlink" title="2、工厂方法模式(Factory Pattern)"></a>2、工厂方法模式(Factory Pattern)</h3><blockquote>
+<p>又被称多态性工厂模式。在这个模式中，不再使用一个类创建所有的产品实例，而是实现一个抽象的工厂父类角色，然后为每个产品都实现一个具体的工厂子类，抽象工厂父类角色，仅负责给出具体工厂子类必须实现的接口，而具体的创建对象的逻辑在子类中实现。   </p>
+</blockquote>
+<ul>
+<li>工厂方法模式包含的角色：   <ul>
+<li>抽象工厂类：所有具体工厂的父类，规定工厂子类应实现哪些接口。   </li>
+<li>具体工厂类：继承自抽象工厂类，用于创建一个特定的产品。   </li>
+<li>抽象产品类：所有具体产品的父类，负责定义其它具体产品的所共有的公共接口    </li>
+<li>具体产品类：继承自抽象产品类，是具体工厂类角色的创建目标。    </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>根据上述例子实现的具体代码为：</p>
+</blockquote>
+<pre><code>namespace FactoryPattern
+{
+    //怪物接口
+    interface Mob
+    {
+        void Attack();
+    }
+    //小怪A
+    class MobA : Mob
+    {
+        //重写Acctak方法
+        public void Attack()
+        {
+            Console.WriteLine(&quot;MobA 进行攻击&quot;);
+        }
+    }
+    //小怪B
+    class MobB : Mob
+    {
+        //重写Acctak方法
+        public void Attack()
+        {
+            Console.WriteLine(&quot;MobB 进行攻击&quot;);
+        }
+    }
+    //小怪C
+    class MobC : Mob
+    {
+        //重写Acctak方法
+        public void Attack()
+        {
+            Console.WriteLine(&quot;MobC 进行攻击&quot;);
+        }
+    }
+
+    //抽象工厂接口
+    interface Factory
+    {
+        Mob GetMob();
+    }
+    //创建怪物A的工厂
+    class MobA_Factory : Factory
+    {
+        public Mob GetMob()
+        {
+            return new MobA();
+        }
+    }
+    //创建怪物B的工厂
+    class MobB_Factory : Factory
+    {
+        public Mob GetMob()
+        {
+            return new MobB();
+        }
+    }
+    //创建怪物C的工厂
+    class MobC_Factory : Factory
+    {
+        public Mob GetMob()
+        {
+            return new MobC();
+        }
+    }
+
+    class Test
+    {
+        static void Main(string[] args)
+        {
+            //获得小怪A
+            Factory factory = new MobA_Factory();
+            Mob mob = factory.GetMob();
+            mob.Attack();
+            //获得小怪B
+            factory = new MobB_Factory();
+            mob = factory.GetMob();
+            mob.Attack();
+            Console.ReadKey();
+        }
+    }
+}
+</code></pre><p><strong>工厂方法模式分析</strong>   </p>
+<blockquote>
+<p>在这个模式中，将每个具体产品的创建细节分配给每个具体的工厂来实现，这样做不仅使工厂方法具有简单工厂方法的优点，还解决了简单工厂模式职责过重的问题。不过由于每个产品类都要对应一个工厂类，因此使用此模式时，会在一定程度上增加系统的复杂性。</p>
+</blockquote>
+<p><strong>优点</strong>     </p>
+<blockquote>
+<p>工厂方法模式除了具有简单工厂模式的优点外，还具有以下优点：   </p>
+</blockquote>
+<ul>
+<li>进一步的细化了工厂类的职责，真正的实现了在创建实例这块的高内聚、低耦合。   </li>
+<li>当一个工厂出现问题时不会影响到其他工厂，提高了程序的健壮性。   </li>
+<li>提高了程序的灵活性，当新添加一个产品时，只需添加一个产品类和相应产品的工厂类即可。   </li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>要为每个产品类创建具体工厂，增加了代码量。（个人感觉有其优点相比，这点缺点可以忽略了）</li>
+</ul>
+<p><strong>应用场景</strong> </p>
+<h4 id="产品等级结构与产品族"><a href="#产品等级结构与产品族" class="headerlink" title="产品等级结构与产品族"></a>产品等级结构与产品族</h4><blockquote>
+<ul>
+<li>产品等级结构：即产品的继承结构，如在上面所用到的例子中，抽象怪物类Mob与小怪MobA、小怪MobB、小怪MobC之间便构成了一个产品等级结构，抽象怪物类是父类，而不同种类的小怪是其子类。   </li>
+<li>产品族：在抽象工厂模式中会提到，产品族是指由同一个工厂生产的，位于不同产品等级结构中的一组产品。</li>
+</ul>
+</blockquote>
+<p><img src="http://p.qpic.cn/pic_wework/1948211503/f6f018f9ede8d36a07519fb4fbff98f0bf32c401b7f50c90/0" alt=""></p>
+<h3 id="3、抽象工厂模式"><a href="#3、抽象工厂模式" class="headerlink" title="3、抽象工厂模式"></a>3、抽象工厂模式</h3><blockquote>
+<p>抽象工厂模式是当有多个抽象产品时所使用的一种工厂模式。它和工厂方法模式很像，可以把工厂方法模式当成是产品族为1时的抽象工厂模式。   </p>
+</blockquote>
+<ul>
+<li>抽象工厂模式包含的角色：   <ul>
+<li>抽象工厂类：所有具体工厂的父类，实现对具体工厂的规范。   </li>
+<li>具体工厂类：继承自抽象工厂类，用于创建某个产品族中的的产具体产品。   </li>
+<li>抽象产品类：所有具体产品的父类，负责定义其它具体产品的所共有的公共接口    </li>
+<li>具体产品类：继承自抽象产品类，是具体工厂类角色的创建目标之一。   </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>修改一下上面那个例子，除了怪物类外，现在还要新添加一个武器类，武器类中包括武器WpA、WpB、WpC；怪物MobA使用WpA，怪物MobB使用WpB，怪物MobC使用WpC；<br>使用抽象工厂模式实现怪物和武器生成的代码如下：   </p>
+</blockquote>
+<pre><code>//怪物接口
+interface Mob
+{
+    void Attack();
+}
+//小怪A
+class MobA : Mob
+{
+    //重写Acctak方法
+    public void Attack()
+    {
+        Console.WriteLine(&quot;MobA 进行攻击&quot;);
+    }
+}
+//小怪B
+class MobB : Mob
+{
+    //重写Acctak方法
+    public void Attack()
+    {
+        Console.WriteLine(&quot;MobB 进行攻击&quot;);
+    }
+}
+//小怪C
+class MobC : Mob
+{
+    //重写Acctak方法
+    public void Attack()
+    {
+        Console.WriteLine(&quot;MobC 进行攻击&quot;);
+    }
+}
+
+//武器接口
+interface Wp
+{
+    //攻击加成
+    void AtkAdd();
+}
+//武器WpA
+class WpA : Wp
+{
+    public void AtkAdd()
+    {
+        Console.WriteLine(&quot;MobA专属武器，MobA提高了攻击力&quot;);
+    }
+}
+//武器WpA
+class WpB : Wp
+{
+    public void AtkAdd()
+    {
+        Console.WriteLine(&quot;MobB专属武器，MobB提高了攻击力&quot;);
+    }
+}
+//武器WpC
+class WpC : Wp
+{
+    public void AtkAdd()
+    {
+        Console.WriteLine(&quot;MobC专属武器，MobC提高了攻击力&quot;);
+    }
+}
+
+//工厂接口
+interface Factory
+{
+    //获取怪物实例的方法
+    Mob GetMob();
+    //获取武器实例的方法
+    Wp GetWp();
+}
+
+//A类怪物武器产品族工厂
+class A_Factory : Factory
+{
+    //获取怪物实例的方法
+    public Mob GetMob() {
+        return new MobA();
+    }
+    //获取武器实例的方法
+    public Wp GetWp()
+    {
+        return new WpA();
+    }
+}
+
+//A类怪物武器产品族工厂
+class B_Factory : Factory
+{
+    //获取怪物实例的方法
+    public Mob GetMob()
+    {
+        return new MobB();
+    }
+    //获取武器实例的方法
+    public Wp GetWp()
+    {
+        return new WpB();
+    }
+}
+
+//A类怪物武器产品族工厂
+class C_Factory : Factory
+{
+    //获取怪物实例的方法
+    public Mob GetMob()
+    {
+        return new MobC();
+    }
+    //获取武器实例的方法
+    public Wp GetWp()
+    {
+        return new WpC();
+    }
+}
+
+
+class Test
+{
+    static void Main(string[] args)
+    {
+        //A类产品族工厂
+        Factory factory = new A_Factory();
+        Mob moba = factory.GetMob();
+        Wp wpa = factory.GetWp();
+        wpa.AtkAdd();
+        moba.Attack();
+
+        //B类产品族工厂
+        factory = new C_Factory();
+        Mob mobb = factory.GetMob();
+        Wp wpb = factory.GetWp();
+        wpb.AtkAdd();
+        mobb.Attack();
+
+        Console.ReadKey();
+    }
+}
+</code></pre><p> <strong>抽象工厂模式分析</strong>   </p>
+<blockquote>
+<p>抽象工厂模式符合单一职责原则、开闭原则、里氏替换原则、依赖倒置原则。它为具有多个产品结构的程序提供了一种获得产品实例的方法。</p>
+</blockquote>
+<p><strong>抽象工厂的优缺点</strong> </p>
+<ul>
+<li>优点：   </li>
+<li><p>工厂方法模式除了具有简单工厂模式的优点外，还具有以下优点：   </p>
+<ul>
+<li>当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。</li>
+<li>增加新的产品族时很方便，只需添加生产相应产品族实例的工厂即可，无须修改已有系统。</li>
+</ul>
+</li>
+<li><p>缺点：   </p>
+<ul>
+<li>当增加新的产品等级结构时，需要对抽象工厂和具体工厂类进行修改，不符合开闭原则。   </li>
+</ul>
+</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">fx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2019/03/18/设计模式之工厂模式/">http://yoursite.com/2019/03/18/设计模式之工厂模式/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/设计模式/">设计模式</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/03/20/设计模式之单例模式/"><i class="fa fa-chevron-left">  </i><span>设计模式之单例模式</span></a></div><div class="next-post pull-right"><a href="/2019/03/17/STL-map和multimap/"><span>STL-map和multimap</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2019 By fx</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script></body></html>
