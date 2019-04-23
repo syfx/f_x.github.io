@@ -7,7 +7,7 @@
     error: '复制错误',
     noSupport: '浏览器不支持'
   }
-} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">fx</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">21</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">14</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://p.qpic.cn/pic_wework/1948211503/babcaaaa9297aa741e49ed921650a20476d250d0718288dc/0)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">fx's study notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">主页</a><a class="site-page" href="/archives">档案</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">类别</a></span></div><div id="post-info"><div id="post-title">c++模板</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-13</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">fx</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">21</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">14</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">1</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://p.qpic.cn/pic_wework/1948211503/babcaaaa9297aa741e49ed921650a20476d250d0718288dc/0)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">fx's study notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span></div><div id="post-info"><div id="post-title">c++模板</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-13</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
 <p>模板可能是c++中最强大最强大却最少被使用（或被理解）的<strong>特性</strong>之一了；我们可以用模板来定义一种适用于<strong>不同类型</strong>的对象的<strong>行为</strong><br>这就像是用#define定义的一个返回两个数中最大值的宏函数那样<br><code>#define MAX_NUM(a, b) ((a) &gt; (b) ? (a) : (b))</code><br>这里的a，b可以是int类型、也可以是其他类型；与“”宏函数不同的是<strong>宏不是类型安全的，而模板是类型安全的</strong>   </p>
 </blockquote>
 <ul>
@@ -16,39 +16,39 @@
 <p>template &lt;参数列表&gt;<br>模板函数/类的声明   </p>
 </blockquote>
 <p>   参数列表中包含关键字typename，它定义了参数objectTyep，objectType是一个占位符，当对象实例化模板时（创建类实例时）将使用指定的对象类型替换它：</p>
-<pre><code>//模板函数   
-template &lt;typename T&gt;   
-const T&amp; GetMax(const T&amp; num1, const T&amp; num2)   
-{
-    if(num1 &lt; num2)
-        return num2;
-    return num1;   
-}   
+<pre><code>  //模板函数   
+  template &lt;typename T&gt;   
+  const T&amp; GetMax(const T&amp; num1, const T&amp; num2)   
+  {
+      if(num1 &lt; num2)
+          return num2;
+      return num1;   
+  }   
 
-//模板类   
-template &lt;typename T1, typename T2&gt;   
-class Template   
-{   
-private:   
-    T1 m_Obj1;   
-    T2 m_Obj2;   
-public:   
-    Template(T1 obj1, T2 obj2):   
-      m_Obj1(obj1), m_Obj2(obj2){ }   
+  //模板类   
+  template &lt;typename T1, typename T2&gt;   
+  class Template   
+  {   
+  private:   
+      T1 m_Obj1;   
+      T2 m_Obj2;   
+  public:   
+      Template(T1 obj1, T2 obj2):   
+        m_Obj1(obj1), m_Obj2(obj2){ }   
 
-      void print(){   
-        cout &lt;&lt; m_Obj1 &lt;&lt; &quot;  &quot; &lt;&lt; m_Obj2 &lt;&lt; endl;   
-      }   
-};   
+        void print(){   
+          cout &lt;&lt; m_Obj1 &lt;&lt; &quot;  &quot; &lt;&lt; m_Obj2 &lt;&lt; endl;   
+        }   
+  };   
 
-int main()   
-{   
-    Template&lt;int, float&gt; tem(66, 66.6);   
-    tem.print();   
-    cout &lt;&lt; GetMax&lt;float&gt;(25.5, 123) &lt;&lt; endl;   
-    cout &lt;&lt; GetMax(25.5, 123.0)
-    return 0;   
-}   
+  int main()   
+  {   
+      Template&lt;int, float&gt; tem(66, 66.6);   
+      tem.print();   
+      cout &lt;&lt; GetMax&lt;float&gt;(25.5, 123) &lt;&lt; endl;   
+      cout &lt;&lt; GetMax(25.5, 123.0)
+      return 0;   
+  }   
 </code></pre></li>
 </ul>
 <blockquote>
