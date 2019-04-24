@@ -25,37 +25,17 @@
 <ul>
 <li><strong>链表结构</strong></li>
 </ul>
-<p><code>`</code>json typedef  struct List {<br>    int val;<br>    List<em> next;<br>}</em>myList;</p>
-<p>//创建链表<br>myList CreatList(unsigned int length)<br>{<br>    if (length == 0)<br>        return NULL;<br>    myList head, tail, temp;<br>    head = new List();<br>    head-&gt;next = NULL;<br>    tail = head;<br>    //在32位系统中size_t是4字节的，而在64位系统中，size_t是8字节的，这样利用该类型可以增强程序的可移植性。<br>    for (size_t i = 0; i &lt; length; ++i){<br>        temp = new List();<br>        cin &gt;&gt; temp-&gt;val;<br>        temp-&gt;next = NULL;<br>        tail-&gt;next = temp;<br>        tail = temp;<br>    }<br>    temp = head;<br>    head = head-&gt;next;<br>    delete temp;<br>    return head;<br>}<code>`</code>   </p>
+<figure class="highlight"><figcaption><span>typedef  struct List &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">	int val;</span><br><span class="line">	List* next;</span><br><span class="line">&#125;*myList;</span><br><span class="line">//创建链表</span><br><span class="line">myList CreatList(unsigned int length)</span><br><span class="line">&#123;</span><br><span class="line">	if (length == 0)</span><br><span class="line">		return NULL;</span><br><span class="line">	myList head, tail, temp;</span><br><span class="line">	head = new List();</span><br><span class="line">	head-&gt;next = NULL;</span><br><span class="line">	tail = head;</span><br><span class="line">	//在32位系统中size_t是4字节的，而在64位系统中，size_t是8字节的，这样利用该类型可以增强程序的可移植性。</span><br><span class="line">	for (size_t i = 0; i &lt; length; ++i)&#123;</span><br><span class="line">		temp = new List();</span><br><span class="line">		cin &gt;&gt; temp-&gt;val;</span><br><span class="line">		temp-&gt;next = NULL;</span><br><span class="line">		tail-&gt;next = temp;</span><br><span class="line">		tail = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	temp = head;</span><br><span class="line">	head = head-&gt;next;</span><br><span class="line">	delete temp;</span><br><span class="line">	return head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="1、求单链表中结点的个数"><a href="#1、求单链表中结点的个数" class="headerlink" title="1、求单链表中结点的个数"></a>1、求单链表中结点的个数</h4><blockquote>
 <p>因为要求链表中结点的个数，因此只能遍历整个链表以确定结点个数。(；´д｀)ゞ</p>
 </blockquote>
-<pre><code>int Length(myList head)
-{
-    int length = 0;
-    while (head) {
-        length++;
-        head = head++;
-    }
-    return length;
-}
-</code></pre><h4 id="2、将单链表反转"><a href="#2、将单链表反转" class="headerlink" title="2、将单链表反转"></a>2、将单链表反转</h4><blockquote>
+<figure class="highlight plain"><figcaption><span>int Length(myList head)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	int length = 0;</span><br><span class="line">	while (head) &#123;</span><br><span class="line">		length++;</span><br><span class="line">		head = head++;</span><br><span class="line">	&#125;</span><br><span class="line">	return length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、将单链表反转"><a href="#2、将单链表反转" class="headerlink" title="2、将单链表反转"></a>2、将单链表反转</h4><blockquote>
 <p>当链表中节点个数大于1时，保存链表的头结点为oldHead指针（因为反转后这就不是头指针了），<br>如果oldHead的后继结点不为空的话，使用指针temp储存这个结点，然后赋值oldHead的后继结点为其后继结点(即temp)的后继结点，然后将temp的后继结点设置为head结点，赋值head为temp；</p>
 </blockquote>
 <p><img src="http://p.qpic.cn/pic_wework/1948211503/696f94662529e7b821a61fbd81de0706543ad7ea7dc42dfe/0" alt=""></p>
-<pre><code>void ReverseList(myList &amp;head)
-{
-    if (head == NULL || head-&gt;next == NULL)
-        return;
-    myList temp, oldHead = head;
-    while (oldHead-&gt;next) {
-        temp = oldHead-&gt;next;
-        oldHead-&gt;next = temp-&gt;next;
-        temp-&gt;next = head;
-        head = temp;
-    }
-}
-</code></pre><h4 id="3、查找单链表中的倒数第K个结点（k-gt-0）"><a href="#3、查找单链表中的倒数第K个结点（k-gt-0）" class="headerlink" title="3、查找单链表中的倒数第K个结点（k &gt; 0）"></a>3、查找单链表中的倒数第K个结点（k &gt; 0）</h4><blockquote>
+<figure class="highlight js"><figcaption><span>void ReverseList(myList &head)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (head == NULL || head-&gt;next == NULL)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	myList temp, oldHead = head;</span><br><span class="line">	<span class="keyword">while</span> (oldHead-&gt;next) &#123;</span><br><span class="line">		temp = oldHead-&gt;next;</span><br><span class="line">		oldHead-&gt;next = temp-&gt;next;</span><br><span class="line">		temp-&gt;next = head;</span><br><span class="line">		head = temp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3、查找单链表中的倒数第K个结点（k-gt-0）"><a href="#3、查找单链表中的倒数第K个结点（k-gt-0）" class="headerlink" title="3、查找单链表中的倒数第K个结点（k &gt; 0）"></a>3、查找单链表中的倒数第K个结点（k &gt; 0）</h4><blockquote>
 <p>使用两个指针left，right，先让right指向正数第k个结点，然后让left结点从头结点与right指针一同向后移动。当right指向最后一个结点时，left指向的就是倒数第k个结点。</p>
 </blockquote>
 <p><img src="http://p.qpic.cn/pic_wework/1948211503/3b3dc6341672ff7ca163d1f6a2e421b22158a6b18359d32a/0" alt=""></p>
