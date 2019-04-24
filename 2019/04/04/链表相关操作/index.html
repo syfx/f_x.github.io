@@ -22,7 +22,37 @@
 <li>给出一单链表头指针pHead和一结点指针pToBeDeleted，O(1)时间复杂度删除结点pToBeDeleted   </li>
 </ol>
 </blockquote>
-<figure class="highlight js"><figcaption><span>int a; ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+ **链表结构**</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">` c# </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	typedef  struct List &#123;</span></span><br><span class="line"><span class="string">		int val;</span></span><br><span class="line"><span class="string">		List* next;</span></span><br><span class="line"><span class="string">	&#125;*myList;</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	//创建链表</span></span><br><span class="line"><span class="string">	myList CreatList(unsigned int length)   </span></span><br><span class="line"><span class="string">	&#123;  </span></span><br><span class="line"><span class="string">		if (length == 0)</span></span><br><span class="line"><span class="string">			return NULL;</span></span><br><span class="line"><span class="string">		myList head, tail, temp;</span></span><br><span class="line"><span class="string">		head = new List();</span></span><br><span class="line"><span class="string">		head-&gt;next = NULL;</span></span><br><span class="line"><span class="string">		tail = head;</span></span><br><span class="line"><span class="string">		//在32位系统中size_t是4字节的，而在64位系统中，size_t是8字节的，这样利用该类型可以增强程序的可移植性。</span></span><br><span class="line"><span class="string">		for (size_t i = 0; i &lt; length; ++i)&#123;</span></span><br><span class="line"><span class="string">			temp = new List();</span></span><br><span class="line"><span class="string">			cin &gt;&gt; temp-&gt;val;</span></span><br><span class="line"><span class="string">			temp-&gt;next = NULL;</span></span><br><span class="line"><span class="string">			tail-&gt;next = temp;</span></span><br><span class="line"><span class="string">			tail = temp;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">		temp = head;</span></span><br><span class="line"><span class="string">		head = head-&gt;next;</span></span><br><span class="line"><span class="string">		delete temp;</span></span><br><span class="line"><span class="string">		return head;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>链表结构</strong></li>
+</ul>
+<pre><code class="json">typedef  struct List {
+    int val;
+    List* next;
+}*myList;
+
+//创建链表
+myList CreatList(unsigned int length)    
+{   
+    if (length == 0)   
+        return NULL;   
+    myList head, tail, temp;   
+    head = new List();   
+    head-&gt;next = NULL;   
+    tail = head;   
+    //在32位系统中size_t是4字节的，而在64位系统中，size_t是8字节的，这样利用该类型可以增强程序的可移植性。   
+    for (size_t i = 0; i &lt; length; ++i){   
+        temp = new List();   
+        cin &gt;&gt; temp-&gt;val;   
+        temp-&gt;next = NULL;   
+        tail-&gt;next = temp;   
+        tail = temp;   
+    }   
+    temp = head;   
+    head = head-&gt;next;   
+    delete temp;   
+    return head;   
+}
+</code></pre>
 <h4 id="1、求单链表中结点的个数"><a href="#1、求单链表中结点的个数" class="headerlink" title="1、求单链表中结点的个数"></a>1、求单链表中结点的个数</h4><blockquote>
 <p>因为要求链表中结点的个数，因此只能遍历整个链表以确定结点个数。(；´д｀)ゞ</p>
 </blockquote>
