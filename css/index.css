@@ -225,8 +225,8 @@ table td {
 .article-container figure.highlight.stylus table:before {
   content: "stylus";
 }
-.article-container figure.highlight.styl table:before {
-  content: "styl";
+.article-container figure.highlight.c# table:before {
+  content: "c#";
 }
 .article-container figure.highlight.typescript table:before {
   content: "typescript";
