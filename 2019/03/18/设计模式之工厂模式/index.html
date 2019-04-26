@@ -7,7 +7,7 @@
     error: '复制错误',
     noSupport: '浏览器不支持'
   }
-} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式之工厂模式-Factory-Pattern"><span class="toc-number">1.</span> <span class="toc-text">设计模式之工厂模式(Factory Pattern)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、简单工厂模式-Simple-Factory-Pattern"><span class="toc-number">1.1.</span> <span class="toc-text">1、简单工厂模式(Simple Factory Pattern)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、工厂方法模式-Factory-Pattern"><span class="toc-number">1.2.</span> <span class="toc-text">2、工厂方法模式(Factory Pattern)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#产品等级结构与产品族"><span class="toc-number">1.2.1.</span> <span class="toc-text">产品等级结构与产品族</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、抽象工厂模式"><span class="toc-number">1.3.</span> <span class="toc-text">3、抽象工厂模式</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">fx</div><div class="author-info__description text-center">懂得越多，为难得越少</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">19</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">14</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">2</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://p.qpic.cn/pic_wework/1948211503/babcaaaa9297aa741e49ed921650a20476d250d0718288dc/0)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">fx's study notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span></div><div id="post-info"><div id="post-title">设计模式之工厂模式</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-18</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/编程模式/">编程模式</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="设计模式之工厂模式-Factory-Pattern"><a href="#设计模式之工厂模式-Factory-Pattern" class="headerlink" title="设计模式之工厂模式(Factory Pattern)"></a>设计模式之工厂模式(Factory Pattern)</h2><blockquote>
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式之工厂模式-Factory-Pattern"><span class="toc-number">1.</span> <span class="toc-text">设计模式之工厂模式(Factory Pattern)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、简单工厂模式-Simple-Factory-Pattern"><span class="toc-number">1.1.</span> <span class="toc-text">1、简单工厂模式(Simple Factory Pattern)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、工厂方法模式-Factory-Pattern"><span class="toc-number">1.2.</span> <span class="toc-text">2、工厂方法模式(Factory Pattern)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#产品等级结构与产品族"><span class="toc-number">1.2.1.</span> <span class="toc-text">产品等级结构与产品族</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、抽象工厂模式"><span class="toc-number">1.3.</span> <span class="toc-text">3、抽象工厂模式</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">fx</div><div class="author-info__description text-center">懂得越多，为难得越少</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">19</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">14</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">2</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Learn</div><a class="author-info-links__name text-center" href="https://learnopengl-cn.github.io/">OpenGL</a><a class="author-info-links__name text-center" href="https://gpp.tkchu.me/">游戏编程模式</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://p.qpic.cn/pic_wework/1948211503/babcaaaa9297aa741e49ed921650a20476d250d0718288dc/0)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">fx's study notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span></div><div id="post-info"><div id="post-title">设计模式之工厂模式</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-18</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/编程模式/">编程模式</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="设计模式之工厂模式-Factory-Pattern"><a href="#设计模式之工厂模式-Factory-Pattern" class="headerlink" title="设计模式之工厂模式(Factory Pattern)"></a>设计模式之工厂模式(Factory Pattern)</h2><blockquote>
 <p>工厂模式是最常用的设计模式之一，它属于创建型设计模式；工厂模式 <strong>提供了一种创建对象的最好方式</strong> （如果你有更好的方式就当我没说）；它的主要作用是让对象的创建与对象的使用分离开来，即使用单独的类来<strong> 封装创建实例的逻辑。</strong><br>工厂模式又可以细分为：   </p>
 <ul>
 <li>简单工厂模式   </li>
@@ -36,78 +36,8 @@
 <blockquote>
 <p>首先，我们应该创建一个抽象怪物类 <strong>Mob</strong> ，让上面那三个小怪类继承自Mob。然后用Mob当做工厂中静态方法的返回对象。<br>不太懂得话，就看看代码吧（c#）：</p>
 </blockquote>
-<pre><code>namespace FactoryPattern
-{
-    //怪物工厂
-    class MobFactory
-    {
-        //获取对象实例的静态方法
-        public static Mob GetMob(string mobName)
-        {
-            switch (mobName) {
-                case &quot;MobA&quot;: return new MobA();
-                case &quot;MobB&quot;: return new MobB();
-                case &quot;MobC&quot;: return new MobC();
-                default: return null;
-            }
-        }
-    }
-
-    ////使用接口实现抽象类会更好
-    //interface I_Mob
-    //{
-    //    //定义攻击接口（规定每个继承自此抽象类的怪物都能进行攻击）
-    //    void Attack();
-    //}
-
-    //抽象怪物类
-    abstract class Mob
-    {
-        //定义攻击接口（规定每个继承自此抽象类的怪物都能进行攻击）
-        public abstract void Attack(); 
-    }
-    //小怪A
-    class MobA : Mob
-    {
-        //重写Acctak方法
-        public override void Attack()
-        {
-            Console.WriteLine(&quot;MobA 进行攻击&quot;);
-        }
-    }
-    //小怪B
-    class MobB : Mob
-    {
-        //重写Acctak方法
-        public override void Attack()
-        {
-            Console.WriteLine(&quot;MobB 进行攻击&quot;);
-        }
-    }
-    //小怪C
-    class MobC : Mob
-    {
-        //重写Acctak方法
-        public override void Attack()
-        {
-            Console.WriteLine(&quot;MobC 进行攻击&quot;);
-        }
-    }
-
-    class Test
-    {
-        static void Main(string[] args)
-        {
-            Mob mob = MobFactory.GetMob(&quot;MobA&quot;);
-            mob.Attack();                                           //MobA进行攻击
-            mob = MobFactory.GetMob(&quot;MobB&quot;);
-            mob.Attack();                                           //MobB进行攻击
-
-            Console.ReadKey();
-        }
-    }
-}
-</code></pre><p><strong>简单工厂模式分析</strong>    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">namespace FactoryPattern</span><br><span class="line">&#123;</span><br><span class="line">    //怪物工厂</span><br><span class="line">    class MobFactory</span><br><span class="line">    &#123;</span><br><span class="line">        //获取对象实例的静态方法</span><br><span class="line">        public static Mob GetMob(string mobName)</span><br><span class="line">        &#123;</span><br><span class="line">            switch (mobName) &#123;</span><br><span class="line">                case &quot;MobA&quot;: return new MobA();</span><br><span class="line">                case &quot;MobB&quot;: return new MobB();</span><br><span class="line">                case &quot;MobC&quot;: return new MobC();</span><br><span class="line">                default: return null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ////使用接口实现抽象类会更好</span><br><span class="line">    //interface I_Mob</span><br><span class="line">    //&#123;</span><br><span class="line">    //    //定义攻击接口（规定每个继承自此抽象类的怪物都能进行攻击）</span><br><span class="line">    //    void Attack();</span><br><span class="line">    //&#125;</span><br><span class="line"></span><br><span class="line">    //抽象怪物类</span><br><span class="line">    abstract class Mob</span><br><span class="line">    &#123;</span><br><span class="line">        //定义攻击接口（规定每个继承自此抽象类的怪物都能进行攻击）</span><br><span class="line">        public abstract void Attack(); </span><br><span class="line">    &#125;</span><br><span class="line">    //小怪A</span><br><span class="line">    class MobA : Mob</span><br><span class="line">    &#123;</span><br><span class="line">        //重写Acctak方法</span><br><span class="line">        public override void Attack()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;MobA 进行攻击&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //小怪B</span><br><span class="line">    class MobB : Mob</span><br><span class="line">    &#123;</span><br><span class="line">        //重写Acctak方法</span><br><span class="line">        public override void Attack()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;MobB 进行攻击&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //小怪C</span><br><span class="line">    class MobC : Mob</span><br><span class="line">    &#123;</span><br><span class="line">        //重写Acctak方法</span><br><span class="line">        public override void Attack()</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(&quot;MobC 进行攻击&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class Test</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            Mob mob = MobFactory.GetMob(&quot;MobA&quot;);</span><br><span class="line">            mob.Attack();                                           //MobA进行攻击</span><br><span class="line">            mob = MobFactory.GetMob(&quot;MobB&quot;);</span><br><span class="line">            mob.Attack();                                           //MobB进行攻击</span><br><span class="line"></span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>简单工厂模式分析</strong>    </p>
 <blockquote>
 <ul>
 <li>将对象的创建和对象本身业务处理分离可以降低系统的耦合度，使得两者修改起来都相对容易。    </li>
@@ -156,88 +86,8 @@
 <blockquote>
 <p>根据上述例子实现的具体代码为：</p>
 </blockquote>
-<pre><code>namespace FactoryPattern
-{
-    //怪物接口
-    interface Mob
-    {
-        void Attack();
-    }
-    //小怪A
-    class MobA : Mob
-    {
-        //重写Acctak方法
-        public void Attack()
-        {
-            Console.WriteLine(&quot;MobA 进行攻击&quot;);
-        }
-    }
-    //小怪B
-    class MobB : Mob
-    {
-        //重写Acctak方法
-        public void Attack()
-        {
-            Console.WriteLine(&quot;MobB 进行攻击&quot;);
-        }
-    }
-    //小怪C
-    class MobC : Mob
-    {
-        //重写Acctak方法
-        public void Attack()
-        {
-            Console.WriteLine(&quot;MobC 进行攻击&quot;);
-        }
-    }
-
-    //抽象工厂接口
-    interface Factory
-    {
-        Mob GetMob();
-    }
-    //创建怪物A的工厂
-    class MobA_Factory : Factory
-    {
-        public Mob GetMob()
-        {
-            return new MobA();
-        }
-    }
-    //创建怪物B的工厂
-    class MobB_Factory : Factory
-    {
-        public Mob GetMob()
-        {
-            return new MobB();
-        }
-    }
-    //创建怪物C的工厂
-    class MobC_Factory : Factory
-    {
-        public Mob GetMob()
-        {
-            return new MobC();
-        }
-    }
-
-    class Test
-    {
-        static void Main(string[] args)
-        {
-            //获得小怪A
-            Factory factory = new MobA_Factory();
-            Mob mob = factory.GetMob();
-            mob.Attack();
-            //获得小怪B
-            factory = new MobB_Factory();
-            mob = factory.GetMob();
-            mob.Attack();
-            Console.ReadKey();
-        }
-    }
-}
-</code></pre><p><strong>工厂方法模式分析</strong>   </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> FactoryPattern</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//怪物接口</span></span><br><span class="line">    interface Mob</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Attack</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//小怪A</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MobA</span> :</span> Mob</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//重写Acctak方法</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Attack</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"MobA 进行攻击"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//小怪B</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MobB</span> :</span> Mob</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//重写Acctak方法</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Attack</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"MobB 进行攻击"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//小怪C</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MobC</span> :</span> Mob</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//重写Acctak方法</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Attack</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"MobC 进行攻击"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//抽象工厂接口</span></span><br><span class="line">    interface Factory</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">Mob <span class="title">GetMob</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建怪物A的工厂</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MobA_Factory</span> :</span> Factory</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> Mob <span class="title">GetMob</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MobA();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建怪物B的工厂</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MobB_Factory</span> :</span> Factory</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> Mob <span class="title">GetMob</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MobB();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建怪物C的工厂</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MobC_Factory</span> :</span> Factory</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> Mob <span class="title">GetMob</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MobC();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="comment">//获得小怪A</span></span><br><span class="line">            Factory factory = <span class="keyword">new</span> MobA_Factory();</span><br><span class="line">            Mob mob = factory.GetMob();</span><br><span class="line">            mob.Attack();</span><br><span class="line">            <span class="comment">//获得小怪B</span></span><br><span class="line">            factory = <span class="keyword">new</span> MobB_Factory();</span><br><span class="line">            mob = factory.GetMob();</span><br><span class="line">            mob.Attack();</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>工厂方法模式分析</strong>   </p>
 <blockquote>
 <p>在这个模式中，将每个具体产品的创建细节分配给每个具体的工厂来实现，这样做不仅使工厂方法具有简单工厂方法的优点，还解决了简单工厂模式职责过重的问题。不过由于每个产品类都要对应一个工厂类，因此使用此模式时，会在一定程度上增加系统的复杂性。</p>
 </blockquote>
@@ -277,146 +127,8 @@
 <blockquote>
 <p>修改一下上面那个例子，除了怪物类外，现在还要新添加一个武器类，武器类中包括武器WpA、WpB、WpC；怪物MobA使用WpA，怪物MobB使用WpB，怪物MobC使用WpC；<br>使用抽象工厂模式实现怪物和武器生成的代码如下：   </p>
 </blockquote>
-<pre><code>//怪物接口
-interface Mob
-{
-    void Attack();
-}
-//小怪A
-class MobA : Mob
-{
-    //重写Acctak方法
-    public void Attack()
-    {
-        Console.WriteLine(&quot;MobA 进行攻击&quot;);
-    }
-}
-//小怪B
-class MobB : Mob
-{
-    //重写Acctak方法
-    public void Attack()
-    {
-        Console.WriteLine(&quot;MobB 进行攻击&quot;);
-    }
-}
-//小怪C
-class MobC : Mob
-{
-    //重写Acctak方法
-    public void Attack()
-    {
-        Console.WriteLine(&quot;MobC 进行攻击&quot;);
-    }
-}
-
-//武器接口
-interface Wp
-{
-    //攻击加成
-    void AtkAdd();
-}
-//武器WpA
-class WpA : Wp
-{
-    public void AtkAdd()
-    {
-        Console.WriteLine(&quot;MobA专属武器，MobA提高了攻击力&quot;);
-    }
-}
-//武器WpA
-class WpB : Wp
-{
-    public void AtkAdd()
-    {
-        Console.WriteLine(&quot;MobB专属武器，MobB提高了攻击力&quot;);
-    }
-}
-//武器WpC
-class WpC : Wp
-{
-    public void AtkAdd()
-    {
-        Console.WriteLine(&quot;MobC专属武器，MobC提高了攻击力&quot;);
-    }
-}
-
-//工厂接口
-interface Factory
-{
-    //获取怪物实例的方法
-    Mob GetMob();
-    //获取武器实例的方法
-    Wp GetWp();
-}
-
-//A类怪物武器产品族工厂
-class A_Factory : Factory
-{
-    //获取怪物实例的方法
-    public Mob GetMob() {
-        return new MobA();
-    }
-    //获取武器实例的方法
-    public Wp GetWp()
-    {
-        return new WpA();
-    }
-}
-
-//A类怪物武器产品族工厂
-class B_Factory : Factory
-{
-    //获取怪物实例的方法
-    public Mob GetMob()
-    {
-        return new MobB();
-    }
-    //获取武器实例的方法
-    public Wp GetWp()
-    {
-        return new WpB();
-    }
-}
-
-//A类怪物武器产品族工厂
-class C_Factory : Factory
-{
-    //获取怪物实例的方法
-    public Mob GetMob()
-    {
-        return new MobC();
-    }
-    //获取武器实例的方法
-    public Wp GetWp()
-    {
-        return new WpC();
-    }
-}
-
-
-class Test
-{
-    static void Main(string[] args)
-    {
-        //A类产品族工厂
-        Factory factory = new A_Factory();
-        Mob moba = factory.GetMob();
-        Wp wpa = factory.GetWp();
-        wpa.AtkAdd();
-        moba.Attack();
-
-        //B类产品族工厂
-        factory = new C_Factory();
-        Mob mobb = factory.GetMob();
-        Wp wpb = factory.GetWp();
-        wpb.AtkAdd();
-        mobb.Attack();
-
-        Console.ReadKey();
-    }
-}
-</code></pre><p> <strong>抽象工厂模式分析</strong>   </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//怪物接口</span></span><br><span class="line">interface Mob</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Attack</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//小怪A</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MobA</span> :</span> Mob</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//重写Acctak方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Attack</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"MobA 进行攻击"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//小怪B</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MobB</span> :</span> Mob</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//重写Acctak方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Attack</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"MobB 进行攻击"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//小怪C</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MobC</span> :</span> Mob</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//重写Acctak方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Attack</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"MobC 进行攻击"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//武器接口</span></span><br><span class="line">interface Wp</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//攻击加成</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AtkAdd</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//武器WpA</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WpA</span> :</span> Wp</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AtkAdd</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"MobA专属武器，MobA提高了攻击力"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//武器WpA</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WpB</span> :</span> Wp</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AtkAdd</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"MobB专属武器，MobB提高了攻击力"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//武器WpC</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WpC</span> :</span> Wp</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AtkAdd</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"MobC专属武器，MobC提高了攻击力"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//工厂接口</span></span><br><span class="line">interface Factory</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取怪物实例的方法</span></span><br><span class="line">    <span class="function">Mob <span class="title">GetMob</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//获取武器实例的方法</span></span><br><span class="line">    <span class="function">Wp <span class="title">GetWp</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//A类怪物武器产品族工厂</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A_Factory</span> :</span> Factory</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取怪物实例的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Mob <span class="title">GetMob</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MobA();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取武器实例的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Wp <span class="title">GetWp</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WpA();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//A类怪物武器产品族工厂</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B_Factory</span> :</span> Factory</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取怪物实例的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Mob <span class="title">GetMob</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MobB();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取武器实例的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Wp <span class="title">GetWp</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WpB();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//A类怪物武器产品族工厂</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C_Factory</span> :</span> Factory</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取怪物实例的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Mob <span class="title">GetMob</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MobC();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取武器实例的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Wp <span class="title">GetWp</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> WpC();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span><span class="params">(<span class="built_in">string</span>[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//A类产品族工厂</span></span><br><span class="line">        Factory factory = <span class="keyword">new</span> A_Factory();</span><br><span class="line">        Mob moba = factory.GetMob();</span><br><span class="line">        Wp wpa = factory.GetWp();</span><br><span class="line">        wpa.AtkAdd();</span><br><span class="line">        moba.Attack();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//B类产品族工厂</span></span><br><span class="line">        factory = <span class="keyword">new</span> C_Factory();</span><br><span class="line">        Mob mobb = factory.GetMob();</span><br><span class="line">        Wp wpb = factory.GetWp();</span><br><span class="line">        wpb.AtkAdd();</span><br><span class="line">        mobb.Attack();</span><br><span class="line"></span><br><span class="line">        Console.ReadKey();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>抽象工厂模式分析</strong>   </p>
 <blockquote>
 <p>抽象工厂模式符合单一职责原则、开闭原则、里氏替换原则、依赖倒置原则。它为具有多个产品结构的程序提供了一种获得产品实例的方法。</p>
 </blockquote>
