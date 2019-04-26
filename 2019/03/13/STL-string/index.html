@@ -7,7 +7,7 @@
     error: '复制错误',
     noSupport: '浏览器不支持'
   }
-} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#STL简介"><span class="toc-number">1.</span> <span class="toc-text">STL简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STL-string类"><span class="toc-number">2.</span> <span class="toc-text">STL string类</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">fx</div><div class="author-info__description text-center">懂得越多，为难得越少</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">19</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">14</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">2</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Learn</div><a class="author-info-links__name text-center" href="https://learnopengl-cn.github.io/">OpenGL</a><a class="author-info-links__name text-center" href="https://gpp.tkchu.me/">游戏编程模式</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://p.qpic.cn/pic_wework/1948211503/babcaaaa9297aa741e49ed921650a20476d250d0718288dc/0)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">fx's study notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span></div><div id="post-info"><div id="post-title">STL-string</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-13</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="STL简介"><a href="#STL简介" class="headerlink" title="STL简介"></a>STL简介</h2><blockquote>
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#STL简介"><span class="toc-number">1.</span> <span class="toc-text">STL简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STL-string类"><span class="toc-number">2.</span> <span class="toc-text">STL string类</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">fx</div><div class="author-info__description text-center">懂得越多，为难得越少</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">19</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">14</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Learn</div><a class="author-info-links__name text-center" href="https://learnopengl-cn.github.io/">OpenGL</a><a class="author-info-links__name text-center" href="https://gpp.tkchu.me/">游戏编程模式</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(http://p.qpic.cn/pic_wework/1948211503/babcaaaa9297aa741e49ed921650a20476d250d0718288dc/0)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">fx's study notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a></span></div><div id="post-info"><div id="post-title">STL-string</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-13</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/编程语言/">编程语言</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="STL简介"><a href="#STL简介" class="headerlink" title="STL简介"></a>STL简介</h2><blockquote>
 <p>标准模板库是一组<strong>模板类和函数</strong>，向程序员提供了：<br>1.用于储存信息的<strong>容器</strong>，包含：   </p>
 <blockquote>
 <p>顺序容器<br>(1). std::vector——与动态数组类似，在最后插入数据。<br>(2). std::deque——与std::vector类似，允许在开头添加或删除数据。<br>(3). std::list——与双向链表类似。<br>(4). std::forward_list——类似于std::list，不过是单向链表。   </p>
@@ -44,44 +44,7 @@
 </blockquote>
 </blockquote>
 <p><strong>使用迭代器在容器和算法之间交互</strong>   </p>
-<pre><code>#include &lt;iostream&gt;   
-#include &lt;vector&gt;   
-#include &lt;algorithm&gt;   
-using namespace std;   
-
-int main()   
-{
-    vector&lt;int&gt; IntArray;   
-    IntArray.push_back(123);
-    IntArray.push_back(1997);
-    IntArray.push_back(917);
-    IntArray.push_back(2019);
-    IntArray.push_back(6666);
-
-    //使用迭代器遍历容器元素
-    //for (vector&lt;int&gt;::iterator IA = IntArray.begin(); 
-    //        IA &lt; IntArray.end(); ++IA) {
-    //    cout &lt;&lt; *IA &lt;&lt; endl;
-    //}
-    //使用迭代器遍历容器元素，此处所使用了auto让编译器自动判断类型
-    for (auto iArrayWalker = IntArray.begin(); 
-            iArrayWalker &lt; IntArray.end(); ++iArrayWalker){
-        cout &lt;&lt; *iArrayWalker &lt;&lt; endl;
-    }
-    //使用find算法在容器中查找元素1997，查到末尾时（end()）还没找到，便返回end()的地址
-    //vector&lt;int&gt;::iterator value = find(IntArray.begin(), IntArray.end(), 1997);
-    auto value = find(IntArray.begin(), IntArray.end(), 1997);
-
-    //判断是否找到元素1997
-    if (value != IntArray.end()) {
-        cout &lt;&lt; &quot;value: &quot; &lt;&lt; *value &lt;&lt; endl;
-        //获取1997在容器中的位置，及到begin()的距离
-        int index = distance(IntArray.begin(), value);
-        cout &lt;&lt; &quot;index: &quot; &lt;&lt; index &lt;&lt; endl;
-    }
-    getchar();
-    return 0;
-}
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;   </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;   </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>   </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; IntArray;   </span><br><span class="line">	IntArray.push_back(<span class="number">123</span>);</span><br><span class="line">	IntArray.push_back(<span class="number">1997</span>);</span><br><span class="line">	IntArray.push_back(<span class="number">917</span>);</span><br><span class="line">	IntArray.push_back(<span class="number">2019</span>);</span><br><span class="line">	IntArray.push_back(<span class="number">6666</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//使用迭代器遍历容器元素</span></span><br><span class="line">	<span class="comment">//for (vector&lt;int&gt;::iterator IA = IntArray.begin(); </span></span><br><span class="line">	<span class="comment">//		IA &lt; IntArray.end(); ++IA) &#123;</span></span><br><span class="line">	<span class="comment">//	cout &lt;&lt; *IA &lt;&lt; endl;</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">	<span class="comment">//使用迭代器遍历容器元素，此处所使用了auto让编译器自动判断类型</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> iArrayWalker = IntArray.begin(); </span><br><span class="line">			iArrayWalker &lt; IntArray.end(); ++iArrayWalker)&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; *iArrayWalker &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//使用find算法在容器中查找元素1997，查到末尾时（end()）还没找到，便返回end()的地址</span></span><br><span class="line">	<span class="comment">//vector&lt;int&gt;::iterator value = find(IntArray.begin(), IntArray.end(), 1997);</span></span><br><span class="line">	<span class="keyword">auto</span> value = find(IntArray.begin(), IntArray.end(), <span class="number">1997</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//判断是否找到元素1997</span></span><br><span class="line">	<span class="keyword">if</span> (value != IntArray.end()) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"value: "</span> &lt;&lt; *value &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="comment">//获取1997在容器中的位置，及到begin()的距离</span></span><br><span class="line">		<span class="keyword">int</span> index = distance(IntArray.begin(), value);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"index: "</span> &lt;&lt; index &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	getchar();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p>由上述代码可以看出，迭代器就是获得的是容器中元素的地址；因此，在某种程度上可以将它理解为泛型指针。</p>
 </blockquote>
@@ -90,42 +53,11 @@ int main()
 </blockquote>
 <ul>
 <li><p><strong>实例化string</strong>   </p>
-<pre><code>const char* C_StyleString = &quot;Hello String&quot;;
-const char* cString = &quot;Hello String&quot;;
-//使用构造函数初始化
-string str(cString);
-//使用等号初始化
-string str1 = cString;
-//使用string类型数据初始化
-string strCopy(cString);
-//使用某个字符串的前n位初始化
-string str2(&quot;Hello String&quot;, 5);
-//使用指定数量的字符初始化
-string str3(6, &apos;a&apos;);                    //str3 = aaaaaa
-//string str3(6, &apos;adf&apos;);                //str3 = ffffff
-</code></pre></li>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span>* C_StyleString = <span class="string">"Hello String"</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span>* cString = <span class="string">"Hello String"</span>;</span><br><span class="line"><span class="comment">//使用构造函数初始化</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">str</span><span class="params">(cString)</span></span>;</span><br><span class="line"><span class="comment">//使用等号初始化</span></span><br><span class="line"><span class="built_in">string</span> str1 = cString;</span><br><span class="line"><span class="comment">//使用string类型数据初始化</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">strCopy</span><span class="params">(cString)</span></span>;</span><br><span class="line"><span class="comment">//使用某个字符串的前n位初始化</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">str2</span><span class="params">(<span class="string">"Hello String"</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line"><span class="comment">//使用指定数量的字符初始化</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">str3</span><span class="params">(<span class="number">6</span>, <span class="string">'a'</span>)</span></span>;					<span class="comment">//str3 = aaaaaa</span></span><br><span class="line"><span class="comment">//string str3(6, 'adf');				//str3 = ffffff</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p><strong>访问string的内容</strong></p>
-<pre><code>//通过[]访问元素
-for (int i = 0; i &lt; str.length(); ++i) {
-    cout &lt;&lt; str[i] &lt;&lt; endl;
-}
-//通过迭代器访问
-for (string::const_iterator pos = str.begin()
-    ; pos != str.end()
-    ; ++pos)
-{
-    //*pos = &apos;h&apos;;                //报错，pos指向的值是const类型的，不可更改
-    cout &lt;&lt; *pos &lt;&lt; endl;
-}
-//通过迭代器访问
-for (string::iterator pos = str.begin()
-    ; pos != str.end()
-    ; ++pos)
-{
-    *pos = &apos;6&apos;;                    //不报错
-    cout &lt;&lt; *pos &lt;&lt; endl;
-}
-</code></pre></li>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过[]访问元素</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); ++i) &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; str[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//通过迭代器访问</span></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">string</span>::const_iterator pos = str.begin()</span><br><span class="line">	; pos != str.end()</span><br><span class="line">	; ++pos)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//*pos = 'h';				//报错，pos指向的值是const类型的，不可更改</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; *pos &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//通过迭代器访问</span></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">string</span>::iterator pos = str.begin()</span><br><span class="line">	; pos != str.end()</span><br><span class="line">	; ++pos)</span><br><span class="line">&#123;</span><br><span class="line">	*pos = <span class="string">'6'</span>;					<span class="comment">//不报错</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; *pos &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <blockquote>
 <p>上面代码中使用迭代器时，使用了一个新的迭代器const_iterator,使用它时，迭代器的值可变，但迭代器指向的值的值不可被改变。</p>
@@ -136,28 +68,14 @@ for (string::iterator pos = str.begin()
 <blockquote>
 <p>使用+=或者成员函数append()来拼接字符串。</p>
 </blockquote>
-<pre><code>string str4 = &quot;Hello &quot;;
-string str5 = &quot;World &quot;;
-string str6(&quot;Beautiful!&quot;);
-
-str4 += str5;                //str4 = Hello World 
-str4.append(str6);            //str4 = Hello World Beautiful!
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> str4 = <span class="string">"Hello "</span>;</span><br><span class="line"><span class="built_in">string</span> str5 = <span class="string">"World "</span>;</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">str6</span><span class="params">(<span class="string">"Beautiful!"</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">str4 += str5;				<span class="comment">//str4 = Hello World </span></span><br><span class="line">str4.append(str6);			<span class="comment">//str4 = Hello World Beautiful!</span></span><br></pre></td></tr></table></figure>
 </code></pre><ul>
 <li><strong>字符/子字符串查找</strong>   </li>
 </ul>
 <blockquote>
 <p>可以使用string中的成员函数find来查找字符或者子字符串。<br>查找成功返回字符的索引或子字符串首个字符的索引。<br>查找失败返回string::npos（实际值为-1）。</p>
 </blockquote>
-<pre><code>string str6 = &quot;Hello World&quot;;
-//从索引为0初的字符往后进行查找
-int index = str6.find(&quot;World&quot;, 0);    
-cout &lt;&lt; index &lt;&lt; endl;                        //6
-//查找str6中所有 l 的索引
-size_t charPos = str6.find(&apos;l&apos;, 0);
-while (charPos != string::npos) {            
-    cout &lt;&lt; charPos &lt;&lt; endl;                //2 3 9
-    charPos = str6.find(&apos;l&apos;, ++charPos);
-}
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> str6 = <span class="string">"Hello World"</span>;</span><br><span class="line"><span class="comment">//从索引为0初的字符往后进行查找</span></span><br><span class="line"><span class="keyword">int</span> index = str6.find(<span class="string">"World"</span>, <span class="number">0</span>);	</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; index &lt;&lt; <span class="built_in">endl</span>;						<span class="comment">//6</span></span><br><span class="line"><span class="comment">//查找str6中所有 l 的索引</span></span><br><span class="line"><span class="keyword">size_t</span> charPos = str6.find(<span class="string">'l'</span>, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">while</span> (charPos != <span class="built_in">string</span>::npos) &#123;			</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; charPos &lt;&lt; <span class="built_in">endl</span>;				<span class="comment">//2 3 9</span></span><br><span class="line">	charPos = str6.find(<span class="string">'l'</span>, ++charPos);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p>size_t在32位架构上是4字节，在64位架构上是8字节，在不同架构上进行编译时需要注意这个问题。而int在不同架构下都是4字节；且int为带符号数，size_t为无符号数。</p>
 </blockquote>
@@ -166,17 +84,15 @@ while (charPos != string::npos) {
 <blockquote>
 <p>可以使用成员函数erase()来删除字符串中的字符。<br>使用方法如下： </p>
 </blockquote>
-<p>  string myStr = “Life is always like this.”;</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> myStr = <span class="string">"Life is always like this."</span>;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>1.在给定偏移位置（索引值）和指定数目时删除字符。  </p>
-<pre><code>//删除索引在 区间[14,19) 内的字符串
-myStr.erase(14,5);            //Life is always this.
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除索引在 区间[14,19) 内的字符串</span></span><br><span class="line">myStr.erase(<span class="number">14</span>,<span class="number">5</span>);			<span class="comment">//Life is always this.</span></span><br></pre></td></tr></table></figure>
 </code></pre><p>2.删除迭代器iChar指向的字符。</p>
-<pre><code>auto iChar = find(myStr.begin(), myStr.end(), &apos;.&apos;);
-myStr.erase(iChar);            //Life is always like this
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> iChar = find(myStr.begin(), myStr.end(), <span class="string">'.'</span>);</span><br><span class="line">myStr.erase(iChar);			<span class="comment">//Life is always like this</span></span><br></pre></td></tr></table></figure>
 </code></pre><p>3.删除两个迭代器指定范围内的字符串。</p>
-<pre><code>myStr.erase(++myStr.begin(), myStr.end());    //L
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myStr.erase(++myStr.begin(), myStr.end());	<span class="comment">//L</span></span><br></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p>使用成员方法clear()时，经清楚全部内容并重置string对象。</p>
 </blockquote>
@@ -186,19 +102,14 @@ myStr.erase(iChar);            //Life is always like this
 <blockquote>
 <p>使用泛型算法std::reverse()对字符串进行反转。(注意不是成员方法)<br>reverse接收两个参数，起始迭代器、终止迭代器，然后将对两个迭代器之间的内容进行反转。</p>
 </blockquote>
-<pre><code>string myStr = &quot;Life is always like this.&quot;;
-reverse(++myStr.begin(), myStr.end());        //L.siht ekil syawla si efi
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> myStr = <span class="string">"Life is always like this."</span>;</span><br><span class="line">reverse(++myStr.begin(), myStr.end());		<span class="comment">//L.siht ekil syawla si efi</span></span><br></pre></td></tr></table></figure>
 </code></pre><ul>
 <li><strong>字符串大小写转换</strong>   </li>
 </ul>
 <blockquote>
 <p>使用算法std::transform()进行大小写转换。(注意不是成员方法)<br>transform(first, last, r_first, trans)接收四个参数：开始迭代器、终止迭代器、开始迭代器、要执行的变换。<br>要执行转大写操作时 trans = toupper, 要执行转小写操作时 trans = tolower。   </p>
 </blockquote>
-<pre><code>string myStr = &quot;life is always like this.&quot;;
-transform(++myStr.begin(), myStr.end(), ++myStr.begin(), toupper);
-//——&gt;lIFE IS ALWAYS LIKE THIS.
-transform(++myStr.begin(), myStr.end(), ++myStr.begin(), tolower);
-//——&gt;life is always like this.
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> myStr = <span class="string">"life is always like this."</span>;</span><br><span class="line">transform(++myStr.begin(), myStr.end(), ++myStr.begin(), <span class="built_in">toupper</span>);</span><br><span class="line"><span class="comment">//——&gt;lIFE IS ALWAYS LIKE THIS.</span></span><br><span class="line">transform(++myStr.begin(), myStr.end(), ++myStr.begin(), <span class="built_in">tolower</span>);</span><br><span class="line"><span class="comment">//——&gt;life is always like this.</span></span><br></pre></td></tr></table></figure>
 </code></pre><blockquote>
 <p>如果要编写的应用程序需要更好的支持非拉丁字符，如中文与日文时，应使用std::wstring。   </p>
 </blockquote>
