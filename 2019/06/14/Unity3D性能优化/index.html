@@ -25,7 +25,7 @@
 <p>建议游戏中的距离相机位置会发生变化的纹理始终使用 Mipmap；（除 GUI 纹理、天空盒、游标外） </p>
 <h2 id="3、各向异性过滤（Anisotropic-filtering）"><a href="#3、各向异性过滤（Anisotropic-filtering）" class="headerlink" title="3、各向异性过滤（Anisotropic filtering）"></a>3、各向异性过滤（Anisotropic filtering）</h2><p>各向异性过滤可以提高从掠射角观察时的纹理质量。此渲染在显卡上非常消耗资源。提高各向异性等级对于地面和地板纹理而言是一种很好的做法。<br>可在质量设置（Quality Settings）中强制对所有纹理进行各向异性过滤或完全禁用该功能。<br>导入纹理时通过 Aniso Level 选项来设置各向异性等级。</p>
 <h2 id="4、纹理导入设置对性能及内存的影响"><a href="#4、纹理导入设置对性能及内存的影响" class="headerlink" title="4、纹理导入设置对性能及内存的影响"></a>4、纹理导入设置对性能及内存的影响</h2><h3 id="1、纹理尺寸大小"><a href="#1、纹理尺寸大小" class="headerlink" title="1、纹理尺寸大小"></a>1、纹理尺寸大小</h3><p>建议纹理尺寸大小应该每边为2的整数次幂（即2、4…64..2048像素）。<br>因为使用 NPOT（非2的整数幂）纹理大小时，通常要占用稍微多一点的内存；并且 GPU 的采样速度可更慢。因此，最好使用2的整幂大小的纹理。<br>如果平台或 GPU 不支持 NPOT 纹理大小，Unity 会对纹理进行缩放和填充以达到一个2的整幂大小。这一过程会使用更多内存并使加载速度变慢。<br><img src="http://p.qpic.cn/pic_wework/1948211503/9a9cde8a9be2ea844fcec526bab05a5108c42226dae5d315/0" alt=""></p>
-<center><strong>2的整幂纹理大小,左侧不使用 mipmap，右侧使用 mipmap</strong></center><br><img src="http://p.qpic.cn/pic_wework/1948211503/292f6d390da603039d7a25af2782450099fc3297390f73a8/0" alt=""><br><center><strong>NPOT 纹理大小,左侧不使用 mipmap，右侧使用 mipmap</strong></center>    
+<center><strong>2的整幂纹理大小,左侧不使用 mipmap，右侧使用 mipmap</strong></center><br><img src="http://p.qpic.cn/pic_wework/1948211503/292f6d390da603039d7a25af2782450099fc3297390f73a8/0" alt=""><br><center><strong>NPOT 纹理大小,左侧不使用 mipmap，右侧使用 mipmap</strong></center>
 
 <h3 id="2、Read-Write-Enable"><a href="#2、Read-Write-Enable" class="headerlink" title="2、Read/Write Enable"></a>2、Read/Write Enable</h3><p>选中这个选项，允许从脚本函数（例如 Texture2D.SetPixels…）中访问纹理数据，但这种情况下会生成纹理数据的副本，使纹理资源所需的内存增加一倍，因此，非绝对必要下不要使用这个属性。</p>
 <h3 id="3、Generate-Mip-Maps"><a href="#3、Generate-Mip-Maps" class="headerlink" title="3、Generate Mip Maps"></a>3、Generate Mip Maps</h3><p>选中此框，可为当前纹理生成 Mipmap。</p>
@@ -36,8 +36,9 @@
 <li>Kaiser：随着 Mipmap 的尺寸大小下降，对其应用锐化。如果纹理在远处太模糊，可尝试此选项。</li>
 </ul>
 </li>
-<li>Fadeout Mip Maps：滚动条左边的的滚动项表示第一个开始淡出的 MIP 级别。其右边的滚动项表示纹理完全变灰的 MIP 级别。<h3 id="Aniso-Level"><a href="#Aniso-Level" class="headerlink" title="Aniso Level"></a>Aniso Level</h3>以大角度查看时提高纹理质量。</li>
+<li>Fadeout Mip Maps：滚动条左边的的滚动项表示第一个开始淡出的 MIP 级别。其右边的滚动项表示纹理完全变灰的 MIP 级别。</li>
 </ul>
+<h3 id="Aniso-Level"><a href="#Aniso-Level" class="headerlink" title="Aniso Level"></a>Aniso Level</h3><p>以大角度查看时提高纹理质量。</p>
 <p><a href="https://connect.unity.com/doc/Manual/TextureTypes" target="_blank" rel="noopener">纹理导入设置帮助</a><br>未完待续。。。</p>
 </div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">fx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://syfx.github.io/2019/06/14/Unity3D性能优化/">http://syfx.github.io/2019/06/14/Unity3D性能优化/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://syfx.github.io">fx's study notes</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Unity/">Unity</a></div><div class="addthis_inline_share_toolbox pull-right"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined" async></script><nav id="pagination"><div class="next-post pull-right"><a href="/2019/05/22/Unity3DAssetBundle/"><span>Unity3D AssetBundle</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
   clientID: 'c0ee81174c2d41d7a768',
