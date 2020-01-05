@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>.NET与c# | FX | fx&#39;s blog</title>
+  
+  
+  <meta name="description" content="懂得越多，为难得越少">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class="cover post half">
+      
+        
+  <img class="logo" src="/assets/logo.png">
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="">
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class="menu navgation">
+  <ul class="h-list">
+    
+      
+        <li>
+          <a class="nav home" href="/" id="home">
+            <i class="fas fa-home fa-fw"></i>&nbsp;主页
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/categories/" rel="nofollow" id="categories">
+            <i class="fas fa-folder-open fa-fw"></i>&nbsp;分类
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/tags/" rel="nofollow" id="tags">
+            <i class="fas fa-tags fa-fw"></i>&nbsp;标签
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/archives/" rel="nofollow" id="archives">
+            <i class="fas fa-archive fa-fw"></i>&nbsp;归档
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href="/">
+        
+          FX | fx's blog
+        
+      </a>
+			<div class="menu navgation">
+				<ul class="h-list">
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/" id="home">
+									<i class="fas fa-rss fa-fw"></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+									<i class="fas fa-folder-open fa-fw"></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/" rel="nofollow" id="tags">
+									<i class="fas fa-tags fa-fw"></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索">
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+        
+          <li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/" id="home">
+								<i class="fas fa-rss fa-fw"></i>&nbsp;主页
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+								<i class="fas fa-folder-open fa-fw"></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/tags/" rel="nofollow" id="tags">
+								<i class="fas fa-tags fa-fw"></i>&nbsp;标签
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/" rel="nofollow" id="friends">
+								<i class="fas fa-link fa-fw"></i>&nbsp;友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
+								<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class="l_main">
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+    
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/04/19/NET与c/">
+        .NET与c#
+      </a>
+    </h1>
+  
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    
+      <a href="http://syfx.github.io" rel="nofollow">
+        
+          <img src="http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0">
+        
+        <p>fx</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-04-19</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class="new-meta-item category">
+    <a href="/categories/编程语言/" rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>编程语言</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+  
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h3 id="一、什么是-NET"><a href="#一、什么是-NET" class="headerlink" title="一、什么是.NET"></a>一、什么是.NET</h3><p>.NET是一个微软搭造的开发者平台，它主要包括：   </p>
+<ol>
+<li>支持(面向)该平台的编程语言(如C#、Visual Basic、C++/CLI、F#、IronPython、IronRuby…)   </li>
+<li>用于该平台下开发人员的技术框架体系(<strong>即 .NET实现</strong>)   </li>
+<li>用于支持开发人员开发的软件工具(即SDK，如VS2017、VS Code等)   </li>
+</ol>
+<blockquote>
+<ul>
+<li>.NET实现<br>Microsoft 积极开发和维护的主要 .NET实现 有4个：.NET Framework、.NET Core、Mono 和 UWP。<br>每个 .NET实现 都具有以下组件：<ol>
+<li>一个或多个运行时。    <ul>
+<li>.NET运行时<br>  运行时是用于托管程序的执行环境。 操作系统属于运行时环境，但不属于 .NET 运行时。 下面是 .NET 运行时的一些示例：<ul>
+<li>.NET Framework 公共语言运行时 (CLR)</li>
+<li>.NET Core 核心公共语言运行时 (CoreCLR)</li>
+<li>适用于通用 Windows 平台的 .NET Native</li>
+<li>用于 Xamarin.iOS、Xamarin.Android、Xamarin.Mac 和 Mono 桌面框架的 Mono 运行时</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现 .NET Standard 并且可实现其他 API 的类库。 示例：.NET Framework 基类库、.NET Core 基类库。  <ul>
+<li>.NET Standard<br>  .NET Standard 是一组所有 .NET 平台都应实现的 API。 更正式地说，它是构成协定统一集（这些协定是编写代码的依据）的特定 .NET API 组。 这些协定在每个 .NET实现 中实现。 这可实现不同 .NET实现 间的可移植性，有效地使代码可在任何位置运行。  </li>
+</ul>
+</li>
+<li>可选择包含一个或多个应用程序框架。 示例：ASP.NET、Windows 窗体…(包含在 .NET Framework 中)</li>
+<li>可包含开发工具。 某些开发工具在多个实现之间共享。   </li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h4 id="NET架构结构"><a href="#NET架构结构" class="headerlink" title=".NET架构结构"></a>.NET架构结构</h4><p><img src="http://p.qpic.cn/pic_wework/1948211503/e9efe5f95612423a370ff2bd921d91a831e60fed1ac22fa4/0" alt=""></p>
+<h4 id="1、CTS-通用类型系统-Common-Type-System"><a href="#1、CTS-通用类型系统-Common-Type-System" class="headerlink" title="1、CTS-通用类型系统(Common Type System)"></a>1、CTS-通用类型系统(Common Type System)</h4><blockquote>
+<p>.NET实现对语言不可知。 <strong>这意味着程序员可以使用可编译为 IL 的任意语言进行编写代码。而且这些通过不同语言进行编写的代码进行交互(即跨语言操作)</strong>。   </p>
+<blockquote>
+<p>跨语言操作：比如，c#和vb是.NET下两个不同的语言，不过在c#中写的类可以在vb中当做自家写的类一样正常使用。   </p>
+</blockquote>
+<p>为透明地执行此操作，必须使用某种通用方式描所有受支持类型。 这正是 CTS 的职责。 其功能如下：      </p>
+<ul>
+<li>建立用于跨语言执行的框架。   </li>
+<li>提供面向对象的模型，支持在 .NET 实现上实现各种语言。   </li>
+<li>定义处理类型时所有语言都必须遵守的一组规则。   </li>
+<li>提供包含应用程序开发中使用的基本基元数据类型（如 Boolean、Byte、Char 等）的库。  </li>
+</ul>
+</blockquote>
+<h4 id="2、CLS-公共语言规范-Common-Language-Specification"><a href="#2、CLS-公共语言规范-Common-Language-Specification" class="headerlink" title="2、CLS-公共语言规范(Common Language Specification)"></a>2、CLS-公共语言规范(Common Language Specification)</h4><blockquote>
+<p>为实现完全互操作性情景，代码中创建的所有对象都必须依赖于使用它的语言（即其调用方）的某些共性。 由于存在多种不同语言，因此 .NET 在公共语言规范 (CLS) 中指定了这些共性。然后定义了一组规则，开发者都遵守这个规则来编码，那么代码就能被任意.NET平台支持的语言所通用。<br>而与其说是规则，不如说它是一组语言互操作的标准规范，这就是CLS。</p>
+<blockquote>
+<p>注意：<strong>CLS 遵从性的规则仅适用于组件的公共接口，而非其私有实现。</strong></p>
+</blockquote>
+</blockquote>
+<h4 id="3、CLR-公共语言运行-时-或库-Common-Language-Runtime"><a href="#3、CLR-公共语言运行-时-或库-Common-Language-Runtime" class="headerlink" title="3、CLR-公共语言运行 时(或库)(Common Language Runtime)"></a>3、CLR-公共语言运行 时(或库)(Common Language Runtime)</h4><blockquote>
+<p>这里指的是 .NET Framework 的运行时。<br>可以将CLR看成一个在 执行时 <strong>管理代码</strong> 的代理（<strong>托管代码</strong>），它提供核心服务（如内存管理（GC）、线程管理和远程处理），而且还强制实施严格的类型安全以及可确保安全性和可靠性的其他形式的代码准确性。事实上，代码管理的概念是 运行时 的基本原则。</p>
+<blockquote>
+<p>托管：以垃圾回收器（GC）为例，在c#中，内存分配和释放的工作本应该是我们做的，现在这些工作却让GC帮你做了，这就是“托管”的概念。<br>因此，C#被称为托管语言。C#编写的代码也就称为托管代码,C#生成的模块称为托管模块等。<br>从这个角度来看，那些脱离了.NET提供的诸如垃圾回收器这样的环境管制，就是对应的 非托管了。</p>
+</blockquote>
+<p>CLR管理内存、线程执行、代码执行、代码安全验证、编译以及其他系统服务。这些功能是在CLR上运行的托管代码所固有的。这套环境及体系之完善，以至于就像一个小型的系统一样，所以通常形象的称CLR为”.NET虚拟机”。</p>
+</blockquote>
+<h4 id="NET程序的编译执行"><a href="#NET程序的编译执行" class="headerlink" title=".NET程序的编译执行"></a>.NET程序的编译执行</h4><blockquote>
+<ul>
+<li>对于用非托管语言(c/c++)编写的程序源代码，编译时翻译器将源码翻译为本地 机器语言，以文件形式保存在硬盘上；运行时，操作系统将文件读出到内存，然后CPU从内存中取出指令执行。    </li>
+<li>对于托管代码，编译时将源码翻译为微软中间语言（IL）代码，运行的时候通过JIT（即时编译器）翻译为本地机器语言，同时.NET代码运行时有一个CLR环境来管理程序。   <blockquote>
+<p>翻译器与解释器：   </p>
+<ul>
+<li>在编译时<strong>翻译器</strong>将源代码翻译成机器语言保存到文件中（例如C/C++）；执行效率高，不过难以移植。   </li>
+<li>在运行时<strong>解释器</strong>对源代码逐行进行翻译和执行（例如Python）；执行效率较低，不过易于移植。   </li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p><img src="http://p.qpic.cn/pic_wework/1948211503/01070d1133a261b41edd9346720be2c008e98d1b93db163c/0" alt="">   </p>
+<h3 id="二、C-简介"><a href="#二、C-简介" class="headerlink" title="二、C#简介"></a>二、C#简介</h3><h4 id="1、-C-及其特点"><a href="#1、-C-及其特点" class="headerlink" title="1、 C#及其特点"></a>1、 C#及其特点</h4><blockquote>
+<p>C#是微软公司在2000年7月发布的一种全新且<strong>简单、安全、面向对象</strong>的程序设计语言，是专门为.NET的应用而开发的语言。它吸收了C++、Visual Basic、Delphi、Java等语言的优点，体现了当今最新的程序设计技术的功能和精华。C#继承了C语言的语法风格，同时又继承了C++的面向对象特性。不同的是，C#的对象模型已经面向Internet进行了重新设计，使用的是.NET框架的类库；<strong>C#不再提供对指针类型的支持，使得程序不能随便访问内存地址空间，从而更加健壮；C#不再支持 多重继承，避免了以往类层次结构中由于多重继承带来的可怕后果</strong>。.NET框架为C#提供了一个强大的、易用的、逻辑结构一致的程序设计环境。同时，公共语言运行时（Common Language Runtime）为C#程序语言提供了一个托管的运行时环境，使程序比以往更加稳定、安全。<br>总结一下，c#特点有：    </p>
+<ul>
+<li>语言简洁。   </li>
+<li>保留了C++的强大功能。   </li>
+<li>快速应用开发功能。   </li>
+<li>语言的自由性。   </li>
+<li>强大的Web服务器控件。   </li>
+<li>支持跨平台。   </li>
+<li>与XML相融合。   </li>
+</ul>
+</blockquote>
+<h4 id="2、-c-存在哪些缺点呢？"><a href="#2、-c-存在哪些缺点呢？" class="headerlink" title="2、 c#存在哪些缺点呢？"></a>2、 c#存在哪些缺点呢？</h4><blockquote>
+<ul>
+<li>不适合开发高性能的程序：因为中间语言和编译过程，比C/C++等语言会慢一些，还有就是内存自动回收机制导致难以立即释放不需要的内存，不采用(不建议)内联函数和析构函数。   </li>
+<li>Windows平台以外支持有限： 因为除Windows外，还没有其他操作系统上的稳定版本的.Net Framework环境，提供给.Net 程序来运行。</li>
+</ul>
+</blockquote>
+<h4 id="3、-c-与其它语言的比较"><a href="#3、-c-与其它语言的比较" class="headerlink" title="3、 c#与其它语言的比较"></a>3、 c#与其它语言的比较</h4><blockquote>
+<ul>
+<li>C#与C++的比较      <ul>
+<li>编译目标：C++代码直接编译为本地可执行代码，而C#默认编译为中间语言（IL）代码，执行时再通过Just-In-Time将需要的模块临时编译成本地代码。   </li>
+<li>内存管理：C++需要显式地删除动态分配给堆的内存，而C#不需要这么做，C#采用垃圾回收机制自动在合适的时机回收不再使用的内存。   </li>
+<li>指针：C++中大量地使用指针，而C#使用对类实例的引用，如果确实想在C#中使用指针，必须声明该内容是非安全的。不过，一般情况下C#中没有必要使用指针。   </li>
+<li>字符串处理：在C#中，字符串是作为一种基本数据类型来对待的，因此比C++中对字符串的处理要简单得多。   </li>
+<li>库：C++依赖于以继承和模板为基础的标准库，C#则依赖于.NET基库。</li>
+<li>C++允许类的多继承，而C#只允许类的单继承，而通过接口实现多继承。</li>
+</ul>
+</li>
+<li>C#与Java的比较<ul>
+<li>C#面向对象的程度比Java高。   </li>
+<li>C#中的基本类型都是面向对象的。   </li>
+<li>C#具有比Java更强大的功能。   </li>
+<li>C#语言的执行速度比Java快。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="4、值类型与引用类型，装箱与拆箱"><a href="#4、值类型与引用类型，装箱与拆箱" class="headerlink" title="4、值类型与引用类型，装箱与拆箱"></a>4、值类型与引用类型，装箱与拆箱</h4><blockquote>
+<ul>
+<li>在c#中，<strong>值类型</strong>的变量直接储存数据，数据存在栈中，执行复制操作时，复制了一个新的数据给另一个变量，两个数据相互独立；而<strong>引用类型</strong>持有的是数据的引用，在栈上开辟一小块内存储存一个地址，地址指向堆中实际储存数据的内存（相当于c++中的指针，只是c#做了一些工作使这个指针与它指向的对象更紧密的联系在一起了）。   </li>
+<li>数据从值类型转换为引用类型的过程被称为<strong>“装箱”</strong>，从引用类型转换为值类型的过程被称为<strong>“拆箱”</strong>。装箱与拆箱操作比较费时，应该尽量避免装箱拆箱操作。</li>
+</ul>
+</blockquote>
+<p><strong>值类型与引用类型的分类</strong><br><img src="http://p.qpic.cn/pic_wework/1948211503/fafcf6eaab4a7774885510cc4dd684254710f43750315fcb/0" alt=""></p>
+<p>.NET中六个重要的概念：栈、堆、值类型、引用类型、装箱和拆箱：<br><a href="https://www.cnblogs.com/edisonchou/p/3947170.html" target="_blank" rel="noopener">https://www.cnblogs.com/edisonchou/p/3947170.html</a>   </p>
+<p>什么是.NET：<br><a href="https://www.cnblogs.com/1996V/p/9037603.html#net3" target="_blank" rel="noopener">https://www.cnblogs.com/1996V/p/9037603.html#net3</a></p>
+<p><strong>注：</strong>图片来自网上</p>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class="meta" id="footer-meta">
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-28T20:32:09+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年5月28日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/NET/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>.NET</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/c/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>c#</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://syfx.github.io/2019/04/19/NET与c/&title=.NET与c# | FX | fx's blog&pics=http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://syfx.github.io/2019/04/19/NET与c/&title=.NET与c# | FX | fx's blog&pics=http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://syfx.github.io/2019/04/19/NET与c/&title=.NET与c# | FX | fx's blog&pics=http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2019/04/24/c-高级知识点/" rel="prev" title="c#高级知识点">
+                                
+                                    c#高级知识点
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/c/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> c#</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/04/17/最短路径算法Floyd与Dijkstra/" rel="prev" title="最短路径算法Floyd与Dijkstra">
+                                  
+                                      最短路径算法Floyd与Dijkstra
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/算法/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 算法</a> <a class="tag" href="/tags/最短路径/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 最短路径</a> <a class="tag" href="/tags/图/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 图</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '.NET与c#',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class="l_side">
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class="widget author">
+  <div class="content pure">
+    
+      <div class="avatar">
+        <img class="avatar" src="http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0">
+      </div>
+    
+    
+      <div class="text">
+        
+        
+        
+          <p><span id="jinrishici-sentence">FX | fx's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class="widget toc-wrapper">
+    
+<header class="pure">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class="content pure">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、什么是-NET"><span class="toc-text">一、什么是.NET</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#NET架构结构"><span class="toc-text">.NET架构结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1、CTS-通用类型系统-Common-Type-System"><span class="toc-text">1、CTS-通用类型系统(Common Type System)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、CLS-公共语言规范-Common-Language-Specification"><span class="toc-text">2、CLS-公共语言规范(Common Language Specification)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、CLR-公共语言运行-时-或库-Common-Language-Runtime"><span class="toc-text">3、CLR-公共语言运行 时(或库)(Common Language Runtime)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NET程序的编译执行"><span class="toc-text">.NET程序的编译执行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、C-简介"><span class="toc-text">二、C#简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、-C-及其特点"><span class="toc-text">1、 C#及其特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、-c-存在哪些缺点呢？"><span class="toc-text">2、 c#存在哪些缺点呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、-c-与其它语言的比较"><span class="toc-text">3、 c#与其它语言的比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、值类型与引用类型，装箱与拆箱"><span class="toc-text">4、值类型与引用类型，装箱与拆箱</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class="widget grid">
+  
+<header class="pure">
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class="content pure">
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="https://github.com/syfx" href="https://github.com/syfx" rel="nofollow" id="https:github.comsyfx">
+          
+            <i class="fab fa-github fa-fw" aria-hidden="true"></i>
+          
+          GitHub
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/" rel="nofollow" id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://music.163.com/#/user/home?id=395794569" href="https://music.163.com/#/user/home?id=395794569" rel="nofollow" id="https:music.163.com#userhome?id=395794569">
+          
+            <i class="fas fa-headphones-alt fa-fw" aria-hidden="true"></i>
+          
+          Music
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/" rel="nofollow" id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class="widget category">
+    
+<header class="pure">
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn" rel="nofollow" href="/categories/" title="categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class="content pure">
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/图形渲染/" href="/categories/图形渲染/"><div class="name">图形渲染</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/学习笔记/" href="/categories/学习笔记/"><div class="name">学习笔记</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/总结/" href="/categories/总结/"><div class="name">总结</div><div class="badge">(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/数据结构与算法/" href="/categories/数据结构与算法/"><div class="name">数据结构与算法</div><div class="badge">(4)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/编程模式/" href="/categories/编程模式/"><div class="name">编程模式</div><div class="badge">(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/编程语言/" href="/categories/编程语言/"><div class="name">编程语言</div><div class="badge">(9)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/随笔/" href="/categories/随笔/"><div class="name">随笔</div><div class="badge">(2)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class="widget list">
+  
+<header class="pure">
+  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;推荐</div>
+  
+</header>
+
+  <div class="content pure">
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://learnopengl-cn.github.io/" href="https://learnopengl-cn.github.io/">
+          <div class="name">
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;OpenGL
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://gpp.tkchu.me/" href="https://gpp.tkchu.me/">
+          <div class="name">
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;游戏编程模式
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["http://p.qpic.cn/pic_wework/1948211503/03058f10e21f45ba370ab4d5219b3403f7d46286afbfc5f3/0", "http://p.qpic.cn/pic_wework/1948211503/686ee47bbae84ebaae0ae82f28a30829c8f2605574db5143/0", "http://p.qpic.cn/pic_wework/1948211503/b9bf35aa5fb68f53d45f35da076e8a55164d5eda567c615a/0", "http://p.qpic.cn/pic_wework/1948211503/686ee47bbae84ebaae0ae82f28a30829c8f2605574db5143/0"],
+          {
+            duration: "12000",
+            fade: "3600"
+          });
+        } else {
+          $.backstretch(
+          ["http://p.qpic.cn/pic_wework/1948211503/03058f10e21f45ba370ab4d5219b3403f7d46286afbfc5f3/0", "http://p.qpic.cn/pic_wework/1948211503/686ee47bbae84ebaae0ae82f28a30829c8f2605574db5143/0", "http://p.qpic.cn/pic_wework/1948211503/b9bf35aa5fb68f53d45f35da076e8a55164d5eda567c615a/0", "http://p.qpic.cn/pic_wework/1948211503/686ee47bbae84ebaae0ae82f28a30829c8f2605574db5143/0"],
+          {
+            duration: "12000",
+            fade: "3600"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "",
+      clientSecret: "",
+      repo: "syfx.github.io",
+      owner: "syfx",
+      admin: "syfx",
+      
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

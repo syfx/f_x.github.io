@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>C++知识点总结 | FX | fx&#39;s blog</title>
+  
+  
+  <meta name="description" content="懂得越多，为难得越少">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class="cover post half">
+      
+        
+  <img class="logo" src="/assets/logo.png">
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="">
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class="menu navgation">
+  <ul class="h-list">
+    
+      
+        <li>
+          <a class="nav home" href="/" id="home">
+            <i class="fas fa-home fa-fw"></i>&nbsp;主页
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/categories/" rel="nofollow" id="categories">
+            <i class="fas fa-folder-open fa-fw"></i>&nbsp;分类
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/tags/" rel="nofollow" id="tags">
+            <i class="fas fa-tags fa-fw"></i>&nbsp;标签
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/archives/" rel="nofollow" id="archives">
+            <i class="fas fa-archive fa-fw"></i>&nbsp;归档
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href="/">
+        
+          FX | fx's blog
+        
+      </a>
+			<div class="menu navgation">
+				<ul class="h-list">
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/" id="home">
+									<i class="fas fa-rss fa-fw"></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+									<i class="fas fa-folder-open fa-fw"></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/" rel="nofollow" id="tags">
+									<i class="fas fa-tags fa-fw"></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索">
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+        
+          <li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/" id="home">
+								<i class="fas fa-rss fa-fw"></i>&nbsp;主页
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
+								<i class="fas fa-folder-open fa-fw"></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/tags/" rel="nofollow" id="tags">
+								<i class="fas fa-tags fa-fw"></i>&nbsp;标签
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
+								<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/" rel="nofollow" id="friends">
+								<i class="fas fa-link fa-fw"></i>&nbsp;友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
+								<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class="l_main">
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+    
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/09/03/C-知识点总结/">
+        C++知识点总结
+      </a>
+    </h1>
+  
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    
+      <a href="http://syfx.github.io" rel="nofollow">
+        
+          <img src="http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0">
+        
+        <p>fx</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-09-03</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+  
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <blockquote>
+<p>写在前面：当要找工作时，发现对于面试中问的问题总有种朦朦胧胧的熟悉感，但让自己说时又不能说出个所以然来，归根结底，还是太<strong>菜</strong>了；记性不好，还是把比较重要的知识点记下来，常看看吧。</p>
+</blockquote>
+<h3 id="C-语言简介"><a href="#C-语言简介" class="headerlink" title="C++语言简介"></a>C++语言简介</h3><blockquote>
+<p><strong>c++</strong>是在<strong>c</strong>语言的基础上开发出的一种<strong>面向对象</strong>的编程语言，c++支持多种编程范式，包括面向对象编程、泛型编程、过程化编程。c++应用广泛，常应用于系统、引擎等开发领域。</p>
+</blockquote>
+<p><strong>面向对象</strong>   </p>
+<blockquote>
+<p>从实体上抽象出我们需要的属性及行为。<br>对于其三大基本特征<strong>封装、继承、多态</strong>，我想是大概是在一定程度上增加了程序的安全性、复用性及灵活性吧。</p>
+</blockquote>
+<p><strong>C++与C的区别</strong></p>
+<blockquote>
+<p>主要区别在于 c++ 在 c 语言的基础上增加了类的概念，这一点可以从 c++ 早前的名字 c with classes 中看出。再者，c++ 相比 c 语言引入了更多的特性，例如命名空间、模板与泛型编程特性。</p>
+</blockquote>
+<h3 id="define、const"><a href="#define、const" class="headerlink" title="#define、const"></a>#define、const</h3><ul>
+<li><a href="https://syfx.github.io/2019/03/13/c-%E5%AE%8F/#more">#define</a>：预编译指令，可用来定义一个常量。   </li>
+<li>const：是c和c++中的关键字，用来声明一个常量（不可改变的变量），const可在一定程度上提高程序的安全性及可靠性；const可用来修饰<strong>基本数据类型</strong>、<strong>指针</strong>和<strong>引用</strong>；当const修饰指针时，要搞明白被修饰的是<strong>指针本身</strong>，还是<strong>指针指向的变量</strong>，例如：   </li>
+</ul>
+<pre><code class="c++">
+<span class="keyword">int</span> t1 = <span class="number">1</span>, t2 = <span class="number">2</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> *p1 = &amp;t1;            <span class="comment">//指针常量</span>
+<span class="keyword">int</span> <span class="keyword">const</span> *p2 = &amp;t1;            <span class="comment">//指针常量（p1与p2效果相同）</span>
+<span class="comment">//*p2 = 3;    (错误)                //不允许修改 指针指向的变量 的值</span>
+p2 = &amp;t2;                        <span class="comment">//允许修改 指针 的值</span>
+<span class="keyword">int</span> *<span class="keyword">const</span> p3 = &amp;t1;            <span class="comment">//常量指针</span>
+*p3 = <span class="number">3</span>;                        <span class="comment">//允许修改 指针指向的变量 的值</span>
+<span class="comment">//p3 = &amp;t2;    (错误)                //不允许修改 指针 的值</span>
+
+</code></pre>
+<p>使用const修饰的<strong>函数</strong>，只能调用const修饰的函数，普通函数能调用const修饰的函数。<br>使用const修饰的<strong>成员函数</strong>，表示在该函数中不会对<strong>对象</strong>进行改变。</p>
+<h3 id="static的作用"><a href="#static的作用" class="headerlink" title="static的作用"></a>static的作用</h3><p>在c++中，static会修改所修饰标识符的链接属性，由external（外部的）变为internal（内部的）；<br>即该标识符只能在其所处的文件中起作用。    </p>
+<blockquote>
+<p>补充：   </p>
+<ol>
+<li>另一个链接属性 <strong>none</strong>：总是被当做单独的个体，也就是说该标识符的多个声明被当作独立不同的实体。   </li>
+<li>extern：<strong>声明</strong>一个全局变量，作用范围是整个工程。</li>
+</ol>
+</blockquote>
+<h4 id="关于变量的声明与定义"><a href="#关于变量的声明与定义" class="headerlink" title="关于变量的声明与定义"></a>关于变量的<strong>声明</strong>与<strong>定义</strong></h4><pre><code>声明（引用性声明）：声明一个变量时并没有为该变量分配内存空间，它只是告诉编译器，
+    该变量会在某处进行定义。   
+定义（定义性声明）：声明一个变量的同时也为其分配储存空间。
+
+声明一个变量
+extern int A;
+或 extern A;
+
+定义一个变量
+int A;
+</code></pre><p>1.对于全局静态变量而言，可将该变量的作用域理解为从其所在文件开头，到其所在文件的结尾。<br>全局静态变量被储存在<strong>全局静态区</strong>   </p>
+<p>2.局部静态变量，作用域不变，只是在离开作用域后，局部静态变量并未被销毁，当再次进入该作用域时，它的值也和上次一样。<br>全局静态变量也被储存在<strong>全局静态区</strong> </p>
+<h4 id="关于内存五区"><a href="#关于内存五区" class="headerlink" title="关于内存五区"></a>关于内存五区</h4><blockquote>
+<p>栈区、堆区、静态区、常量区、代码区</p>
+</blockquote>
+<p>花费碎片时间，将搞懂的知识点写下来，未完待续。。。</p>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class="meta" id="footer-meta">
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-04T21:29:55+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年1月4日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://syfx.github.io/2019/09/03/C-知识点总结/&title=C++知识点总结 | FX | fx's blog&pics=http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://syfx.github.io/2019/09/03/C-知识点总结/&title=C++知识点总结 | FX | fx's blog&pics=http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://syfx.github.io/2019/09/03/C-知识点总结/&title=C++知识点总结 | FX | fx's blog&pics=http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/08/22/动态规划/" rel="prev" title="动态规划">
+                                  
+                                      动态规划
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/算法/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 算法</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'C++知识点总结',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class="l_side">
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class="widget author">
+  <div class="content pure">
+    
+      <div class="avatar">
+        <img class="avatar" src="http://p.qpic.cn/pic_wework/1948211503/6f69e37c0d563e3bf682e017f13f8cdd763bd3dc14270c8e/0">
+      </div>
+    
+    
+      <div class="text">
+        
+        
+        
+          <p><span id="jinrishici-sentence">FX | fx's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class="widget toc-wrapper">
+    
+<header class="pure">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class="content pure">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-语言简介"><span class="toc-text">C++语言简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#define、const"><span class="toc-text">#define、const</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static的作用"><span class="toc-text">static的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关于变量的声明与定义"><span class="toc-text">关于变量的声明与定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于内存五区"><span class="toc-text">关于内存五区</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class="widget grid">
+  
+<header class="pure">
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class="content pure">
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="https://github.com/syfx" href="https://github.com/syfx" rel="nofollow" id="https:github.comsyfx">
+          
+            <i class="fab fa-github fa-fw" aria-hidden="true"></i>
+          
+          GitHub
+        </a></li>
+      
+        <li><a class="flat-box" title="/friends/" href="/friends/" rel="nofollow" id="friends">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://music.163.com/#/user/home?id=395794569" href="https://music.163.com/#/user/home?id=395794569" rel="nofollow" id="https:music.163.com#userhome?id=395794569">
+          
+            <i class="fas fa-headphones-alt fa-fw" aria-hidden="true"></i>
+          
+          Music
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/" rel="nofollow" id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class="widget category">
+    
+<header class="pure">
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn" rel="nofollow" href="/categories/" title="categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class="content pure">
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/图形渲染/" href="/categories/图形渲染/"><div class="name">图形渲染</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/学习笔记/" href="/categories/学习笔记/"><div class="name">学习笔记</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/总结/" href="/categories/总结/"><div class="name">总结</div><div class="badge">(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/数据结构与算法/" href="/categories/数据结构与算法/"><div class="name">数据结构与算法</div><div class="badge">(4)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/编程模式/" href="/categories/编程模式/"><div class="name">编程模式</div><div class="badge">(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/编程语言/" href="/categories/编程语言/"><div class="name">编程语言</div><div class="badge">(9)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/随笔/" href="/categories/随笔/"><div class="name">随笔</div><div class="badge">(2)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class="widget list">
+  
+<header class="pure">
+  <div><i class="fas fa-thumbs-up fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;推荐</div>
+  
+</header>
+
+  <div class="content pure">
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://learnopengl-cn.github.io/" href="https://learnopengl-cn.github.io/">
+          <div class="name">
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;OpenGL
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="https://gpp.tkchu.me/" href="https://gpp.tkchu.me/">
+          <div class="name">
+            
+              <i class=" fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;游戏编程模式
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["http://p.qpic.cn/pic_wework/1948211503/03058f10e21f45ba370ab4d5219b3403f7d46286afbfc5f3/0", "http://p.qpic.cn/pic_wework/1948211503/686ee47bbae84ebaae0ae82f28a30829c8f2605574db5143/0", "http://p.qpic.cn/pic_wework/1948211503/b9bf35aa5fb68f53d45f35da076e8a55164d5eda567c615a/0", "http://p.qpic.cn/pic_wework/1948211503/686ee47bbae84ebaae0ae82f28a30829c8f2605574db5143/0"],
+          {
+            duration: "12000",
+            fade: "3600"
+          });
+        } else {
+          $.backstretch(
+          ["http://p.qpic.cn/pic_wework/1948211503/03058f10e21f45ba370ab4d5219b3403f7d46286afbfc5f3/0", "http://p.qpic.cn/pic_wework/1948211503/686ee47bbae84ebaae0ae82f28a30829c8f2605574db5143/0", "http://p.qpic.cn/pic_wework/1948211503/b9bf35aa5fb68f53d45f35da076e8a55164d5eda567c615a/0", "http://p.qpic.cn/pic_wework/1948211503/686ee47bbae84ebaae0ae82f28a30829c8f2605574db5143/0"],
+          {
+            duration: "12000",
+            fade: "3600"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "",
+      clientSecret: "",
+      repo: "syfx.github.io",
+      owner: "syfx",
+      admin: "syfx",
+      
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
