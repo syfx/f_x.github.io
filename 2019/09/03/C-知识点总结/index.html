@@ -335,8 +335,7 @@
 <li><a href="https://syfx.github.io/2019/03/13/c-%E5%AE%8F/#more">#define</a>：预编译指令，可用来定义一个常量。   </li>
 <li>const：是c和c++中的关键字，用来声明一个常量（不可改变的变量），const可在一定程度上提高程序的安全性及可靠性；const可用来修饰<strong>基本数据类型</strong>、<strong>指针</strong>和<strong>引用</strong>；当const修饰指针时，要搞明白被修饰的是<strong>指针本身</strong>，还是<strong>指针指向的变量</strong>，例如：   </li>
 </ul>
-<pre><code class="c++">
-<span class="keyword">int</span> t1 = <span class="number">1</span>, t2 = <span class="number">2</span>;
+<pre><code class="c++"><span class="keyword">int</span> t1 = <span class="number">1</span>, t2 = <span class="number">2</span>;
 
 <span class="keyword">const</span> <span class="keyword">int</span> *p1 = &amp;t1;            <span class="comment">//指针常量</span>
 <span class="keyword">int</span> <span class="keyword">const</span> *p2 = &amp;t1;            <span class="comment">//指针常量（p1与p2效果相同）</span>
@@ -345,7 +344,6 @@ p2 = &amp;t2;                        <span class="comment">//允许修改 指针
 <span class="keyword">int</span> *<span class="keyword">const</span> p3 = &amp;t1;            <span class="comment">//常量指针</span>
 *p3 = <span class="number">3</span>;                        <span class="comment">//允许修改 指针指向的变量 的值</span>
 <span class="comment">//p3 = &amp;t2;    (错误)                //不允许修改 指针 的值</span>
-
 </code></pre>
 <p>使用const修饰的<strong>函数</strong>，只能调用const修饰的函数，普通函数能调用const修饰的函数。<br>使用const修饰的<strong>成员函数</strong>，表示在该函数中不会对<strong>对象</strong>进行改变。</p>
 <h3 id="static的作用"><a href="#static的作用" class="headerlink" title="static的作用"></a>static的作用</h3><p>在c++中，static会修改所修饰标识符的链接属性，由external（外部的）变为internal（内部的）；<br>即该标识符只能在其所处的文件中起作用。    </p>
@@ -356,17 +354,17 @@ p2 = &amp;t2;                        <span class="comment">//允许修改 指针
 <li>extern：<strong>声明</strong>一个全局变量，作用范围是整个工程。</li>
 </ol>
 </blockquote>
-<h4 id="关于变量的声明与定义"><a href="#关于变量的声明与定义" class="headerlink" title="关于变量的声明与定义"></a>关于变量的<strong>声明</strong>与<strong>定义</strong></h4><pre><code>声明（引用性声明）：声明一个变量时并没有为该变量分配内存空间，它只是告诉编译器，
-    该变量会在某处进行定义。   
-定义（定义性声明）：声明一个变量的同时也为其分配储存空间。
-
-声明一个变量
-extern int A;
-或 extern A;
+<h4 id="关于变量的声明与定义"><a href="#关于变量的声明与定义" class="headerlink" title="关于变量的声明与定义"></a>关于变量的<strong>声明</strong>与<strong>定义</strong></h4><blockquote>
+<p>声明（引用性声明）：声明一个变量时并没有为该变量分配内存空间，它只是告诉编译器，<br>该变量会在某处进行定义。<br>定义（定义性声明）：声明一个变量的同时也为其分配储存空间。</p>
+</blockquote>
+<pre><code class="c++">声明一个变量
+<span class="keyword">extern</span> <span class="keyword">int</span> A;
+或 <span class="keyword">extern</span> A;
 
 定义一个变量
-int A;
-</code></pre><p>1.对于全局静态变量而言，可将该变量的作用域理解为从其所在文件开头，到其所在文件的结尾。<br>全局静态变量被储存在<strong>全局静态区</strong>   </p>
+<span class="keyword">int</span> A;
+</code></pre>
+<p>1.对于全局静态变量而言，可将该变量的作用域理解为从其所在文件开头，到其所在文件的结尾。<br>全局静态变量被储存在<strong>全局静态区</strong>   </p>
 <p>2.局部静态变量，作用域不变，只是在离开作用域后，局部静态变量并未被销毁，当再次进入该作用域时，它的值也和上次一样。<br>全局静态变量也被储存在<strong>全局静态区</strong> </p>
 <h4 id="关于内存五区"><a href="#关于内存五区" class="headerlink" title="关于内存五区"></a>关于内存五区</h4><blockquote>
 <p>栈区、堆区、静态区、常量区、代码区</p>
@@ -384,10 +382,10 @@ int A;
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-04T21:29:55+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-05T22:46:12+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2020年1月4日</p>
+    <p>更新于 2020年1月5日</p>
   </a>
 </div>
 
