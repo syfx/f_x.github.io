@@ -27,7 +27,7 @@
   
 
   
-  <link rel="shortcut icon" type="image/x-icon" href="http://p.qpic.cn/pic_wework/1948211503/4244ce5163d7962c49e34df1c6246715e46ee80c0cc2c7b3/0">
+  <link rel="shortcut icon" type="image/x-icon" href="http://p.qpic.cn/pic_wework/1948211503/4442c857aba70737e3f47cf724821c8d2528150e125cdb6d/0">
   
 
   
@@ -51,7 +51,7 @@
     <cover class="cover post half">
       
         
-  <h1 class="title">Syfx</h1>
+  <img class="logo" src="/assets/logo.png">
 
 
   <div class="m_search">
@@ -338,9 +338,6 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用二级指针做参数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreatTree</span><span class="params">(BiTree**p)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; ch;</span><br><span class="line">	<span class="keyword">if</span> (ch == <span class="string">'#'</span>)</span><br><span class="line">		*p = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		*p = <span class="keyword">new</span> BiTree();</span><br><span class="line">		(*p)-&gt;value = ch;</span><br><span class="line">		CreatTree(&amp;(*p)-&gt;lift);</span><br><span class="line">		CreatTree(&amp;(*p)-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用指针的引用做参数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreatTree</span><span class="params">(BiTree* &amp;p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; ch;</span><br><span class="line">	<span class="keyword">if</span> (ch == <span class="string">'#'</span>)</span><br><span class="line">		p = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		p = <span class="keyword">new</span> BiTree();</span><br><span class="line">		p-&gt;value = ch;</span><br><span class="line">		CreatTree(p-&gt;lift);</span><br><span class="line">		CreatTree(p-&gt;right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       </div>
       
-        <br>
-        <center>这是文章页脚，可以设置打赏图片：<br><fancybox><img src="https://img.vim-cn.com/4a/5f8244a7c6e1e069a781b84ed11008e7955e16.png" alt=""></fancybox></center>
-      
       
         <br>
         
@@ -509,25 +506,6 @@
       </div>
     
     
-      <div class="social-wrapper">
-        
-          
-            <a href="https://github.com/syfx" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="/suyafx@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=395794569" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
   </div>
 </section>
 
@@ -615,11 +593,25 @@
   <div class="content pure">
     <ul class="grid navgation">
       
+        <li><a class="flat-box" title="https://github.com/syfx" href="https://github.com/syfx" rel="nofollow" id="https:github.comsyfx">
+          
+            <i class="fas fa-github fa-fw" aria-hidden="true"></i>
+          
+          GitHub
+        </a></li>
+      
         <li><a class="flat-box" title="/friends/" href="/friends/" rel="nofollow" id="friends">
           
             <i class="fas fa-link fa-fw" aria-hidden="true"></i>
           
           友链
+        </a></li>
+      
+        <li><a class="flat-box" title="https://music.163.com/#/user/home?id=395794569" href="https://music.163.com/#/user/home?id=395794569" rel="nofollow" id="https:music.163.com#userhome?id=395794569">
+          
+            <i class="fas fa-headphones-alt fa-fw" aria-hidden="true"></i>
+          
+          Music
         </a></li>
       
         <li><a class="flat-box" title="/about/" href="/about/" rel="nofollow" id="about">
@@ -810,17 +802,12 @@
     <div class="social-wrapper">
       
         
-          <a href="https://github.com/syfx" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
+          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       
         
           <a href="/suyafx@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="https://music.163.com/#/user/home?id=395794569" class="social fas fa-headphones-alt flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
           </a>
         
       
